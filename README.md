@@ -2,7 +2,7 @@
 
 Portfolio statique bilingue (français par défaut, anglais sous `/en/`) destiné à présenter un parcours professionnel en électrotechnique, des études d’ingénieur à l’ENSEEIHT et des projets techniques. Il utilise HTML, CSS et JavaScript natif. Aucun serveur applicatif ni dépendance externe n’est nécessaire.
 
-Les faits publiés viennent du portfolio Portfoliobox audité. Les informations absentes sont signalées par `[CONTENU À COMPLÉTER]` ou `[CONTENT TO COMPLETE]` au lieu d’être supposées. Les aperçus de CV contenant des coordonnées et les médias originaux non sélectionnés restent exclus du dépôt public.
+Les faits du portfolio Portfoliobox ont été complétés par les réponses déjà fournies dans le questionnaire de migration. Les informations encore absentes sont signalées par `[CONTENU À COMPLÉTER]` ou `[CONTENT TO COMPLETE]`, sans supposition. Les aperçus de CV contenant des coordonnées et les médias originaux non sélectionnés restent exclus du dépôt public.
 
 ## Structure
 
@@ -62,4 +62,4 @@ Lorsque tu posséderas un nom de domaine, ajoute-le dans **Settings → Pages �
 
 ## Éléments à compléter
 
-Les marqueurs de contenu incomplet sont listés dans `migration-audit.md`. Ils concernent notamment le détail de certains projets, les diplômes antérieurs à l’ENSEEIHT, les niveaux de langue et projets de mobilité à jour, le CV PDF, la vidéo publique, le contact public et l’engagement citoyen. Les coordonnées et documents ne doivent être ajoutés que si leur publication est souhaitée.
+Les marqueurs de contenu incomplet sont listés dans `migration-audit.md`. Ils concernent les détails de trois projets, les niveaux de langue et projets de mobilité à jour, le CV PDF, la vidéo publique, le contact public et l’engagement citoyen. Les diplômes et trois projets ont déjà été complétés à partir du questionnaire. Les coordonnées et documents ne doivent être ajoutés que si leur publication est souhaitée.

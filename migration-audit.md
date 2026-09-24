@@ -26,7 +26,7 @@ The original text snapshot and media inventory were saved separately from the pu
 Recovered content includes:
 
 - **Profile:** Patrice Masson; engineer in training at ENSEEIHT, 3EA department; electrotechnical professional at EDF; source portfolio states more than 15 years of experience.
-- **Education and Ingé+:** Energy, Electronics and Automation; coursework named in the source includes mathematics, operational amplifiers, filters, signal processing and electronics. The source describes combining studies with EDF duties and supporting collective projects and fellow students.
+- **Education and Ingé+:** Energy, Electronics and Automation; coursework named in the source includes mathematics, operational amplifiers, filters, signal processing and electronics. The source describes combining studies with EDF duties and supporting collective projects and fellow students. The user’s completion sheet adds a Bac STI in electrotechnics, a BTS in electrotechnics from Pôle Formation UIMM Beauzelle (2012), and H2B2, HCBC and TSTBT authorisations; validity dates were not supplied.
 - **Career:** EDF Hydro operations technician (2010–2013); electrical inspector in EDF/Enedis work (2013–2022, with transition to Enedis in 2017); EDF UFPI technical trainer and protection systems lead (2022–2025); ENSEEIHT studies alongside EDF responsibilities (2025 onward).
 - **Technical knowledge:** MV/HV systems, hydroelectric systems, protection relays and SEPAM, settings, fault analysis, relay tests, trip logic, schematics, control-command and modernization.
 - **Professional practice:** problem solving, collaboration and communication, pedagogy, leadership and decision-making, technical rigor, adaptability, resilience and stress management.
@@ -45,6 +45,12 @@ Recovered content includes:
 | 2021 | Digital control-command transition, Palaminy HV/MV substation | Electrical testing and commissioning; improved reliability of a critical network link. |
 | 2013–2025 | Field inspection and troubleshooting, Southwest France | Diagnostics, 24/7 on-call troubleshooting and technical recommendations; action plans integrated into maintenance and improvement strategies. |
 | 2022–2025 | Protection systems expertise and training, EDF Toulouse campus | Technical trainer and pedagogical lead; practical simulations and training; improved technician understanding, autonomy and safety awareness. |
+
+### Additional information supplied in the completion sheet
+
+The questionnaire adds project detail for the Palaminy screen project (operations-team integration, specification through handover, SEE Electrical and Unity Pro, and an operational control-command system), the Fos control-command project (shutdown after flooding, moisture damage, work with an electrician, large-format “drap de lit” schematic and partner-company collaboration), and the 2021 PCCN transition (keeping the substation in service without a trip, Schneider suite, medium-voltage protection tests and commissioning). The field-inspection role is clarified as including protection checks.
+
+The Fos questionnaire entry is titled 2013–2014 control-command refurbishment but includes flood-restoration context. The original source lists a separate 2014 restoration project at the same plant. Both cards remain in the site pending a later decision about whether to merge them; the answer has been applied to the named 2013–2014 entry without deleting the original 2014 source item.
 
 ## 3. Images and documents
 
@@ -69,8 +75,8 @@ External Portfoliobox, CloudFront and site-template resource URLs are retained o
 
 ## 5. Gaps and source issues
 
-- No individual qualifications before ENSEEIHT are named.
-- No dedicated project details for constraints, methods beyond role descriptions, tools, technical solution design, personal lessons or per-project competencies.
+- The original Portfoliobox source did not list qualifications before ENSEEIHT; the user has now supplied a Bac STI, BTS and authorisation codes. The Bac year and validity dates for the authorisations remain unspecified.
+- Project detail is now available for the screen modernization, the Fos refurbishment and the 2021 PCCN transition. Constraints, tools/solutions and lessons remain incomplete for the separate 2014 flood-restoration, field-inspection and training projects.
 - No verified email, public LinkedIn URL, public video URL, CV PDF, or detail for the civic-engagement menu item.
 - Some source statements may be dated: the UK mobility discussion and the objectives are presented in a portfolio created in 2025. They have not been relabelled as current facts.
 - Source wording contains typos and inconsistent date descriptions; source facts and outcomes are retained, with editorial spelling corrected in the redesigned site.
@@ -81,7 +87,7 @@ External Portfoliobox, CloudFront and site-template resource URLs are retained o
 
 The redesigned portfolio is a static bilingual site. French is the default page at `/`; English is at `/en/`. Both pages use the same section IDs and shared CSS/JavaScript, so the FR | EN selector keeps the current section when changing languages. The one-page-per-language structure keeps the site easy to edit while preserving the project details in context.
 
-Project cards separate context, problem/objective, role/approach and reported result. Missing constraints, tools, solution detail, lessons and project-specific competencies are explicitly marked `[CONTENT TO COMPLETE]`. The contact address, CV file, current mobility information and civic-engagement text are also marked for completion rather than guessed.
+Project cards separate context, problem/objective, role/approach and reported result. The user’s filled questionnaire has been incorporated into education and three project entries. Remaining project gaps are marked `[CONTENT TO COMPLETE]`; the contact address, CV file, current mobility information and civic-engagement text are also left incomplete rather than guessed.
 
 The visual system uses original HTML and CSS, local compressed images, a custom wave-inspired favicon, semantic sections, visible keyboard focus, a skip link, a mobile navigation button, reduced-motion support and no JavaScript framework. CV previews and the unverified QR are not published. The site uses no Portfoliobox theme code or remote asset dependencies. Language-specific titles, descriptions, Open Graph metadata, canonical URLs, `lang` attributes and `hreflang` alternates are included.
 
@@ -99,14 +105,14 @@ The confirmed repository is `https://github.com/keltonreq2/pm-systems-engineerin
 
 ## 9. Éléments à compléter / Content to complete
 
-The same source-backed items are marked in both language versions. There are 24 placeholders per language:
+The questionnaire reduced the count from 24 to 14 placeholders per language. The remaining 14 items are:
 
-1. Diplômes antérieurs à l’ENSEEIHT / Qualifications before ENSEEIHT.
-2. Pour chacun des six projets : contraintes, outils et détails de solution, compétences mobilisées et retour d’expérience / For each of the six projects: constraints, tools and solution details, skills used and lessons learned (18 items per language).
-3. Projets de mobilité et niveaux de langue actuels / Current mobility plans and language levels.
-4. Contenu de l’engagement citoyen, absent des pages publiées / Civic engagement text, absent from the published source pages.
-5. Un PDF de CV vérifié à publier / A reviewed CV PDF intended for publication.
-6. Une URL vidéo publique à la place de l’ancien lien de gestion Vimeo / A public video URL to replace the old Vimeo management link.
-7. Une adresse de contact publique, uniquement si sa publication est souhaitée / A public contact address, only if publication is desired.
+1. Separate 2014 flood-restoration project: constraints, tools/solution and lessons (3).
+2. Field inspection and troubleshooting: constraints, tools/solution and lessons (3); the role has been expanded from the original source and the partial user note.
+3. Protection training: constraints, tools/simulation details and lessons (3).
+4. Current mobility plans and language levels (1).
+5. Civic-engagement text (1).
+6. Reviewed public CV PDF and public video URL (2).
+7. Public contact address, only if desired (1).
 
-The individual project cards repeat the three missing detail fields for each of the six projects. No personal contact details are present in the public site. Original media, including CV previews and the QR code, remain in the ignored local archive and are not tracked by Git.
+The 2011–2012 screen project, 2013–2014 Fos control-command project and 2021 PCCN transition no longer have generic project-detail placeholders. Dates and outcome figures from the old portfolio, including +30% reliability and 100% restoration, still need the user's confirmation before being presented as independently verified metrics. No personal contact details are present in the public site. Original media, including CV previews and the QR code, remain in the ignored local archive and are not tracked by Git.
