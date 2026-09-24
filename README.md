@@ -1,48 +1,65 @@
-# Patrice Masson — engineering portfolio
+# Portfolio Patrice Masson
 
-A lightweight, accessible portfolio for an electrotechnical professional studying engineering at ENSEEIHT. It is built with HTML, CSS and a small amount of native JavaScript. There is no application server and no third-party runtime dependency.
+Portfolio statique bilingue (français par défaut, anglais sous `/en/`) destiné à présenter un parcours professionnel en électrotechnique, des études d’ingénieur à l’ENSEEIHT et des projets techniques. Il utilise HTML, CSS et JavaScript natif. Aucun serveur applicatif ni dépendance externe n’est nécessaire.
 
-The published site is written in English to preserve the language of the existing portfolio. The original text and media inventory is kept in a separate private migration archive; that archive is excluded from the public repository. The CV previews contain contact details, so they are not included in the site or repository.
+Les faits publiés viennent du portfolio Portfoliobox audité. Les informations absentes sont signalées par `[CONTENU À COMPLÉTER]` ou `[CONTENT TO COMPLETE]` au lieu d’être supposées. Les aperçus de CV contenant des coordonnées et les médias originaux non sélectionnés restent exclus du dépôt public.
 
-## Project structure
+## Structure
 
 ```text
 .
-├── index.html                         # All public sections and project summaries
-├── css/styles.css                     # Layout, colors, typography and responsive rules
-├── js/main.js                         # Mobile navigation only
-├── assets/images/                     # Compressed, selected portfolio images
-├── assets/favicon.svg                 # Original wave-and-gear mark
-├── migration-audit.md                 # Source inventory, gaps and migration decisions
+├── index.html                 # Version française, langue par défaut
+├── en/index.html              # Version anglaise
+├── css/styles.css             # Présentation commune et règles responsive
+├── js/main.js                 # Menu mobile et conservation de l’ancre au changement de langue
+├── assets/images/             # Images locales optimisées en WebP
+├── assets/favicon.svg         # Icône du site
+├── migration-audit.md         # Inventaire et décisions de migration
+├── sitemap.xml                # Déclaration des deux versions linguistiques
 ├── robots.txt
-└── sitemap.xml
+└── .nojekyll                  # Empêche Jekyll de filtrer les fichiers
 ```
 
-## Preview locally
+Chaque version est une page sémantique structurée en sections. Les identifiants des sections sont identiques en français et en anglais : le sélecteur `FR | EN` conserve donc la section ouverte lors du changement de langue. Cette architecture évite de multiplier des pages très courtes tout en gardant une correspondance directe. Des pages séparées pourront être ajoutées si le contenu futur le justifie.
 
-Open `index.html` directly in a browser, or run a small static server from the project folder:
+## Prévisualiser localement
+
+Depuis la racine du dépôt, lance un serveur statique :
 
 ```bash
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`. The same relative paths work on a GitHub Pages project site.
+Ouvre ensuite `http://localhost:8000/` pour le français et `http://localhost:8000/en/` pour l’anglais. Un serveur local est préférable à l’ouverture directe des fichiers, car il reproduit les chemins et les liens utilisés par GitHub Pages.
 
-## Make changes
+## Modifier le contenu
 
-- **Edit a paragraph or heading:** open `index.html` and find the relevant section ID, such as `#about`, `#education` or `#projects`.
-- **Add an image:** copy an optimized image into `assets/images/`, then add an `<img>` with a useful `alt` description. Keep images local; the site does not load images from a third-party host.
-- **Add a project:** copy an existing `<article class="project-card">` inside the projects grid. Replace the title, image, source-backed project details and alt text. Keep `[CONTENT TO COMPLETE]` until you can verify a missing fact.
-- **Add a section/page:** add a semantic `<section>` with a unique `id` in `index.html`, then add a matching link in the primary navigation. This single-page structure keeps navigation and deployment simple.
-- **Change the look:** edit CSS custom properties near the start of `css/styles.css`; responsive breakpoints are grouped near the end.
-- **Update the audit:** record newly recovered content or decisions in `migration-audit.md`. Keep the private original-content archive separate from this public repository.
+- Pour le français, modifie `index.html` ; pour l’anglais, modifie `en/index.html`. Garde les mêmes identifiants `id` de section dans les deux fichiers pour que le sélecteur de langue conserve la position.
+- Le texte français est dans les sections `#about`, `#education`, `#skills`, `#projects`, `#experience`, `#goals`, `#international`, `#cv` et `#contact`. Les sections anglaises utilisent les mêmes identifiants.
+- Pour ajouter un projet, duplique un `<article class="project-card">` dans la grille `#projects` des deux fichiers. Ajoute le même projet et les mêmes identifiants de sous-section aux deux langues, une image avec un texte `alt` descriptif, puis les détails vérifiés.
+- Pour ajouter une image, dépose un fichier optimisé dans `assets/images/`, puis référence-le depuis le HTML. Les chemins de la version anglaise commencent par `../assets/` car elle est dans `/en/`.
+- Pour ajouter un document, place uniquement une version dont la publication est souhaitée dans `assets/documents/`, ajoute un lien explicite et vérifie que le fichier ne contient pas de coordonnées privées non destinées au public.
+- Pour ajouter une page dédiée, crée les deux fichiers correspondants (par exemple `projects/projet-a/index.html` et `en/projects/project-a/index.html`), ajoute les liens de langue réciproques, puis mets à jour `sitemap.xml` et ce README.
+- Modifie les couleurs, espacements et points de rupture dans `css/styles.css`. Le JavaScript du menu et du sélecteur est dans `js/main.js`.
+- La liste des éléments à compléter est tenue dans `migration-audit.md`, sous « Éléments à compléter ».
 
-## Publish with GitHub Pages
+## Git et publication
 
-The repository includes `.github/workflows/pages.yml`. After pushing the project to the `main` branch, open **Settings → Pages**, choose **GitHub Actions** as the build and deployment source if GitHub has not selected it automatically, then check the workflow run. GitHub Pages publishes the static files without an application server. Later changes are published by committing and pushing to `main`.
+La branche de publication est `main`, le dossier publié est la racine `/`. GitHub Pages sert directement les fichiers statiques ; aucun workflow GitHub Actions n’est requis.
 
-The workflow is configured for a project site at `https://keltonreq2.github.io/eportfolio/`. If the repository gets another name or owner, update the sitemap and canonical/Open Graph URL in `index.html` and `sitemap.xml`.
+```bash
+git status
+git add index.html en/index.html css js assets README.md migration-audit.md robots.txt sitemap.xml
+git commit -m "Describe the change"
+git push origin main
+```
 
-## Known content to complete
+Le dépôt officiel est [`keltonreq2/pm-systems-engineering.github.io`](https://github.com/keltonreq2/pm-systems-engineering.github.io). Le site de projet attendu est `https://keltonreq2.github.io/pm-systems-engineering.github.io/`. GitHub peut mettre quelques minutes à publier un premier déploiement ; il faut confirmer l’URL dans **Settings → Pages**.
 
-The public source contains no verified email address or public contact URL, no CV PDF, no named formal qualifications before ENSEEIHT, and no detailed methods, constraints or personal lessons for most projects. These are marked in the site instead of being guessed. Review `migration-audit.md` before publishing and replace placeholders only with details you want made public.
+## Domaine personnalisé plus tard
+
+Lorsque tu posséderas un nom de domaine, ajoute-le dans **Settings → Pages → Custom domain**. Configure ensuite les enregistrements DNS indiqués par GitHub et ajoute un fichier `CNAME` à la racine contenant uniquement le nom de domaine confirmé. N’ajoute pas de CNAME avant d’avoir acquis le domaine. Après activation, vérifie HTTPS, les URLs canoniques, Open Graph, `robots.txt` et `sitemap.xml`.
+
+## Éléments à compléter
+
+Les marqueurs de contenu incomplet sont listés dans `migration-audit.md`. Ils concernent notamment le détail de certains projets, les diplômes antérieurs à l’ENSEEIHT, les niveaux de langue et projets de mobilité à jour, le CV PDF, la vidéo publique, le contact public et l’engagement citoyen. Les coordonnées et documents ne doivent être ajoutés que si leur publication est souhaitée.

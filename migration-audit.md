@@ -79,15 +79,34 @@ External Portfoliobox, CloudFront and site-template resource URLs are retained o
 
 ## 6. New architecture and design decisions
 
-The redesigned portfolio is a single static, English-language page with clear navigation anchors for Profile, Education, Skills, Projects, Experience, Objectives, International, CV and Contact. This keeps the site easy to edit and compatible with GitHub Pages project-site paths.
+The redesigned portfolio is a static bilingual site. French is the default page at `/`; English is at `/en/`. Both pages use the same section IDs and shared CSS/JavaScript, so the FR | EN selector keeps the current section when changing languages. The one-page-per-language structure keeps the site easy to edit while preserving the project details in context.
 
 Project cards separate context, problem/objective, role/approach and reported result. Missing constraints, tools, solution detail, lessons and project-specific competencies are explicitly marked `[CONTENT TO COMPLETE]`. The contact address, CV file, current mobility information and civic-engagement text are also marked for completion rather than guessed.
 
-The visual system uses original HTML and CSS, local compressed images, a custom wave-inspired favicon, semantic sections, visible keyboard focus, a skip link, a mobile navigation button, reduced-motion support and no JavaScript framework. CV previews and the unverified QR are not published. The site uses no Portfoliobox theme code or remote asset dependencies.
+The visual system uses original HTML and CSS, local compressed images, a custom wave-inspired favicon, semantic sections, visible keyboard focus, a skip link, a mobile navigation button, reduced-motion support and no JavaScript framework. CV previews and the unverified QR are not published. The site uses no Portfoliobox theme code or remote asset dependencies. Language-specific titles, descriptions, Open Graph metadata, canonical URLs, `lang` attributes and `hreflang` alternates are included.
 
 ## 7. Checks still required before public release
 
-- Confirm the new public contact details and whether to publish a reviewed CV PDF.
 - Confirm dates and reported impact figures for the historical projects before treating them as current, independently verified metrics.
-- Replace the objectives and mobility text if plans have changed since the source portfolio was created.
-- Create the GitHub repository and enable Pages, then verify the deployed URL, images, anchor navigation and mobile rendering in a browser.
+- Review whether objectives and mobility information remain current.
+- Configure GitHub Pages on `main` from the repository root, then verify the public URL, images, anchor navigation and responsive rendering.
+
+## 8. Bilingual edition and publication target
+
+French is the default at `/`; English is available at `/en/`. Section IDs match across locales and the language selector preserves the active section. The English version uses English technical terminology, while official French institutions and programme names remain unchanged where appropriate.
+
+The confirmed repository is `https://github.com/keltonreq2/pm-systems-engineering.github.io`. Since it is a project repository under account `keltonreq2`, the expected Pages URL is `https://keltonreq2.github.io/pm-systems-engineering.github.io/`; verify it in the repository's Pages settings after deployment. The chosen publication target is branch `main`, directory `/`. No custom domain or CNAME is configured.
+
+## 9. Éléments à compléter / Content to complete
+
+The same source-backed items are marked in both language versions. There are 24 placeholders per language:
+
+1. Diplômes antérieurs à l’ENSEEIHT / Qualifications before ENSEEIHT.
+2. Pour chacun des six projets : contraintes, outils et détails de solution, compétences mobilisées et retour d’expérience / For each of the six projects: constraints, tools and solution details, skills used and lessons learned (18 items per language).
+3. Projets de mobilité et niveaux de langue actuels / Current mobility plans and language levels.
+4. Contenu de l’engagement citoyen, absent des pages publiées / Civic engagement text, absent from the published source pages.
+5. Un PDF de CV vérifié à publier / A reviewed CV PDF intended for publication.
+6. Une URL vidéo publique à la place de l’ancien lien de gestion Vimeo / A public video URL to replace the old Vimeo management link.
+7. Une adresse de contact publique, uniquement si sa publication est souhaitée / A public contact address, only if publication is desired.
+
+The individual project cards repeat the three missing detail fields for each of the six projects. No personal contact details are present in the public site. Original media, including CV previews and the QR code, remain in the ignored local archive and are not tracked by Git.

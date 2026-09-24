@@ -9,3 +9,6 @@ migration/original-content/
 Thumbs.db
 portfolio-original-content.zip
 eportfolio-site.zip
+
+# User-provided uploads and private working material
+upload/
