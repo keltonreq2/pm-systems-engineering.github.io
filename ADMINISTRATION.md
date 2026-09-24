@@ -21,11 +21,17 @@ Ne remplace pas les valeurs déjà configurées, ne les ajoute pas au dépôt et
 
 Le projet existant utilise `main`, `npm run build` et `dist/` comme répertoire de sortie. Après intégration d’une version, le déploiement de production suit la configuration Cloudflare Pages déjà reliée au dépôt. Avant de publier, vérifie le commit et les résultats locaux de `npm test` et `npm run build`.
 
-Cette livraison v5 contient les modifications locales et les archives de code. Elle n’effectue pas de push Git et ne lance pas de déploiement Cloudflare.
+Cette livraison v6 contient les modifications locales et les archives de code. Elle n’effectue pas de push Git et ne lance pas de déploiement Cloudflare.
 
-### Origine canonique facultative
+### Origine canonique de production
 
-Les métadonnées SEO prennent automatiquement l’origine HTTPS de la requête actuelle. Si tu utilises un domaine personnalisé et souhaites l’imposer comme origine canonique, tu peux ajouter `SITE_ORIGIN` comme variable d’environnement publique dans Cloudflare Pages, avec l’origine seule, par exemple `https://portfolio.example` (sans chemin). Cette variable ne contient aucun secret. Si elle est absente, l’hôte de la requête est utilisé. Aucun changement de binding n’est requis.
+Dans **Settings → Variables and Secrets** du projet Cloudflare Pages, configure la variable publique suivante dans les environnements Production et Preview :
+
+```text
+SITE_ORIGIN=https://pm-systems-engineering-github-io.pages.dev
+```
+
+Elle définit les URL canoniques, `hreflang`, Open Graph, Twitter Cards, le JSON-LD, `robots.txt` et le sitemap. La même origine stable est utilisée en Preview pour éviter que les URL contenant un identifiant de déploiement deviennent canoniques. Le middleware conserve cette adresse par défaut si la variable est absente ou invalide. Lorsqu’un domaine professionnel sera prêt, seule la valeur de `SITE_ORIGIN` devra être remplacée par son origine HTTPS, sans chemin. Cette variable ne contient aucun secret et ne modifie aucun binding.
 
 ## Interface d’administration
 
@@ -64,6 +70,15 @@ La requête conserve la valeur française, le lien LinkedIn et l’état Public/
 5. Repasse en mode privé et refais le test d’accès direct aux pages, API et ressources.
 
 Le contrôle Public/Privé est appliqué par le middleware aux ressources statiques et API. L’indisponibilité ou l’erreur de D1 échoue en mode privé. La connexion et le changement de mode restent soumis à l’authentification déjà configurée.
+
+## Hébergement et confidentialité
+
+- L’ancien hébergement GitHub Pages doit rester désactivé. Cloudflare Pages doit rester l’unique voie publique de publication afin que le contrôle Public/Privé ne puisse pas être contourné par l’ancien site statique.
+- Le mode privé du site ne masque pas le dépôt source. Si le code et l’historique ne doivent pas être accessibles au public, configure le dépôt GitHub comme privé.
+- N’ajoute pas de CV, de coordonnées privées, de captures internes ou de données de réglage dans le dépôt public. Les CV restent dans le bucket R2 privé.
+- La variable `SITE_ORIGIN` contrôle les métadonnées publiques; elle n’est pas un secret.
+
+L’audit de reprise du contenu de l’ancien portfolio est dans [`CONTENT-MIGRATION-V6.md`](CONTENT-MIGRATION-V6.md). Les éléments absents ou non confirmés y sont signalés plutôt que présentés comme des faits.
 
 ## Repères de développement
 

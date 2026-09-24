@@ -2,7 +2,7 @@
 
 Portfolio bilingue de Patrice Masson sur les systèmes électriques, les protections, le contrôle-commande et la formation technique. Le français est servi à la racine et l’anglais sous `/en/`. Le site utilise HTML, CSS et JavaScript natif.
 
-Le dépôt est relié à la production Cloudflare Pages. Le middleware contrôle le mode public/privé pour les pages, les ressources et les API. D1 conserve les réglages et les sessions d’administration; les deux CV sont conservés dans un bucket R2 privé. Le site public affiche des actions LinkedIn et CV toujours actives, avec un message localisé si le lien ou le document n’est pas encore disponible.
+Le dépôt est relié à la production Cloudflare Pages. Le middleware contrôle le mode public/privé pour les pages, les ressources et les API. D1 conserve les réglages et les sessions d’administration; les deux CV sont conservés dans un bucket R2 privé. Le site public comprend les expériences techniques, les mentors, les objectifs, les centres d’intérêt et les liens professionnels administrables.
 
 ## Structure
 
@@ -14,6 +14,7 @@ Le dépôt est relié à la production Cloudflare Pages. Le middleware contrôle
 ├── admin/                    # Connexion et tableau d’administration
 ├── schema.sql                # Schéma D1 et réglages initiaux idempotents
 ├── ADMINISTRATION.md         # Fonctionnement et mise à jour de la production
+├── CONTENT-MIGRATION-V6.md   # Audit des contenus de l’ancien ePortfolio
 ├── assets/images/            # Images locales
 ├── robots.txt, sitemap.xml   # SEO bilingue, origine résolue à la requête
 └── tests/                    # Tests des règles d’accès et API
@@ -44,8 +45,10 @@ Les paramètres Cloudflare d’authentification restent dans les variables/secre
 
 ## Indexation et URL publique
 
-Les pages publiques n’incluent pas de `noindex`. Les URL canoniques, `hreflang`, Open Graph, `robots.txt` et le sitemap utilisent l’origine du nom d’hôte qui sert la requête. La variable publique facultative `SITE_ORIGIN` permet de fixer une origine canonique HTTPS si la production utilise un domaine personnalisé. Le site privé conserve une réponse `noindex` et un corps réduit.
+Les pages publiques n’incluent pas de `noindex`. Les URL canoniques, `hreflang`, Open Graph, Twitter Cards, le JSON-LD, `robots.txt` et le sitemap utilisent l’origine stable configurée dans `SITE_ORIGIN`. Sa valeur de production actuelle est `https://pm-systems-engineering-github-io.pages.dev`; elle ne suit pas les hôtes éphémères des prévisualisations. L’image Open Graph combine le logo fourni, le nom du portfolio et l’identité professionnelle. Le site privé conserve une réponse `noindex` et un corps réduit.
+
+Les images de contenu conservent leur WebP source et proposent des variantes `srcset` afin que le navigateur puisse choisir une largeur adaptée. Les sections longues sont alignées à gauche sur mobile.
 
 ## Historique des versions
 
-`migration-audit.md` documente l’origine des contenus. L’ancien lien GitHub Pages n’est pas la source canonique de cette version; la mise à jour vise l’application Cloudflare existante. La création des artefacts v5 n’effectue ni push Git ni déploiement.
+`migration-audit.md` documente l’origine des contenus et [`CONTENT-MIGRATION-V6.md`](CONTENT-MIGRATION-V6.md) détaille la reprise éditoriale. L’ancien lien GitHub Pages n’est pas la source canonique de cette version; la mise à jour vise l’application Cloudflare existante. Les artefacts v6 n’effectuent ni push Git ni déploiement.

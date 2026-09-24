@@ -34,6 +34,7 @@ document.querySelectorAll("[data-language-switch]").forEach((link) => {
 
 const actionStatus = document.querySelector("#action-status");
 const professionalActions = [...document.querySelectorAll("[data-professional-action]")];
+const actionsFor = (action) => professionalActions.filter((item) => item.dataset.professionalAction === action);
 const pageLanguage = document.documentElement.lang === "en" ? "en" : "fr";
 const actionMessages = {
   fr: {
@@ -73,8 +74,7 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
   })
   .then((config) => {
     if (config.linkedinUrl) {
-      const link = professionalActions.find((item) => item.dataset.professionalAction === "linkedin");
-      if (link) {
+      for (const link of actionsFor("linkedin")) {
         link.href = config.linkedinUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
@@ -83,15 +83,13 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
     }
     const cvFrAvailable = config.cvFrAvailable ?? config.cvAvailable ?? false;
     if (cvFrAvailable) {
-      const link = professionalActions.find((item) => item.dataset.professionalAction === "cv-fr");
-      if (link) {
+      for (const link of actionsFor("cv-fr")) {
         link.href = "/api/cv";
         link.dataset.configured = "true";
       }
     }
     if (config.cvEnAvailable) {
-      const link = professionalActions.find((item) => item.dataset.professionalAction === "cv-en");
-      if (link) {
+      for (const link of actionsFor("cv-en")) {
         link.href = "/api/cv/en";
         link.dataset.configured = "true";
       }
