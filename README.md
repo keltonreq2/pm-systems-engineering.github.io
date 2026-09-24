@@ -1,65 +1,56 @@
-# Portfolio Patrice Masson
+# PM Systems Engineering
 
-Portfolio statique bilingue (français par défaut, anglais sous `/en/`) destiné à présenter un parcours professionnel en électrotechnique, des études d’ingénieur à l’ENSEEIHT et des projets techniques. Il utilise HTML, CSS et JavaScript natif. Aucun serveur applicatif ni dépendance externe n’est nécessaire.
+Portfolio statique bilingue consacré aux systèmes électriques, aux protections, au contrôle-commande et à la formation technique. Le français est servi à la racine et l’anglais sous `/en/`. Le site utilise HTML, CSS et JavaScript natif, sans framework ni dépendance distante.
 
-Les faits du portfolio Portfoliobox ont été complétés par les réponses déjà fournies dans le questionnaire de migration. Les informations encore absentes sont signalées par `[CONTENU À COMPLÉTER]` ou `[CONTENT TO COMPLETE]`, sans supposition. Les aperçus de CV contenant des coordonnées et les médias originaux non sélectionnés restent exclus du dépôt public.
+Le portfolio met en avant l’expérience de Patrice Masson dans l’exploitation hydroélectrique, l’inspection électrique et la formation à EDF, ainsi que ses études d’ingénieur 3EA à l’ENSEEIHT. Les contenus décrivent son parcours actuel d’ingénieur en formation et ne le présentent pas comme consultant.
 
 ## Structure
 
 ```text
 .
-├── index.html                 # Version française, langue par défaut
-├── en/index.html              # Version anglaise
-├── css/styles.css             # Présentation commune et règles responsive
-├── js/main.js                 # Menu mobile et conservation de l’ancre au changement de langue
-├── assets/images/             # Images locales optimisées en WebP
-├── assets/favicon.svg         # Icône du site
-├── migration-audit.md         # Inventaire et décisions de migration
-├── sitemap.xml                # Déclaration des deux versions linguistiques
+├── index.html
+├── en/index.html
+├── css/styles.css
+├── js/main.js
+├── assets/images/
+├── assets/favicon.svg
+├── migration-audit.md
 ├── robots.txt
-└── .nojekyll                  # Empêche Jekyll de filtrer les fichiers
+├── sitemap.xml
+└── .nojekyll
 ```
 
-Chaque version est une page sémantique structurée en sections. Les identifiants des sections sont identiques en français et en anglais : le sélecteur `FR | EN` conserve donc la section ouverte lors du changement de langue. Cette architecture évite de multiplier des pages très courtes tout en gardant une correspondance directe. Des pages séparées pourront être ajoutées si le contenu futur le justifie.
+## Prévisualiser
 
-## Prévisualiser localement
+Depuis la racine du dépôt, lance un serveur statique avec `python -m http.server 8000`, puis ouvre `http://localhost:8000/` et `http://localhost:8000/en/`. Le serveur local permet de vérifier les chemins comme ils sont servis sur GitHub Pages.
 
-Depuis la racine du dépôt, lance un serveur statique :
+## Modifier le portfolio
 
-```bash
-python -m http.server 8000
-```
+- Modifie `index.html` pour le français et `en/index.html` pour l’anglais. Garde les mêmes identifiants de section dans les deux fichiers.
+- Les styles communs et points de rupture sont dans `css/styles.css`. Le menu mobile et le changement de langue sont dans `js/main.js`.
+- Les images du site sont locales dans `assets/images/`. Ajoute un texte alternatif utile à chaque image.
+- Pour ajouter une action professionnelle au header, crée un groupe `.header-actions` avec un lien réel portant la classe `.quick-action`. LinkedIn et le CV restent masqués tant qu’une URL exacte et un PDF explicitement destiné à être publié ne sont pas disponibles.
+- N’ajoute aucun aperçu de CV contenant des coordonnées privées. Les documents publiés doivent être relus et validés pour diffusion.
 
-Ouvre ensuite `http://localhost:8000/` pour le français et `http://localhost:8000/en/` pour l’anglais. Un serveur local est préférable à l’ouverture directe des fichiers, car il reproduit les chemins et les liens utilisés par GitHub Pages.
+## Indexation temporairement désactivée
 
-## Modifier le contenu
+Les deux pages contiennent actuellement `<meta name="robots" content="noindex, nofollow">`. Le fichier `robots.txt` autorise les robots à lire ces pages afin qu’ils puissent voir la consigne `noindex`; il ne publie pas le sitemap pendant cette phase. Cette consigne limite l’indexation par les moteurs, mais ne protège pas l’accès : toute personne disposant de l’URL peut toujours consulter le site.
 
-- Pour le français, modifie `index.html` ; pour l’anglais, modifie `en/index.html`. Garde les mêmes identifiants `id` de section dans les deux fichiers pour que le sélecteur de langue conserve la position.
-- Le texte français est dans les sections `#about`, `#education`, `#skills`, `#projects`, `#experience`, `#goals`, `#international`, `#cv` et `#contact`. Les sections anglaises utilisent les mêmes identifiants.
-- Pour ajouter un projet, duplique un `<article class="project-card">` dans la grille `#projects` des deux fichiers. Ajoute le même projet et les mêmes identifiants de sous-section aux deux langues, une image avec un texte `alt` descriptif, puis les détails vérifiés.
-- Pour ajouter une image, dépose un fichier optimisé dans `assets/images/`, puis référence-le depuis le HTML. Les chemins de la version anglaise commencent par `../assets/` car elle est dans `/en/`.
-- Pour ajouter un document, place uniquement une version dont la publication est souhaitée dans `assets/documents/`, ajoute un lien explicite et vérifie que le fichier ne contient pas de coordonnées privées non destinées au public.
-- Pour ajouter une page dédiée, crée les deux fichiers correspondants (par exemple `projects/projet-a/index.html` et `en/projects/project-a/index.html`), ajoute les liens de langue réciproques, puis mets à jour `sitemap.xml` et ce README.
-- Modifie les couleurs, espacements et points de rupture dans `css/styles.css`. Le JavaScript du menu et du sélecteur est dans `js/main.js`.
-- La liste des éléments à compléter est tenue dans `migration-audit.md`, sous « Éléments à compléter ».
+Pour lancer officiellement le site :
 
-## Git et publication
+1. Retire la balise `noindex, nofollow` des deux pages HTML.
+2. Ajoute dans `robots.txt` la ligne `Sitemap: https://keltonreq2.github.io/pm-systems-engineering.github.io/sitemap.xml`.
+3. Vérifie les titres, descriptions, liens canoniques et le sitemap.
+4. Publie les changements, puis demande une nouvelle exploration dans les outils de référencement utilisés.
 
-La branche de publication est `main`, le dossier publié est la racine `/`. GitHub Pages sert directement les fichiers statiques ; aucun workflow GitHub Actions n’est requis.
+La désindexation n’est pas instantanée. Une URL déjà connue d’un moteur peut rester dans les résultats jusqu’à sa prochaine exploration.
 
-```bash
-git status
-git add index.html en/index.html css js assets README.md migration-audit.md robots.txt sitemap.xml
-git commit -m "Describe the change"
-git push origin main
-```
+## Publication GitHub Pages
 
-Le dépôt officiel est [`keltonreq2/pm-systems-engineering.github.io`](https://github.com/keltonreq2/pm-systems-engineering.github.io). Le site de projet attendu est `https://keltonreq2.github.io/pm-systems-engineering.github.io/`. GitHub peut mettre quelques minutes à publier un premier déploiement ; il faut confirmer l’URL dans **Settings → Pages**.
+Le dépôt est `keltonreq2/pm-systems-engineering.github.io`. La branche à publier est `main`, depuis le dossier racine `/`. Le site de projet est prévu à l’adresse `https://keltonreq2.github.io/pm-systems-engineering.github.io/`.
 
-## Domaine personnalisé plus tard
+GitHub Pages est configuré dans **Settings → Pages → Build and deployment**. Choisis **Deploy from a branch**, la branche `main` et le dossier `/(root)`. Le fichier `.nojekyll` permet de servir directement le site statique.
 
-Lorsque tu posséderas un nom de domaine, ajoute-le dans **Settings → Pages → Custom domain**. Configure ensuite les enregistrements DNS indiqués par GitHub et ajoute un fichier `CNAME` à la racine contenant uniquement le nom de domaine confirmé. N’ajoute pas de CNAME avant d’avoir acquis le domaine. Après activation, vérifie HTTPS, les URLs canoniques, Open Graph, `robots.txt` et `sitemap.xml`.
+## Éléments volontairement absents
 
-## Éléments à compléter
-
-Les marqueurs de contenu incomplet sont listés dans `migration-audit.md`. Ils concernent les détails de trois projets, les niveaux de langue et projets de mobilité à jour, le CV PDF, la vidéo publique, le contact public et l’engagement citoyen. Les diplômes et trois projets ont déjà été complétés à partir du questionnaire. Les coordonnées et documents ne doivent être ajoutés que si leur publication est souhaitée.
+Aucun lien LinkedIn fictif, CV, courriel public, vidéo ou texte d’engagement citoyen n’est affiché. Les niveaux linguistiques et les détails d’une mobilité à venir ne sont pas publiés tant qu’ils n’ont pas été confirmés pour diffusion. Les pages ne montrent aucun champ à compléter.

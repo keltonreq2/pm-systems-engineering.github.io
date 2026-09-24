@@ -103,16 +103,34 @@ French is the default at `/`; English is available at `/en/`. Section IDs match 
 
 The confirmed repository is `https://github.com/keltonreq2/pm-systems-engineering.github.io`. Since it is a project repository under account `keltonreq2`, the expected Pages URL is `https://keltonreq2.github.io/pm-systems-engineering.github.io/`; verify it in the repository's Pages settings after deployment. The chosen publication target is branch `main`, directory `/`. No custom domain or CNAME is configured.
 
-## 9. Éléments à compléter / Content to complete
+## 9. Informations absentes masquées du site
 
-The questionnaire reduced the count from 24 to 14 placeholders per language. The remaining 14 items are:
+La refonte éditoriale a retiré tous les champs à compléter des pages publiques. Les éléments ci-dessous ne sont pas publiés tant que Patrice n’a pas fourni ou validé leur contenu :
 
-1. Separate 2014 flood-restoration project: constraints, tools/solution and lessons (3).
-2. Field inspection and troubleshooting: constraints, tools/solution and lessons (3); the role has been expanded from the original source and the partial user note.
-3. Protection training: constraints, tools/simulation details and lessons (3).
-4. Current mobility plans and language levels (1).
-5. Civic-engagement text (1).
-6. Reviewed public CV PDF and public video URL (2).
-7. Public contact address, only if desired (1).
+1. URL LinkedIn exacte.
+2. PDF de CV relu et explicitement destiné à la publication.
+3. Niveaux actuels en langues et détails d’un projet de mobilité internationale à rendre public.
+4. Adresse de contact professionnelle, si sa publication est souhaitée.
+5. Vidéo publique, si une URL de visionnage est fournie.
+6. Texte d’engagement citoyen, si cette rubrique doit être conservée.
+7. Détails supplémentaires sur l’inspection, le dépannage et certaines actions de formation.
 
-The 2011–2012 screen project, 2013–2014 Fos control-command project and 2021 PCCN transition no longer have generic project-detail placeholders. Dates and outcome figures from the old portfolio, including +30% reliability and 100% restoration, still need the user's confirmation before being presented as independently verified metrics. No personal contact details are present in the public site. Original media, including CV previews and the QR code, remain in the ignored local archive and are not tracked by Git.
+Les aperçus de CV contenant des coordonnées privées et le QR code non vérifié restent exclus du dépôt et du site. Les chiffres de +30 % de fiabilité et de 100 % de remise en état ne sont pas repris, faute de validation indépendante. L’information sur l’absence de déclenchement pendant la transition PCCN et le retour en service de Fos provient des réponses de Patrice.
+
+## 10. Refonte éditoriale et graphique
+
+La seconde version conserve deux pages bilingues à identifiants de section partagés et remplace la navigation par cinq accès : profil, expertise, projets, parcours et international. Elle retire les rubriques mentors, CV, engagement citoyen et contact tant qu’un contenu ou un moyen de contact publiable n’est pas disponible.
+
+Les pages racontent le parcours à la première personne. Trois réalisations sont mises en avant : le dégrilleur de Palaminy, la remise en service de Fos après la crue et la transition numérique du poste de Palaminy. Les travaux d’inspection et la formation sont regroupés en réalisations complémentaires. L’entrée distincte de restauration de Fos de 2014 est fusionnée avec la fiche Fos 2013–2014, car les deux fiches portent sur la même centrale, la même crue et le même retour en service.
+
+Le thème commun s’appuie sur un bleu marine, un fond clair, un accent cyan discret, une typographie système et des images locales. La mise en page réduit les petites cartes, donne davantage d’espace aux projets et garde les mêmes repères visuels dans les deux langues.
+
+Pendant la phase de préparation, les pages demandent aux robots de ne pas indexer ni suivre leurs liens. `robots.txt` permet toutefois leur lecture, afin que les moteurs puissent détecter la consigne noindex. La ligne de sitemap est désactivée jusqu’au lancement officiel. README.md décrit la procédure de réactivation.
+
+## 11. État de publication et vérifications
+
+Le site est prévu pour la branche `main`, depuis la racine du dépôt GitHub Pages. Cette copie de travail contient les changements locaux ; ils doivent être transférés au dépôt avant que la version publique soit mise à jour.
+
+Les contrôles statiques ont été réalisés : aucun langage de migration ni champ à compléter dans les deux HTML, aucun lien local cassé, aucune image sans texte alternatif, balises noindex présentes, et identifiants de section identiques en français et en anglais. Le JavaScript passe `node --check`, le CSS a des accolades équilibrées et définit les adaptations responsive, le focus clavier et `prefers-reduced-motion`.
+
+Le test de rendu Playwright aux largeurs 375, 768, 1024 et 1440 px n’a pas pu s’exécuter : le paquet Playwright est présent, mais aucun navigateur Chromium n’est installé dans cet environnement. Le rendu visuel final doit donc encore être vérifié dans un navigateur local avant le lancement officiel.

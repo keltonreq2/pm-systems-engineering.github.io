@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://keltonreq2.github.io/pm-systems-engineering.github.io/sitemap.xml
+
+# The pages carry a temporary noindex directive; keep them crawlable so it can be read.
