@@ -13,19 +13,23 @@ const withSecureHeaders = (response, noindex = false) => {
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
 };
 
+const PRODUCTION_ORIGIN = "https://pm-systems-engineering-github-io.pages.dev";
+const LINKEDIN_PROFILE = /^https:\/\/(www\.)?linkedin\.com\/in\/[A-Za-z0-9_%.-]+\/?(?:\?[A-Za-z0-9_=&%-]*)?$/u;
+
 const siteOrigin = (request, env) => {
   if (env.SITE_ORIGIN) {
     try {
       const configured = new URL(env.SITE_ORIGIN);
-      if (configured.protocol === "https:") return configured.origin;
-    } catch { /* Use the serving host when the optional public setting is invalid. */ }
+      if (configured.protocol === "https:" && !configured.username && !configured.password) return configured.origin;
+    } catch { /* Fall back to the stable production origin when the setting is invalid. */ }
   }
-  return new URL(request.url).origin;
+  return PRODUCTION_ORIGIN;
 };
 
 const canonicalPaths = new Set(["/", "/index.html", "/en", "/en/", "/en/index.html", "/robots.txt", "/sitemap.xml"]);
+const canonicalHtmlPaths = new Set(["/", "/index.html", "/en", "/en/", "/en/index.html"]);
 
-async function withCanonicalOrigin(response, canonicalOrigin, path) {
+async function withCanonicalOrigin(response, canonicalOrigin, path, linkedinUrl = null) {
   const contentType = response.headers.get("Content-Type") || "";
   if (!response.ok || !canonicalPaths.has(path) || !(contentType.includes("text/html") || contentType.includes("xml") || contentType.includes("text/plain"))) {
     return withSecureHeaders(response);
@@ -33,7 +37,8 @@ async function withCanonicalOrigin(response, canonicalOrigin, path) {
   const body = await response.text();
   const headers = new Headers(response.headers);
   for (const header of ["Content-Length", "Content-Encoding", "ETag", "Content-MD5"]) headers.delete(header);
-  const rewritten = body.replaceAll("__SITE_ORIGIN__", canonicalOrigin);
+  const linkedInArray = JSON.stringify(linkedinUrl ? [linkedinUrl] : []).replaceAll("<", "\\u003c");
+  const rewritten = body.replaceAll("__SITE_ORIGIN__", canonicalOrigin).replaceAll("__LINKEDIN_ARRAY__", linkedInArray);
   return withSecureHeaders(new Response(rewritten, { status: response.status, statusText: response.statusText, headers }));
 }
 
@@ -65,5 +70,12 @@ export async function onRequest(context) {
     sitePublic = row?.value === "true";
   } catch { /* Fail closed if the database is unavailable or uninitialized. */ }
   if (!sitePublic) return privatePage(path.startsWith("/en/") ? "en" : "fr");
-  return withCanonicalOrigin(await next(), siteOrigin(request, env), path);
+  let linkedinUrl = null;
+  if (canonicalHtmlPaths.has(path)) {
+    try {
+      const row = await env.DB.prepare("SELECT value FROM settings WHERE key = 'linkedin_url'").first();
+      if (typeof row?.value === "string" && LINKEDIN_PROFILE.test(row.value)) linkedinUrl = row.value;
+    } catch { /* The structured profile omits LinkedIn when the setting cannot be read. */ }
+  }
+  return withCanonicalOrigin(await next(), siteOrigin(request, env), path, linkedinUrl);
 }

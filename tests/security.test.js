@@ -169,7 +169,7 @@ test("public config exposes separate CV states while retaining the French alias"
   assert.equal(config.cvAvailable, true);
 });
 
-test("public pages replace SEO origin placeholders without adding noindex", async () => {
+test("public pages use the stable canonical origin without adding noindex", async () => {
   const response = await middleware({
     request: new Request("https://pages.example/en/"),
     env: { DB: { prepare: () => ({ first: async () => ({ value: "true" }) }) } },
@@ -178,8 +178,9 @@ test("public pages replace SEO origin placeholders without adding noindex", asyn
     })
   });
   const html = await response.text();
-  assert.match(html, /https:\/\/pages\.example\/en\//u);
-  assert.doesNotMatch(html, /__SITE_ORIGIN__/u);
+  assert.match(html, /https:\/\/pm-systems-engineering-github-io\.pages\.dev\/en\//u);
+  assert.doesNotMatch(html, /pages\.example/u);
+  assert.doesNotMatch(html, /__SITE_ORIGIN__|__LINKEDIN_ARRAY__/u);
   assert.equal(response.headers.get("X-Robots-Tag"), null);
   assert.equal(response.headers.get("ETag"), null);
 });
@@ -194,4 +195,49 @@ test("SITE_ORIGIN can pin the canonical hostname", async () => {
     next: async () => new Response('<link rel="canonical" href="__SITE_ORIGIN__/">', { headers: { "Content-Type": "text/html" } })
   });
   assert.match(await response.text(), /https:\/\/portfolio\.example\//u);
+});
+
+test("configured public LinkedIn is included safely in JSON-LD", async () => {
+  const DB = { prepare: (sql) => ({ first: async () => sql.includes("linkedin_url")
+    ? { value: "https://www.linkedin.com/in/patrice-masson" }
+    : { value: "true" } }) };
+  const response = await middleware({
+    request: new Request("https://temporary-hash.pages.dev/"),
+    env: { DB },
+    next: async () => new Response('<script type="application/ld+json">{"sameAs":__LINKEDIN_ARRAY__}</script>', {
+      headers: { "Content-Type": "text/html; charset=utf-8" }
+    })
+  });
+  const html = await response.text();
+  const jsonLd = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/u)[1]);
+  assert.deepEqual(jsonLd.sameAs, ["https://www.linkedin.com/in/patrice-masson"]);
+  assert.doesNotMatch(html, /temporary-hash\.pages\.dev/u);
+});
+
+test("invalid SITE_ORIGIN never falls back to a temporary deployment hostname", async () => {
+  const response = await middleware({
+    request: new Request("https://preview-hash.pages.dev/"),
+    env: {
+      SITE_ORIGIN: "http://preview-hash.pages.dev",
+      DB: { prepare: () => ({ first: async () => ({ value: "true" }) }) }
+    },
+    next: async () => new Response('<link rel="canonical" href="__SITE_ORIGIN__/">', { headers: { "Content-Type": "text/html" } })
+  });
+  assert.match(await response.text(), /https:\/\/pm-systems-engineering-github-io\.pages\.dev\//u);
+});
+
+test("robots.txt and sitemap use the configured stable production origin", async () => {
+  const env = { SITE_ORIGIN: "https://pm-systems-engineering-github-io.pages.dev", DB: { prepare: () => ({ first: async () => ({ value: "true" }) }) } };
+  const sitemap = await middleware({
+    request: new Request("https://preview-hash.pages.dev/sitemap.xml"),
+    env,
+    next: async () => new Response('<loc>__SITE_ORIGIN__/</loc><loc>__SITE_ORIGIN__/en/</loc>', { headers: { "Content-Type": "application/xml" } })
+  });
+  assert.equal(await sitemap.text(), '<loc>https://pm-systems-engineering-github-io.pages.dev/</loc><loc>https://pm-systems-engineering-github-io.pages.dev/en/</loc>');
+  const robots = await middleware({
+    request: new Request("https://preview-hash.pages.dev/robots.txt"),
+    env,
+    next: async () => new Response('Sitemap: __SITE_ORIGIN__/sitemap.xml', { headers: { "Content-Type": "text/plain" } })
+  });
+  assert.equal(await robots.text(), "Sitemap: https://pm-systems-engineering-github-io.pages.dev/sitemap.xml");
 });
