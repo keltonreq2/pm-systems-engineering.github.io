@@ -142,6 +142,9 @@ h3 { margin-bottom: 11px; font-size: 1.14rem; line-height: 1.35; letter-spacing:
 .learning-strip { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 25px; margin-top: 25px; padding: 18px 21px; border: 1px solid var(--line); color: #455d6f; font-size: 11px; }
 .learning-strip strong { color: var(--ink); }
 .learning-strip span::before { margin-right: 7px; color: var(--blue); content: '•'; }
+.learning-goals { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 32px; margin-top: 17px; }
+.learning-goals p { margin: 0; color: var(--muted); font-size: 11px; }
+.learning-goals strong { color: var(--ink); }
 
 .interests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 55px; }
 .interests-grid article { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 17px; }
@@ -226,6 +229,7 @@ h3 { margin-bottom: 11px; font-size: 1.14rem; line-height: 1.35; letter-spacing:
   .timeline li > div::before { left: -25px; }
   .timeline-date { font-size: 10px; }
   .goals-grid article { min-height: 0; }
+  .learning-goals { grid-template-columns: 1fr; }
   .interests-grid { gap: 23px; margin-top: 40px; }
   .mentors-grid { grid-template-columns: 1fr; }
   .civic-note { display: grid; gap: 4px; }

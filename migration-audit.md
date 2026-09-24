@@ -48,7 +48,7 @@ Recovered content includes:
 
 ## 3. Images and documents
 
-The source contained 19 unique media files. The local migration archive keeps the original media files and a JSON media index; ten selected, compressed WebP copies are used by the new site. The retained originals are:
+The source contained 19 unique media files. The local migration archive keeps the original media files and a JSON media index; eleven selected, compressed WebP copies are used by the new site. The retained originals are:
 
 - Technical and career photos: `p1000664-048f29.jpg`, `dsc-0044-6788f4.jpg`, `dsc-0063-a52c49.jpg`, `img-20211221-234027-6967cb.jpg`, `mms-20141010-163815-d0597c.jpg`, `1000026565-efbce2.jpg`, `20200916132402-ba34ee02-me-baec26.jpg`, and `mms-20141010-163808-d0597c.jpg`.
 - Personal-interest photos: `boxe-e32d33.jpg`, `voyages-c54ab8.jpg`, and `rando-f2c311.jpg`.
