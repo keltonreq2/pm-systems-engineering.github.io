@@ -13,14 +13,38 @@ const withSecureHeaders = (response, noindex = false) => {
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
 };
 
+const siteOrigin = (request, env) => {
+  if (env.SITE_ORIGIN) {
+    try {
+      const configured = new URL(env.SITE_ORIGIN);
+      if (configured.protocol === "https:") return configured.origin;
+    } catch { /* Use the serving host when the optional public setting is invalid. */ }
+  }
+  return new URL(request.url).origin;
+};
+
+const canonicalPaths = new Set(["/", "/index.html", "/en", "/en/", "/en/index.html", "/robots.txt", "/sitemap.xml"]);
+
+async function withCanonicalOrigin(response, canonicalOrigin, path) {
+  const contentType = response.headers.get("Content-Type") || "";
+  if (!response.ok || !canonicalPaths.has(path) || !(contentType.includes("text/html") || contentType.includes("xml") || contentType.includes("text/plain"))) {
+    return withSecureHeaders(response);
+  }
+  const body = await response.text();
+  const headers = new Headers(response.headers);
+  for (const header of ["Content-Length", "Content-Encoding", "ETag", "Content-MD5"]) headers.delete(header);
+  const rewritten = body.replaceAll("__SITE_ORIGIN__", canonicalOrigin);
+  return withSecureHeaders(new Response(rewritten, { status: response.status, statusText: response.statusText, headers }));
+}
+
 const adminLoginAssets = (path) => path === "/admin/login" || path.startsWith("/admin/login/") || path.startsWith("/admin/assets/");
 
 export async function onRequest(context) {
   const { request, env, next } = context;
   const url = new URL(request.url);
   const path = url.pathname;
-  if (path === "/admin") return Response.redirect(new URL("/admin/", request.url), 308);
-  if (path === "/admin/login") return Response.redirect(new URL("/admin/login/", request.url), 308);
+  if (path === "/admin") return withSecureHeaders(Response.redirect(new URL("/admin/", request.url), 308), true);
+  if (path === "/admin/login") return withSecureHeaders(Response.redirect(new URL("/admin/login/", request.url), 308), true);
 
   if (path.startsWith("/admin") || path.startsWith("/api/admin/")) {
     if (adminLoginAssets(path) || path === "/api/admin/login") return withSecureHeaders(await next(), true);
@@ -29,7 +53,7 @@ export async function onRequest(context) {
     try { session = await getSession(request, env.DB); } catch { /* Fail closed. */ }
     if (!session) {
       if (path.startsWith("/api/admin/")) return new Response("Unauthorized", { status: 401, headers: secureHeaders });
-      return adminSessionRedirect(request);
+      return withSecureHeaders(adminSessionRedirect(request), true);
     }
     return withSecureHeaders(await next(), true);
   }
@@ -41,5 +65,5 @@ export async function onRequest(context) {
     sitePublic = row?.value === "true";
   } catch { /* Fail closed if the database is unavailable or uninitialized. */ }
   if (!sitePublic) return privatePage(path.startsWith("/en/") ? "en" : "fr");
-  return withSecureHeaders(await next());
+  return withCanonicalOrigin(await next(), siteOrigin(request, env), path);
 }

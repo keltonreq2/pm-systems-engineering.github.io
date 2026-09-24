@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# The pages carry a temporary noindex directive; keep them crawlable so it can be read.
+Sitemap: __SITE_ORIGIN__/sitemap.xml
