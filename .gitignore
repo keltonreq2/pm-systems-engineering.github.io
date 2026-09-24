@@ -1,0 +1,10 @@
+## Editor and workspace metadata
+.codex/
+
+# Private source archive (includes CV contact details) must never be pushed publicly.
+migration/original-content/
+
+# Local preview and operating-system files
+.DS_Store
+Thumbs.db
+portfolio-original-content.zip

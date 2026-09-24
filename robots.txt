@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://keltonreq2.github.io/eportfolio/sitemap.xml
