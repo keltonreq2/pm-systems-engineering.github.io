@@ -24,14 +24,30 @@
     </form>
 
     <section class="admin-card" aria-labelledby="cv-heading">
-      <div class="admin-section-heading"><div><p class="admin-eyebrow">02 · Document</p><h2 id="cv-heading">CV PDF</h2></div><span class="admin-state" id="cv-state">—</span></div>
-      <p id="cv-details" class="admin-help">Le document sera stocké dans le bucket privé; seul le téléchargement public contrôlé est exposé.</p>
-      <form id="cv-form" class="admin-upload">
-        <label for="cv-file">Choisir un CV PDF (10 Mo maximum)</label>
-        <input id="cv-file" name="cv" type="file" accept="application/pdf,.pdf" required>
-        <button class="admin-button" type="submit">Envoyer ou remplacer le CV</button>
-      </form>
-      <div class="admin-inline-actions"><a id="preview-cv" class="admin-button admin-button-quiet" href="/api/admin/cv" target="_blank" rel="noopener noreferrer" hidden>Ouvrir le PDF stocké</a><button id="delete-cv" class="admin-button admin-button-danger" type="button" hidden>Supprimer le CV</button></div>
+      <div class="admin-section-heading"><div><p class="admin-eyebrow">02 · Documents</p><h2 id="cv-heading">CV PDF</h2></div></div>
+      <p class="admin-help">Les fichiers français et anglais sont indépendants, conservés dans le bucket privé et servis uniquement par leurs routes contrôlées.</p>
+      <div class="admin-cv-grid">
+        <section class="admin-cv-item" aria-labelledby="cv-fr-heading">
+          <div class="admin-section-heading"><h3 id="cv-fr-heading">CV français</h3><span class="admin-state" id="cv-fr-state">—</span></div>
+          <p id="cv-fr-details" class="admin-help">Aucun CV français n’est enregistré.</p>
+          <form id="cv-fr-form" class="admin-upload">
+            <label for="cv-fr-file">Choisir un PDF français (10 Mo maximum)</label>
+            <input id="cv-fr-file" name="cv" type="file" accept="application/pdf,.pdf" required>
+            <button class="admin-button" type="submit">Envoyer ou remplacer</button>
+          </form>
+          <div class="admin-inline-actions"><a id="preview-cv-fr" class="admin-button admin-button-quiet" href="/api/admin/cv" target="_blank" rel="noopener noreferrer" hidden>Ouvrir le PDF stocké</a><button id="delete-cv-fr" class="admin-button admin-button-danger" type="button" hidden>Supprimer le CV français</button></div>
+        </section>
+        <section class="admin-cv-item" aria-labelledby="cv-en-heading">
+          <div class="admin-section-heading"><h3 id="cv-en-heading">CV anglais</h3><span class="admin-state" id="cv-en-state">—</span></div>
+          <p id="cv-en-details" class="admin-help">Aucun CV anglais n’est enregistré.</p>
+          <form id="cv-en-form" class="admin-upload">
+            <label for="cv-en-file">Choisir un PDF anglais (10 Mo maximum)</label>
+            <input id="cv-en-file" name="cv" type="file" accept="application/pdf,.pdf" required>
+            <button class="admin-button" type="submit">Envoyer ou remplacer</button>
+          </form>
+          <div class="admin-inline-actions"><a id="preview-cv-en" class="admin-button admin-button-quiet" href="/api/admin/cv/en" target="_blank" rel="noopener noreferrer" hidden>Ouvrir le PDF stocké</a><button id="delete-cv-en" class="admin-button admin-button-danger" type="button" hidden>Supprimer le CV anglais</button></div>
+        </section>
+      </div>
     </section>
 
     <form id="visibility-form" class="admin-card">

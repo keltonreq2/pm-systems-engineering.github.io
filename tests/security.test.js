@@ -3,6 +3,9 @@ import assert from "node:assert/strict";
 import { onRequest as middleware } from "../functions/_middleware.js";
 import { onRequestPut as updateSettings } from "../functions/api/admin/settings.js";
 import { onRequestPut as uploadCv } from "../functions/api/admin/cv.js";
+import { onRequestPut as uploadEnglishCv } from "../functions/api/admin/cv/en.js";
+import { onRequestGet as getEnglishCv } from "../functions/api/cv/en.js";
+import { onRequestGet as getPublicConfig } from "../functions/api/public-config.js";
 import { verifyPassword } from "../functions/lib/auth.js";
 import { bytesToBase64Url, constantTimeEqual } from "../functions/lib/security.js";
 
@@ -122,4 +125,73 @@ test("CV upload stores only a verified PDF under the fixed R2 key", async () => 
   assert.equal(stored[0], "cv-pm-systems-engineering.pdf");
   assert.equal(stored[2].httpMetadata.contentType, "application/pdf");
   assert.ok(writes.some(({ values }) => values[0] === "cv_available" && values[1] === "true"));
+});
+
+test("English CV upload stores the separate fixed key and setting", async () => {
+  let stored = null;
+  const writes = [];
+  const form = new FormData();
+  form.append("cv", new File(["%PDF-1.7\nEnglish test"], "profile-en.pdf", { type: "application/pdf" }));
+  const request = new Request("https://portfolio.example/api/admin/cv/en", {
+    method: "PUT", headers: { Origin: "https://portfolio.example" }, body: form
+  });
+  const env = {
+    DB: { prepare: (sql) => ({ bind: (...values) => ({ run: async () => writes.push({ sql, values }) }) }) },
+    CV_BUCKET: { put: async (...args) => { stored = args; } }
+  };
+  const response = await uploadEnglishCv({ request, env });
+  assert.equal(response.status, 200);
+  assert.equal(stored[0], "cv-pm-systems-engineering-en.pdf");
+  assert.equal(stored[2].httpMetadata.contentType, "application/pdf");
+  assert.ok(writes.some(({ values }) => values[0] === "cv_en_available" && values[1] === "true"));
+  assert.equal(writes.some(({ values }) => values[0] === "cv_available"), false);
+});
+
+test("English public CV remains unavailable when its D1 setting is missing or false", async () => {
+  let bucketRead = false;
+  const env = {
+    DB: { prepare: () => ({ bind: () => ({ first: async () => null }) }) },
+    CV_BUCKET: { get: async () => { bucketRead = true; return { body: "%PDF-" }; } }
+  };
+  const response = await getEnglishCv({ env });
+  assert.equal(response.status, 404);
+  assert.equal(bucketRead, false);
+  assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow");
+});
+
+test("public config exposes separate CV states while retaining the French alias", async () => {
+  const settings = new Map([ ["cv_available", "true"] ]);
+  const env = { DB: { prepare: () => ({ bind: (key) => ({ first: async () => settings.has(key) ? { value: settings.get(key) } : null }) }) } };
+  const response = await getPublicConfig({ env });
+  const config = await response.json();
+  assert.equal(config.cvFrAvailable, true);
+  assert.equal(config.cvEnAvailable, false);
+  assert.equal(config.cvAvailable, true);
+});
+
+test("public pages replace SEO origin placeholders without adding noindex", async () => {
+  const response = await middleware({
+    request: new Request("https://pages.example/en/"),
+    env: { DB: { prepare: () => ({ first: async () => ({ value: "true" }) }) } },
+    next: async () => new Response('<link rel="canonical" href="__SITE_ORIGIN__/en/"><meta property="og:url" content="__SITE_ORIGIN__/en/">', {
+      headers: { "Content-Type": "text/html; charset=utf-8", "Content-Length": "91", ETag: '"build-tag"' }
+    })
+  });
+  const html = await response.text();
+  assert.match(html, /https:\/\/pages\.example\/en\//u);
+  assert.doesNotMatch(html, /__SITE_ORIGIN__/u);
+  assert.equal(response.headers.get("X-Robots-Tag"), null);
+  assert.equal(response.headers.get("ETag"), null);
+});
+
+test("SITE_ORIGIN can pin the canonical hostname", async () => {
+  const response = await middleware({
+    request: new Request("https://preview.example/"),
+    env: {
+      SITE_ORIGIN: "https://portfolio.example/some/path",
+      DB: { prepare: () => ({ first: async () => ({ value: "true" }) }) }
+    },
+    next: async () => new Response('<link rel="canonical" href="__SITE_ORIGIN__/">', { headers: { "Content-Type": "text/html" } })
+  });
+  assert.match(await response.text(), /https:\/\/portfolio\.example\//u);
 });

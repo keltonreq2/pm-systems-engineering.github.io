@@ -1,66 +1,51 @@
 # PM Systems Engineering
 
-Portfolio statique bilingue consacré aux systèmes électriques, aux protections, au contrôle-commande et à la formation technique. Le français est servi à la racine et l’anglais sous `/en/`. Le site utilise HTML, CSS et JavaScript natif, sans framework ni dépendance distante.
+Portfolio bilingue de Patrice Masson sur les systèmes électriques, les protections, le contrôle-commande et la formation technique. Le français est servi à la racine et l’anglais sous `/en/`. Le site utilise HTML, CSS et JavaScript natif.
 
-Le portfolio met en avant l’expérience de Patrice Masson dans l’exploitation hydroélectrique, l’inspection électrique et la formation à EDF, ainsi que ses études d’ingénieur 3EA à l’ENSEEIHT. Les contenus décrivent son parcours actuel d’ingénieur en formation et ne le présentent pas comme consultant.
+Le dépôt est relié à la production Cloudflare Pages. Le middleware contrôle le mode public/privé pour les pages, les ressources et les API. D1 conserve les réglages et les sessions d’administration; les deux CV sont conservés dans un bucket R2 privé. Le site public affiche des actions LinkedIn et CV toujours actives, avec un message localisé si le lien ou le document n’est pas encore disponible.
 
 ## Structure
 
 ```text
 .
-├── index.html
-├── en/index.html
-├── css/styles.css
-├── js/main.js
-├── functions/              # Pages middleware and admin APIs
-├── admin/                  # Login and administration UI
-├── schema.sql              # D1 tables with private initial state
-├── ADMINISTRATION.md       # Cloudflare setup and privacy verification
-├── assets/images/
-├── assets/favicon.svg
-├── migration-audit.md
-├── robots.txt
-├── sitemap.xml
-└── .nojekyll
+├── index.html, en/index.html # Portfolio français et anglais
+├── css/, js/                 # Styles et comportement du site
+├── functions/                # Middleware et API Pages
+├── admin/                    # Connexion et tableau d’administration
+├── schema.sql                # Schéma D1 et réglages initiaux idempotents
+├── ADMINISTRATION.md         # Fonctionnement et mise à jour de la production
+├── assets/images/            # Images locales
+├── robots.txt, sitemap.xml   # SEO bilingue, origine résolue à la requête
+└── tests/                    # Tests des règles d’accès et API
 ```
 
-## Prévisualiser
+## Prévisualiser et vérifier
 
-Depuis la racine du dépôt, lance un serveur statique avec `python -m http.server 8000`, puis ouvre `http://localhost:8000/` et `http://localhost:8000/en/`. Le serveur local permet de vérifier les chemins comme ils sont servis sur GitHub Pages.
+```sh
+npm test
+npm run build
+python3 -m http.server 8000
+```
+
+Le serveur statique local affiche le contenu, mais n’exécute pas les Pages Functions : les API, l’authentification, D1/R2 et le contrôle Public/Privé doivent être vérifiés sur un déploiement Cloudflare de test ou de production.
 
 ## Modifier le portfolio
 
-- Modifie `index.html` pour le français et `en/index.html` pour l’anglais. Garde les mêmes identifiants de section dans les deux fichiers.
-- Les styles communs et points de rupture sont dans `css/styles.css`. Le menu mobile et le changement de langue sont dans `js/main.js`.
-- Les images du site sont locales dans `assets/images/`. Ajoute un texte alternatif utile à chaque image.
-- Les boutons LinkedIn et CV restent toujours visibles. Leur destination vient de `/api/public-config`; tant qu’elle est vide, un message indique que le lien ou le PDF n’est pas disponible.
-- N’ajoute aucun aperçu de CV contenant des coordonnées privées. Les documents publiés doivent être relus et validés pour diffusion.
+- Modifie `index.html` en français et `en/index.html` en anglais; conserve les sections équivalentes et leurs identifiants.
+- Les styles adaptatifs sont dans `css/styles.css`; le menu, la langue et les liens pilotés par configuration sont dans `js/main.js`.
+- Les liens et états des CV sont fournis par `/api/public-config`. Le CV français est servi par `/api/cv`; le CV anglais par `/api/cv/en`.
+- Ne publie aucun PDF, lien ou renseignement personnel sans validation. Les PDF administrés restent dans R2 et ne sont jamais exposés par une URL de bucket.
 
 ## Administration
 
-L’outil `/admin/` nécessite Cloudflare Pages Functions, D1 et un bucket R2 privé. Il ne fonctionne pas sur le déploiement statique GitHub Pages existant. Suis [ADMINISTRATION.md](ADMINISTRATION.md) pour relier ces services, créer les secrets dans le tableau de bord Cloudflare, déployer et vérifier le mode privé. La base démarre en mode privé. Aucun mot de passe, hash, jeton ou identifiant de service ne doit être ajouté au dépôt.
+L’administration `/admin/` nécessite le déploiement Cloudflare, le binding D1 `DB` et le binding R2 privé `CV_BUCKET`. La configuration déjà utilisée en production est documentée dans [ADMINISTRATION.md](ADMINISTRATION.md). Cette version conserve le mécanisme d’authentification v4 et les bindings existants; ne les recrée pas lors de la mise à jour.
 
-Exécute `npm test` pour les tests et `npm run build` pour produire le dossier Cloudflare Pages `dist/`.
+Les paramètres Cloudflare d’authentification restent dans les variables/secrets de l’environnement de production. Aucune valeur secrète ne doit être ajoutée au dépôt, aux fichiers de livraison ou aux messages. Les informations de CV, profil LinkedIn et visibilité du site se modifient dans l’interface d’administration.
 
-## Indexation temporairement désactivée
+## Indexation et URL publique
 
-Les deux pages contiennent actuellement `<meta name="robots" content="noindex, nofollow">`. Le fichier `robots.txt` autorise les robots à lire ces pages afin qu’ils puissent voir la consigne `noindex`; il ne publie pas le sitemap pendant cette phase. Cette consigne limite l’indexation par les moteurs, mais ne protège pas à elle seule les fichiers servis par GitHub Pages. Le contrôle d’accès dépendra du déploiement Cloudflare décrit dans [ADMINISTRATION.md](ADMINISTRATION.md).
+Les pages publiques n’incluent pas de `noindex`. Les URL canoniques, `hreflang`, Open Graph, `robots.txt` et le sitemap utilisent l’origine du nom d’hôte qui sert la requête. La variable publique facultative `SITE_ORIGIN` permet de fixer une origine canonique HTTPS si la production utilise un domaine personnalisé. Le site privé conserve une réponse `noindex` et un corps réduit.
 
-Pour lancer officiellement le site :
+## Historique des versions
 
-1. Retire la balise `noindex, nofollow` des deux pages HTML.
-2. Après avoir choisi l’adresse Cloudflare de production, adapte les URL canoniques, `hreflang`, Open Graph et le sitemap à cette adresse.
-3. Vérifie les titres, descriptions, liens canoniques et le sitemap.
-4. Publie les changements, puis demande une nouvelle exploration dans les outils de référencement utilisés.
-
-La désindexation n’est pas instantanée. Une URL déjà connue d’un moteur peut rester dans les résultats jusqu’à sa prochaine exploration.
-
-## Hébergement existant et migration
-
-Le dépôt existant est `keltonreq2/pm-systems-engineering.github.io`; son site GitHub Pages est actuellement en ligne à `https://keltonreq2.github.io/pm-systems-engineering.github.io/`. GitHub Pages sert les fichiers statiques mais ne lance pas les Functions d’administration et ne protège pas les ressources.
-
-Le nouveau build Cloudflare utilise la branche `main`, la commande `npm run build` et `dist/` comme dossier de sortie. L’ancienne publication GitHub Pages doit rester active jusqu’à la fin des tests Cloudflare, puis être désactivée. Un dépôt GitHub public expose toujours son code source et ses assets même si Cloudflare masque les pages; rends le dépôt privé si ceux-ci doivent être confidentiels.
-
-## Éléments volontairement absents
-
-Aucun lien LinkedIn fictif, CV, courriel public, vidéo ou texte d’engagement citoyen n’est affiché. Les liens LinkedIn/CV sont pilotés par l’administration; aucun profil ou document n’est prérempli. Les niveaux linguistiques et les détails d’une mobilité à venir ne sont pas publiés tant qu’ils n’ont pas été confirmés pour diffusion.
+`migration-audit.md` documente l’origine des contenus. L’ancien lien GitHub Pages n’est pas la source canonique de cette version; la mise à jour vise l’application Cloudflare existante. La création des artefacts v5 n’effectue ni push Git ni déploiement.

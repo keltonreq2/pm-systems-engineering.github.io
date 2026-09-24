@@ -1,49 +1,77 @@
-# Administration et déploiement Cloudflare
+# Administration Cloudflare
 
-Ce dépôt garde les pages bilingues en HTML/CSS/JavaScript. Cloudflare Pages les construit depuis le dépôt GitHub; une Pages Function intercepte toutes les routes, y compris les fichiers statiques. D1 conserve les réglages, sessions expirables et compteurs de connexion. Le PDF va dans un bucket R2 privé.
+Cette version met à jour l’application Cloudflare Pages déjà utilisée en production. Elle conserve les fonctions, l’authentification et les bindings v4. Elle ne demande pas de créer une nouvelle application, une nouvelle base ou un nouveau bucket.
 
-## Préparer Cloudflare
+## Ressources de production existantes
 
-1. Dans Cloudflare, crée une base D1 nommée `pm-systems-admin`, puis exécute le contenu de [`schema.sql`](schema.sql) dans la console D1. La visibilité initiale est privée et aucun CV ni lien LinkedIn n’est configuré.
-2. Crée un bucket R2 nommé `pm-systems-cv`. Laisse l’accès public désactivé.
-3. Dans **Workers & Pages → Create application → Pages → Connect to Git**, relie le dépôt existant `keltonreq2/pm-systems-engineering.github.io` et la branche `main`.
-4. Configure le build avec `npm run build` et le dossier de sortie `dist`.
-5. Dans les réglages du projet Pages, lie D1 avec le nom de binding `DB` et la base `pm-systems-admin`. Lie R2 avec le nom `CV_BUCKET` et le bucket `pm-systems-cv`. Ajoute les deux bindings dans Production. Ne partage pas le bucket avec le public.
-6. Dans **Settings → Variables and Secrets**, ajoute `ADMIN_USERNAME` comme variable `req2`. Crée ensuite les secrets `ADMIN_PASSWORD_HASH` et `SESSION_SECRET` (sans les ajouter au dépôt) :
-   - Lance localement `python3 scripts/create_admin_hash.py`. Saisis un nouveau mot de passe que tu n’as pas utilisé auparavant. Le script demande deux fois le mot de passe sans l’afficher et affiche uniquement le hash PBKDF2 à copier comme secret `ADMIN_PASSWORD_HASH`.
-   - Génère `SESSION_SECRET` avec `openssl rand -base64 48`, puis colle la sortie directement dans le champ Secret de Cloudflare. Ne l’envoie pas ici et ne la mets pas dans un fichier suivi par Git.
-7. Configure et vérifie Production avant d’activer les déploiements Preview. Pour les previews, utilise une base D1 et un bucket distincts, avec une visibilité initiale privée. N’y réutilise pas des ressources contenant un CV réel.
+| Binding | Ressource existante | Usage |
+| --- | --- | --- |
+| `DB` | D1 `pm-systems-admin` | Réglages, sessions et limitations de connexion |
+| `CV_BUCKET` | R2 `pm-systems-cv` (juridiction EU) | Fichiers PDF privés |
 
-Cloudflare Pages accepte les bindings D1 et R2 dans ses fonctions. L’intégration GitHub déclenche un déploiement à chaque push vers la branche liée. Après le premier déploiement, reporte l’adresse Pages réellement attribuée dans les URL canoniques, `hreflang`, Open Graph et le sitemap si tu souhaites indexer le site. Aucune ressource Cloudflare n’a été créée et aucun déploiement n’a été effectué depuis ce dépôt.
+Le bucket R2 doit rester privé. Les fonctions servent les PDF après vérification de leur état dans D1; aucun lien public direct vers R2 n’est utilisé.
 
-## Ouvrir l’administration
+## Authentification
+
+La version v4 authentifie l’administration avec les variables/secrets déjà configurés dans l’environnement Cloudflare. Cette mise à jour conserve le flux de connexion et les noms de configuration existants. Elle n’utilise pas de hash PBKDF2 comme configuration active et ne nécessite ni nouveau secret ni changement de mot de passe.
+
+Ne remplace pas les valeurs déjà configurées, ne les ajoute pas au dépôt et ne les copie pas dans un fichier de livraison. Les identifiants n’ont pas besoin d’être transmis pour mettre à jour le site.
+
+## Publier une version mise à jour
+
+Le projet existant utilise `main`, `npm run build` et `dist/` comme répertoire de sortie. Après intégration d’une version, le déploiement de production suit la configuration Cloudflare Pages déjà reliée au dépôt. Avant de publier, vérifie le commit et les résultats locaux de `npm test` et `npm run build`.
+
+Cette livraison v5 contient les modifications locales et les archives de code. Elle n’effectue pas de push Git et ne lance pas de déploiement Cloudflare.
+
+### Origine canonique facultative
+
+Les métadonnées SEO prennent automatiquement l’origine HTTPS de la requête actuelle. Si tu utilises un domaine personnalisé et souhaites l’imposer comme origine canonique, tu peux ajouter `SITE_ORIGIN` comme variable d’environnement publique dans Cloudflare Pages, avec l’origine seule, par exemple `https://portfolio.example` (sans chemin). Cette variable ne contient aucun secret. Si elle est absente, l’hôte de la requête est utilisé. Aucun changement de binding n’est requis.
+
+## Interface d’administration
 
 - Connexion : `/admin/login/`
-- Tableau de bord : `/admin/` (session valide requise)
-- Identifiant initial prévu : `req2`
-- La session est conservée dans un cookie `Secure`, `HttpOnly`, `SameSite=Strict`, valable une heure. La base ne conserve que l’empreinte du jeton de session.
-- Après cinq échecs dans une fenêtre de quinze minutes, les essais depuis la même adresse source sont suspendus pendant le reste de la fenêtre. Seule une empreinte HMAC de l’adresse est conservée.
+- Tableau de bord : `/admin/` après connexion
+- Le lien LinkedIn est configuré séparément des deux CV.
+- Le CV français et le CV anglais ont chacun leur propre état, taille, prévisualisation, remplacement et suppression.
+- L’envoi est limité à 10 Mio par document. La fonction contrôle le type MIME et la signature `%PDF-`, puis stocke le fichier sous une clé fixe privée.
+- Le site démarre dans l’état de visibilité déjà enregistré dans D1. Une modification du lien LinkedIn ne change pas la visibilité.
 
-Depuis le tableau de bord, tu peux enregistrer une URL de profil `linkedin.com/in/…`, envoyer/remplacer ou supprimer le CV PDF, et rendre le site public ou privé. L’envoi accepte un PDF de 10 Mo maximum. Le CV reste dans R2 et est servi par `/api/cv`; R2 n’est jamais exposé directement. Le lien LinkedIn et les boutons LinkedIn/CV restent visibles quand ils sont vides. Dans ce cas, leur clic affiche un état en français ou en anglais.
+| Langue | Clé D1 | Clé R2 | Route publique | Route admin |
+| --- | --- | --- | --- | --- |
+| Français | `cv_available` | `cv-pm-systems-engineering.pdf` | `/api/cv` | `/api/admin/cv` |
+| Anglais | `cv_en_available` | `cv-pm-systems-engineering-en.pdf` | `/api/cv/en` | `/api/admin/cv/en` |
 
-## Vérifier avant de remplacer GitHub Pages
+Le PDF est servi avec un type de contenu PDF, sans mise en cache et avec une consigne `noindex`. Les actions CV restent visibles si aucun document n’est configuré; leur clic indique clairement que le CV concerné n’est pas disponible.
 
-Teste le déploiement Cloudflare à son adresse `*.pages.dev` :
+## Mettre à jour D1 pour le CV anglais
 
-1. Avant de te connecter, `/`, `/en/`, `/assets/favicon.svg`, `/robots.txt` et `/api/cv` ne doivent révéler aucun contenu du portfolio. La route `/admin/login/` doit rester disponible.
-2. Connecte-toi à `/admin/`, ajoute un profil LinkedIn et un PDF de test, puis passe le site en mode public. Vérifie les deux langues, le lien externe, le téléchargement PDF et l’administration.
-3. Repasse en mode privé et demande directement `/`, `/en/`, un fichier d’image, le CSS, le JavaScript, `robots.txt`, `/api/public-config` et `/api/cv`. Tous doivent renvoyer la page privée ou une réponse sans contenu du portfolio. Vérifie que `/admin/login/` et l’administration authentifiée fonctionnent encore.
-4. Après cette vérification, désactive la publication GitHub Pages du dépôt, sinon l’ancienne adresse `keltonreq2.github.io/pm-systems-engineering.github.io/` continue de contourner le contrôle Cloudflare.
-5. Le dépôt GitHub est actuellement public d’après le contexte du projet. Le mode privé du site ne peut pas cacher le code source, l’historique et les assets accessibles directement dans un dépôt public. Si ceux-ci doivent aussi être confidentiels, rends le dépôt privé après avoir confirmé que Cloudflare conserve son accès GitHub.
+Une base D1 de v4 peut ne pas encore contenir la ligne `cv_en_available`. L’API traite une ligne absente comme indisponible. Pour ajouter l’état initial sans remplacer les données existantes, exécute cette requête dans la base existante :
 
-Ne considère pas le mode privé comme opérationnel tant que les essais d’accès direct ci-dessus et la désactivation de l’ancien hébergement ne sont pas terminés. La balise `noindex` et `robots.txt` ne constituent pas un contrôle d’accès.
+```sql
+INSERT INTO settings (key, value, updated_at)
+VALUES ('cv_en_available', 'false', unixepoch())
+ON CONFLICT(key) DO NOTHING;
+```
 
-## Limites et coût
+La requête conserve la valeur française, le lien LinkedIn et l’état Public/Privé déjà enregistrés. `schema.sql` contient également cette insertion idempotente pour les installations neuves; ne réinitialise pas la base de production.
 
-- Toutes les routes passent par la Function pour empêcher un accès direct aux fichiers statiques. Chaque requête d’asset compte donc dans le quota Workers; la limite Free documentée est de 100 000 requêtes par jour.
-- Le hash de mot de passe utilise PBKDF2-HMAC-SHA-256 avec 600 000 itérations. Workers Free indique une limite de 10 ms CPU par invocation; cette vérification est susceptible de dépasser cette limite. Prévois Workers Paid pour rendre la connexion fiable : Cloudflare indique un minimum de 5 USD/mois, puis des quotas inclus et d’éventuels dépassements. Le paiement n’est pas activé par ce dépôt.
-- D1 Free comprend actuellement 5 millions de lignes lues et 100 000 lignes écrites par jour. R2 inclut actuellement 10 Go-mois de stockage, 1 million d’opérations de classe A et 10 millions de classe B par mois; l’egress R2 n’est pas facturé. La Function lit D1 pour contrôler le mode du site à chaque requête et peut donc utiliser ces quotas avec les pages, images et autres assets. Depuis septembre 2026, D1 Free échoue après dépassement des limites quotidiennes; le middleware échoue alors en mode privé.
-- Les offres et quotas Cloudflare peuvent évoluer. Vérifie les tarifs actuels avant activation de la facturation : [Pages Functions](https://developers.cloudflare.com/pages/functions/pricing/), [Workers](https://developers.cloudflare.com/workers/platform/pricing/), [D1](https://developers.cloudflare.com/d1/platform/pricing/) et [R2](https://developers.cloudflare.com/r2/pricing/).
-- Le middleware échoue en mode privé si D1 est indisponible ou non initialisée. Le secret et le hash ne sont jamais envoyés au navigateur. Pour changer le mot de passe, regénère le hash sur ta machine et remplace le secret `ADMIN_PASSWORD_HASH` dans Cloudflare.
+## Vérification après déploiement
 
-Références Cloudflare : [middleware Pages](https://developers.cloudflare.com/pages/functions/middleware/), [bindings Pages](https://developers.cloudflare.com/pages/functions/bindings/), [limites Workers](https://developers.cloudflare.com/workers/platform/limits/), [tarification Workers](https://developers.cloudflare.com/workers/platform/pricing/), [intégration Git Pages](https://developers.cloudflare.com/pages/get-started/git-integration/).
+1. En mode privé, vérifie que `/`, `/en/`, les images, CSS, JavaScript, `/robots.txt`, `/sitemap.xml`, `/api/public-config`, `/api/cv` et `/api/cv/en` ne révèlent pas de contenu du portfolio. La page de connexion reste accessible et les réponses privées sont marquées `noindex`.
+2. Connecte-toi à `/admin/`. Vérifie le lien LinkedIn ainsi que les sections CV français et anglais, chacune avec son état propre.
+3. Sans téléverser de document personnel, vérifie que les deux CV indiquent leur indisponibilité. Pour tester les téléversements, utilise des PDF de test non confidentiels. Vérifie que l’ajout ou la suppression d’un CV ne change pas l’autre.
+4. Passe le site en mode public et vérifie les pages française et anglaise, les trois actions d’en-tête, le sitemap et le lien canonique sur le domaine de production.
+5. Repasse en mode privé et refais le test d’accès direct aux pages, API et ressources.
+
+Le contrôle Public/Privé est appliqué par le middleware aux ressources statiques et API. L’indisponibilité ou l’erreur de D1 échoue en mode privé. La connexion et le changement de mode restent soumis à l’authentification déjà configurée.
+
+## Repères de développement
+
+Depuis la racine du dépôt :
+
+```sh
+npm test
+npm run build
+```
+
+Un serveur statique local ne peut pas valider les Pages Functions, l’authentification ni les liaisons D1/R2. Les vérifications de ces comportements doivent avoir lieu dans un environnement Cloudflare connecté aux ressources appropriées.

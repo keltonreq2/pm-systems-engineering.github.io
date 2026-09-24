@@ -21,5 +21,6 @@ CREATE INDEX IF NOT EXISTS login_attempts_window ON login_attempts(window_starte
 INSERT INTO settings (key, value, updated_at) VALUES
   ('site_public', 'false', unixepoch()),
   ('linkedin_url', '', unixepoch()),
-  ('cv_available', 'false', unixepoch())
+  ('cv_available', 'false', unixepoch()),
+  ('cv_en_available', 'false', unixepoch())
 ON CONFLICT(key) DO NOTHING;

@@ -4,11 +4,26 @@ const LINKEDIN_PATTERN = /^https:\/\/(www\.)?linkedin\.com\/in\/[A-Za-z0-9_%.-]+
 
 export async function onRequestGet({ env }) {
   try {
-    const [linkedinUrl, sitePublic, cvAvailable] = await Promise.all([
-      readSetting(env.DB, "linkedin_url"), readSetting(env.DB, "site_public"), readSetting(env.DB, "cv_available")
+    const [linkedinUrl, sitePublic, cvFrAvailable, cvEnAvailable] = await Promise.all([
+      readSetting(env.DB, "linkedin_url"),
+      readSetting(env.DB, "site_public"),
+      readSetting(env.DB, "cv_available"),
+      readSetting(env.DB, "cv_en_available")
     ]);
-    const object = cvAvailable === "true" ? await env.CV_BUCKET?.head("cv-pm-systems-engineering.pdf") : null;
-    return json({ linkedinUrl: linkedinUrl || "", sitePublic: sitePublic === "true", cvAvailable: Boolean(object), cvSize: object?.size || 0 });
+    const [cvFrObject, cvEnObject] = await Promise.all([
+      cvFrAvailable === "true" ? env.CV_BUCKET?.head("cv-pm-systems-engineering.pdf") : null,
+      cvEnAvailable === "true" ? env.CV_BUCKET?.head("cv-pm-systems-engineering-en.pdf") : null
+    ]);
+    return json({
+      linkedinUrl: linkedinUrl || "",
+      sitePublic: sitePublic === "true",
+      cvFrAvailable: Boolean(cvFrObject),
+      cvFrSize: cvFrObject?.size || 0,
+      cvEnAvailable: Boolean(cvEnObject),
+      cvEnSize: cvEnObject?.size || 0,
+      cvAvailable: Boolean(cvFrObject),
+      cvSize: cvFrObject?.size || 0
+    });
   } catch {
     return json({ error: "Réglages indisponibles" }, 503);
   }

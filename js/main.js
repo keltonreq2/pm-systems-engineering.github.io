@@ -38,11 +38,13 @@ const pageLanguage = document.documentElement.lang === "en" ? "en" : "fr";
 const actionMessages = {
   fr: {
     linkedin: "Le lien LinkedIn n’est pas encore configuré.",
-    cv: "Le CV PDF n’est pas encore disponible."
+    "cv-fr": "Le CV français n’est pas encore disponible.",
+    "cv-en": "Le CV anglais n’est pas encore disponible."
   },
   en: {
     linkedin: "The LinkedIn link has not been configured yet.",
-    cv: "The CV PDF is not available yet."
+    "cv-fr": "The French CV is not available yet.",
+    "cv-en": "The English CV is not available yet."
   }
 };
 
@@ -79,10 +81,18 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
         link.dataset.configured = "true";
       }
     }
-    if (config.cvAvailable) {
-      const link = professionalActions.find((item) => item.dataset.professionalAction === "cv");
+    const cvFrAvailable = config.cvFrAvailable ?? config.cvAvailable ?? false;
+    if (cvFrAvailable) {
+      const link = professionalActions.find((item) => item.dataset.professionalAction === "cv-fr");
       if (link) {
         link.href = "/api/cv";
+        link.dataset.configured = "true";
+      }
+    }
+    if (config.cvEnAvailable) {
+      const link = professionalActions.find((item) => item.dataset.professionalAction === "cv-en");
+      if (link) {
+        link.href = "/api/cv/en";
         link.dataset.configured = "true";
       }
     }
