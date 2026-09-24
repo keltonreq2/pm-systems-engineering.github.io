@@ -1,3 +1,15 @@
 name = "pm-systems-engineering-portfolio"
 compatibility_date = "2026-09-24"
 pages_build_output_dir = "dist"
+
+[vars]
+ADMIN_USERNAME = "req2"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pm-systems-admin"
+database_id = "a573901d-020a-41fa-bb56-d5ba634c32b8"
+
+[[r2_buckets]]
+binding = "CV_BUCKET"
+bucket_name = "pm-systems-cv"
