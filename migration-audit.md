@@ -61,7 +61,7 @@ The source contained 19 unique media files. The local migration archive keeps th
 - Other page graphics: `20230118103108-1c0aa56b-la-a9b3a8.jpg`, `logo-inge-21976b.png`, and the recurring `chatgpt-image-26-nov-2025-23-46-58-ab9957.png`.
 - CV-related items: `cven-2025-ea75b4.png`, `cv-fr-2025-ea75b4.png`, `cv-en-type-1-cf1306.png`, `cv-en-type-2-a3243d.png` and `qrcode-5-93e293.jpg`.
 
-The four CV previews are raster images, not downloadable CV documents. OCR confirmed that some previews contain an email address and phone number. They are kept in the private archive and excluded from the new public site and repository. The QR image’s destination could not be verified, so it is also excluded from publication. The portfolio therefore still needs a reviewed CV PDF and, if desired, a verified public professional-profile link.
+The four CV previews are raster images, not downloadable CV documents. OCR confirmed that some previews contain an email address and phone number. They are kept in the private archive and excluded from the new public site and repository. The QR image’s destination could not be verified, so it is also excluded from publication. The portfolio still needs a reviewed CV PDF and, if desired, a verified public professional-profile link. The new administration leaves both destinations empty until the owner configures them; visible header buttons display a localized availability message in the meantime.
 
 ## 4. Links recovered
 

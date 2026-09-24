@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Connexion | Administration</title>
+  <link rel="stylesheet" href="/admin/assets/admin.css">
+  <script src="/admin/assets/login.js" defer></script>
+</head>
+<body class="admin-body">
+  <main class="admin-shell admin-login">
+    <a class="admin-back" href="/">← Retour au portfolio</a>
+    <p class="admin-eyebrow">PM Systems Engineering</p>
+    <h1>Administration</h1>
+    <p class="admin-lede">Connecte-toi pour gérer les liens, le CV et la visibilité du site.</p>
+    <form id="login-form" class="admin-card">
+      <label for="username">Identifiant</label>
+      <input id="username" name="username" autocomplete="username" required value="req2">
+      <label for="password">Mot de passe</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button class="admin-button" type="submit">Se connecter</button>
+      <p id="login-status" class="admin-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+</body>
+</html>

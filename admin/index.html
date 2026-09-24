@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Administration | PM Systems Engineering</title>
+  <link rel="stylesheet" href="/admin/assets/admin.css">
+  <script src="/admin/assets/admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div><p class="admin-eyebrow">PM Systems Engineering</p><h1>Administration du portfolio</h1></div>
+      <button id="logout-button" class="admin-button admin-button-quiet" type="button">Déconnexion</button>
+    </header>
+    <p id="page-status" class="admin-status" role="status" aria-live="polite"></p>
+    <form id="settings-form" class="admin-card">
+      <div class="admin-section-heading"><div><p class="admin-eyebrow">01 · Réseau</p><h2>Profil LinkedIn</h2></div><span class="admin-state" id="linkedin-state">—</span></div>
+      <label for="linkedin-url">Adresse du profil</label>
+      <input id="linkedin-url" name="linkedinUrl" type="url" inputmode="url" placeholder="https://www.linkedin.com/in/…" autocomplete="url">
+      <p class="admin-help">Seules les adresses de profil LinkedIn linkedin.com/in/… sont acceptées. Laisse le champ vide pour afficher le bouton sans destination.</p>
+      <button class="admin-button" type="submit">Enregistrer le lien</button>
+    </form>
+
+    <section class="admin-card" aria-labelledby="cv-heading">
+      <div class="admin-section-heading"><div><p class="admin-eyebrow">02 · Document</p><h2 id="cv-heading">CV PDF</h2></div><span class="admin-state" id="cv-state">—</span></div>
+      <p id="cv-details" class="admin-help">Le document sera stocké dans le bucket privé; seul le téléchargement public contrôlé est exposé.</p>
+      <form id="cv-form" class="admin-upload">
+        <label for="cv-file">Choisir un CV PDF (10 Mo maximum)</label>
+        <input id="cv-file" name="cv" type="file" accept="application/pdf,.pdf" required>
+        <button class="admin-button" type="submit">Envoyer ou remplacer le CV</button>
+      </form>
+      <div class="admin-inline-actions"><a id="preview-cv" class="admin-button admin-button-quiet" href="/api/admin/cv" target="_blank" rel="noopener noreferrer" hidden>Ouvrir le PDF stocké</a><button id="delete-cv" class="admin-button admin-button-danger" type="button" hidden>Supprimer le CV</button></div>
+    </section>
+
+    <form id="visibility-form" class="admin-card">
+      <div class="admin-section-heading"><div><p class="admin-eyebrow">03 · Accès</p><h2>Visibilité du site</h2></div><span class="admin-state" id="visibility-state">—</span></div>
+      <p class="admin-help">En mode privé, les pages et fichiers du portfolio renvoient une page vide de contenu. La connexion à cette administration reste disponible.</p>
+      <label class="admin-switch" for="site-public"><input id="site-public" name="sitePublic" type="checkbox"><span>Portfolio public</span></label>
+      <button class="admin-button" type="submit">Enregistrer la visibilité</button>
+    </form>
+    <footer class="admin-footer"><a href="/">Voir le portfolio</a><span>Session limitée à une heure · déconnexion automatique à expiration</span></footer>
+  </main>
+</body>
+</html>

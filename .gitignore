@@ -16,3 +16,4 @@ Questionnaire_complement_portfolio.txt
 
 # Locally generated delivery bundles and previews
 deliverables/
+dist/

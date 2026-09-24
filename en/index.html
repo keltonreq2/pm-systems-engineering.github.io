@@ -28,7 +28,7 @@
         <span class="brand-mark" aria-hidden="true">PM<span>~</span></span>
         <span class="brand-name">PM Systems Engineering<small>Electrical Engineering · Energy</small></span>
       </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <button class="menu-toggle" type="button" aria-label="Main menu" aria-expanded="false" aria-controls="primary-nav">
         <span class="menu-toggle-label">Menu</span><span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
       </button>
       <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
@@ -37,13 +37,17 @@
         <a href="#projects">Projects</a>
         <a href="#career">Journey</a>
         <a href="#international">International</a>
-        <div class="header-actions" role="group" aria-label="Professional links" hidden></div>
         <span class="language-switch" role="group" aria-label="Choose language"><a href="../index.html" data-language-switch lang="fr" hreflang="fr">FR</a><span aria-hidden="true">/</span><a href="./index.html" data-language-switch lang="en" hreflang="en" aria-current="page">EN</a></span>
       </nav>
+      <div class="header-actions" role="group" aria-label="Professional links">
+        <a class="quick-action" href="#linkedin" aria-label="LinkedIn" data-professional-action="linkedin"><span aria-hidden="true">in</span><span class="action-label">LinkedIn</span></a>
+        <a class="quick-action" href="#cv" aria-label="CV" data-professional-action="cv"><span class="action-label">CV</span><span aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </header>
 
   <main id="main">
+    <div class="action-status" id="action-status" role="status" aria-live="polite" hidden></div>
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-grid page-shell">
         <div class="hero-copy">
