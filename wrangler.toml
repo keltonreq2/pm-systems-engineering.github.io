@@ -13,3 +13,4 @@ database_id = "a573901d-020a-41fa-bb56-d5ba634c32b8"
 [[r2_buckets]]
 binding = "CV_BUCKET"
 bucket_name = "pm-systems-cv"
+jurisdiction = "eu"
