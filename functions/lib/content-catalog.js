@@ -1010,135 +1010,415 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
-      "key": "objectives.eyebrow",
+      "key": "project.eyebrow",
       "label": "Repère de section",
-      "defaultValue": "08 / Projet professionnel",
+      "defaultValue": "08 / PROJET PROFESSIONNEL",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.title",
-      "label": "Titre",
-      "defaultValue": "Mes objectifs, par étapes.",
+      "key": "project.title",
+      "label": "Titre de section",
+      "defaultValue": "Projet professionnel",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.paragraph",
-      "label": "Texte",
-      "defaultValue": "Construire la suite de mon parcours en reliant l’expérience acquise aux méthodes de l’ingénierie.",
+      "key": "project.intro",
+      "label": "Introduction",
+      "defaultValue": "Une trajectoire construite entre terrain, expertise en protections, formation et études d’ingénieur.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.paragraph",
-      "label": "Texte",
-      "defaultValue": "Aujourd’hui · 2026–2028",
+      "key": "project.chapter_1.period",
+      "label": "Période",
+      "defaultValue": "Aujourd’hui · 2026",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.title",
+      "key": "project.chapter_1.title",
       "label": "Titre",
-      "defaultValue": "Consolider ma formation d’ingénieur",
+      "defaultValue": "Relier expérience, expertise et études",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.short_term.item",
-      "label": "Élément de liste",
-      "defaultValue": "Poursuivre le cursus ENSEEIHT en Énergie, Électronique et Automatique (3EA).",
+      "key": "project.chapter_1.text",
+      "label": "Description",
+      "defaultValue": "Je travaille dans la formation technique en protections électriques tout en poursuivant ma 2e année d’études d’ingénieur à l’ENSEEIHT. Je relie les situations d’exploitation aux méthodes d’analyse et de conception.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.item_2",
-      "label": "Élément de liste 2",
-      "defaultValue": "Approfondir l’électrotechnique, les protections, les systèmes électriques et le contrôle-commande.",
+      "key": "project.chapter_2.period",
+      "label": "Période",
+      "defaultValue": "Vers 2028",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.item_3",
-      "label": "Élément de liste 3",
-      "defaultValue": "Formaliser mes acquis de terrain par des méthodes d’analyse et de conception d’ingénieur.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.short_term.item_4",
-      "label": "Élément de liste 4",
-      "defaultValue": "Progresser en anglais et rechercher une expérience internationale cohérente avec mon parcours.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.medium_term.paragraph",
-      "label": "Texte",
-      "defaultValue": "Moyen terme",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.medium_term.title",
+      "key": "project.chapter_2.title",
       "label": "Titre",
-      "defaultValue": "Élargir mon champ d’action technique",
+      "defaultValue": "Préparer le diplôme d’ingénieur",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.medium_term.item",
-      "label": "Élément de liste",
-      "defaultValue": "Prendre part à des responsabilités techniques élargies en systèmes électriques.",
+      "key": "project.chapter_2.text",
+      "label": "Description",
+      "defaultValue": "Mon diplôme est en cours. Mon objectif est de consolider mes compétences en électrotechnique, protections et contrôle-commande, puis de les mobiliser sur des projets techniques concrets.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.medium_term.item_2",
-      "label": "Élément de liste 2",
-      "defaultValue": "Contribuer à des projets complexes en protections et contrôle-commande.",
+      "key": "project.chapter_3.period",
+      "label": "Période",
+      "defaultValue": "Horizon cinq ans",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.medium_term.item_3",
-      "label": "Élément de liste 3",
-      "defaultValue": "Associer expertise, coordination et transmission des connaissances.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.medium_term.item_4",
-      "label": "Élément de liste 4",
-      "defaultValue": "Participer à la modernisation des installations électriques.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.long_term.paragraph",
-      "label": "Texte",
-      "defaultValue": "À plus long terme",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.long_term.title",
+      "key": "project.chapter_3.title",
       "label": "Titre",
-      "defaultValue": "Relier terrain, expertise et ingénierie",
+      "defaultValue": "Faire évoluer mes responsabilités par étapes",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.long_term.paragraph_2",
-      "label": "Texte 2",
-      "defaultValue": "Mon ambition est de devenir un ingénieur capable de relier compréhension du terrain, analyse, expertise, conduite de projets et pédagogie, tout en développant une capacité d’influence technique.",
+      "key": "project.chapter_3.text",
+      "label": "Description",
+      "defaultValue": "Je souhaite aller vers des responsabilités d’ingénierie, d’expertise et de conduite de projets. Une expérience internationale peut contribuer à ce parcours ; elle ne constitue pas une affectation ou une promotion annoncée.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.long_term.paragraph_3",
-      "label": "Texte 3",
-      "defaultValue": "Cette trajectoire pourrait aussi m’amener, à terme, vers des missions de conseil ou d’expertise. Il s’agit d’une possibilité future, pas de mon activité actuelle.",
+      "key": "project.timeline.title",
+      "label": "Titre du plan à cinq ans",
+      "defaultValue": "Une trajectoire à cinq ans, par étapes",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_1.date",
+      "label": "Année",
+      "defaultValue": "2026",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_1.text",
+      "label": "Étape",
+      "defaultValue": "Formation technique, expertise en protections et études d’ingénieur",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.timeline.step_2.date",
+      "label": "Année",
+      "defaultValue": "2027",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_2.text",
+      "label": "Étape",
+      "defaultValue": "Expérience internationale envisagée, sous réserve de confirmation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.timeline.step_3.date",
+      "label": "Année",
+      "defaultValue": "2028",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_3.text",
+      "label": "Étape",
+      "defaultValue": "Année visée pour le diplôme d’ingénieur ; diplôme en cours",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.timeline.step_4.date",
+      "label": "Année",
+      "defaultValue": "Après 2028",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_4.text",
+      "label": "Étape",
+      "defaultValue": "Développement progressif vers l’ingénierie, l’expertise et les projets",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international.eyebrow",
+      "label": "Repère",
+      "defaultValue": "DIMENSION INTERNATIONALE",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international.title",
+      "label": "Titre",
+      "defaultValue": "La mobilité comme étape d’apprentissage",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.international.narrative",
+      "label": "Motivation générale",
+      "defaultValue": "Une expérience internationale pourrait m’aider à confronter les pratiques techniques, à travailler dans un autre environnement et à renforcer mon anglais professionnel. Une destination et une organisation précises apparaîtront ici seulement lorsque je choisirai de les publier.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.heading",
+      "label": "Titre de la cible",
+      "defaultValue": "Cible de mobilité en préparation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.country",
+      "label": "Pays cible",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.organisation",
+      "label": "Organisation cible",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.location",
+      "label": "Site ou localisation",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.period",
+      "label": "Période envisagée",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.status",
+      "label": "État d’avancement",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.objective",
+      "label": "Objectif technique",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.skills",
+      "label": "Compétences visées",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.languages",
+      "label": "Préparation linguistique",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.motivation",
+      "label": "Motivation",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.technical_goals",
+      "label": "Objectifs techniques",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.competencies",
+      "label": "Compétences recherchées",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.benefits",
+      "label": "Apports pour le projet professionnel",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.language_plan",
+      "label": "Préparation linguistique",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.five_year_link",
+      "label": "Lien avec la trajectoire à cinq ans",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.cep.intro",
+      "label": "Présentation CEP",
+      "defaultValue": "Une présentation synthétique de mon projet professionnel et de sa dimension internationale.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenarios.title",
+      "label": "Titre scénarios",
+      "defaultValue": "Scénarios professionnels envisagés",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.scenario_a.label",
+      "label": "Repère scénario",
+      "defaultValue": "SCÉNARIO A",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.title",
+      "label": "Titre",
+      "defaultValue": "Piste à préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.description",
+      "label": "Description",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.interests",
+      "label": "Intérêts",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.constraints",
+      "label": "Contraintes",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.status",
+      "label": "Statut",
+      "defaultValue": "Envisagé",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.label",
+      "label": "Repère scénario",
+      "defaultValue": "SCÉNARIO B",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.title",
+      "label": "Titre",
+      "defaultValue": "Piste à préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.description",
+      "label": "Description",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.interests",
+      "label": "Intérêts",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.constraints",
+      "label": "Contraintes",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.status",
+      "label": "Statut",
+      "defaultValue": "Envisagé",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.label",
+      "label": "Repère scénario",
+      "defaultValue": "SCÉNARIO C",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.title",
+      "label": "Titre",
+      "defaultValue": "Piste à préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.description",
+      "label": "Description",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.interests",
+      "label": "Intérêts",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.constraints",
+      "label": "Contraintes",
+      "defaultValue": "À compléter avant publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.status",
+      "label": "Statut",
+      "defaultValue": "Envisagé",
       "multiline": true,
       "maxLength": 5000
     },
@@ -2321,135 +2601,415 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
-      "key": "objectives.eyebrow",
+      "key": "project.eyebrow",
       "label": "Repère de section",
-      "defaultValue": "08 / Professional direction",
+      "defaultValue": "08 / CAREER PROJECT",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.title",
-      "label": "Titre",
-      "defaultValue": "My goals, step by step.",
+      "key": "project.title",
+      "label": "Titre de section",
+      "defaultValue": "Career project",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.paragraph",
-      "label": "Texte",
-      "defaultValue": "Building the next stage of my career by connecting experience with engineering methods.",
+      "key": "project.intro",
+      "label": "Introduction",
+      "defaultValue": "A technical path shaped by field work, protection expertise, training and engineering studies.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.paragraph",
-      "label": "Texte",
-      "defaultValue": "Now · 2026–2028",
+      "key": "project.chapter_1.period",
+      "label": "Période",
+      "defaultValue": "Today · 2026",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.title",
+      "key": "project.chapter_1.title",
       "label": "Titre",
-      "defaultValue": "Complete my engineering studies",
+      "defaultValue": "Field experience, expertise and engineering studies",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.short_term.item",
-      "label": "Élément de liste",
-      "defaultValue": "Continue the ENSEEIHT degree in Energy, Electronics and Automation (3EA).",
+      "key": "project.chapter_1.text",
+      "label": "Description",
+      "defaultValue": "I work in technical training for electrical protection systems while pursuing my second year of engineering studies at ENSEEIHT. I connect practical operation of electrical systems with deeper analysis and design methods.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.item_2",
-      "label": "Élément de liste 2",
-      "defaultValue": "Deepen my knowledge of electrical engineering, protection, power systems and control and automation.",
+      "key": "project.chapter_2.period",
+      "label": "Période",
+      "defaultValue": "Towards 2028",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.short_term.item_3",
-      "label": "Élément de liste 3",
-      "defaultValue": "Formalise what I have learned in the field through engineering methods of analysis and design.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.short_term.item_4",
-      "label": "Élément de liste 4",
-      "defaultValue": "Improve my English and seek an international experience that fits my professional and academic path.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.medium_term.paragraph",
-      "label": "Texte",
-      "defaultValue": "Medium term",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.medium_term.title",
+      "key": "project.chapter_2.title",
       "label": "Titre",
-      "defaultValue": "Broaden my technical contribution",
+      "defaultValue": "Working towards an engineering degree",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.medium_term.item",
-      "label": "Élément de liste",
-      "defaultValue": "Take on broader technical responsibilities in electrical systems engineering.",
+      "key": "project.chapter_2.text",
+      "label": "Description",
+      "defaultValue": "My degree is still in progress. My goal is to consolidate skills in electrical engineering, protection and control systems, and to apply them to real technical projects.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.medium_term.item_2",
-      "label": "Élément de liste 2",
-      "defaultValue": "Contribute to complex projects in protection and control systems.",
+      "key": "project.chapter_3.period",
+      "label": "Période",
+      "defaultValue": "Five-year horizon",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.medium_term.item_3",
-      "label": "Élément de liste 3",
-      "defaultValue": "Bring together technical expertise, coordination and knowledge sharing.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.medium_term.item_4",
-      "label": "Élément de liste 4",
-      "defaultValue": "Support the modernisation of electrical installations.",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.long_term.paragraph",
-      "label": "Texte",
-      "defaultValue": "Longer term",
-      "multiline": true,
-      "maxLength": 5000
-    },
-    {
-      "key": "objectives.long_term.title",
+      "key": "project.chapter_3.title",
       "label": "Titre",
-      "defaultValue": "Connect field experience, expertise and engineering",
+      "defaultValue": "A step-by-step career direction",
       "multiline": false,
       "maxLength": 500
     },
     {
-      "key": "objectives.long_term.paragraph_2",
-      "label": "Texte 2",
-      "defaultValue": "My ambition is to become an engineer who can connect field understanding, analysis, technical expertise, project work and teaching, while developing the ability to guide technical decisions.",
+      "key": "project.chapter_3.text",
+      "label": "Description",
+      "defaultValue": "I aim to develop responsibilities in engineering, technical expertise and project coordination. International experience is a possible learning stage on this path, not an announced assignment or promotion.",
       "multiline": true,
       "maxLength": 5000
     },
     {
-      "key": "objectives.long_term.paragraph_3",
-      "label": "Texte 3",
-      "defaultValue": "Over time, this path could also lead to consulting or expert assignments. That is a future possibility, not my current role.",
+      "key": "project.timeline.title",
+      "label": "Titre du plan à cinq ans",
+      "defaultValue": "A five-year path, with milestones to prepare",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_1.date",
+      "label": "Année",
+      "defaultValue": "2026",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_1.text",
+      "label": "Étape",
+      "defaultValue": "Technical training, protection expertise and engineering studies",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.timeline.step_2.date",
+      "label": "Année",
+      "defaultValue": "2027",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_2.text",
+      "label": "Étape",
+      "defaultValue": "Potential international experience, subject to confirmation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.timeline.step_3.date",
+      "label": "Année",
+      "defaultValue": "2028",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_3.text",
+      "label": "Étape",
+      "defaultValue": "Target year for completing the engineering degree; diploma in progress",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.timeline.step_4.date",
+      "label": "Année",
+      "defaultValue": "After 2028",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_4.text",
+      "label": "Étape",
+      "defaultValue": "Gradual development towards engineering, expertise and project work",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international.eyebrow",
+      "label": "Repère",
+      "defaultValue": "INTERNATIONAL DIMENSION",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international.title",
+      "label": "Titre",
+      "defaultValue": "International mobility as a learning step",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.international.narrative",
+      "label": "Motivation générale",
+      "defaultValue": "An international assignment could help me compare technical practices, work in another environment and strengthen my professional English. A precise destination and organisation will be published here only once I choose to share them.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.heading",
+      "label": "Titre de la cible",
+      "defaultValue": "Mobility target under preparation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.country",
+      "label": "Country",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.organisation",
+      "label": "Target organisation",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.location",
+      "label": "Site / location",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.period",
+      "label": "Intended period",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.status",
+      "label": "Current status",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.objective",
+      "label": "Technical objective",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.skills",
+      "label": "Skills to develop",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.languages",
+      "label": "Language preparation",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.motivation",
+      "label": "Motivation",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.technical_goals",
+      "label": "Technical goals",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.competencies",
+      "label": "Competencies sought",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.benefits",
+      "label": "Career relevance",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.language_plan",
+      "label": "Language preparation plan",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.international_detail.five_year_link",
+      "label": "Connection to the five-year plan",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.cep.intro",
+      "label": "Présentation CEP",
+      "defaultValue": "A concise presentation of my career project and its international dimension.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenarios.title",
+      "label": "Titre scénarios",
+      "defaultValue": "Possible career paths",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "project.scenario_a.label",
+      "label": "Repère scénario",
+      "defaultValue": "SCENARIO A",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.title",
+      "label": "Title",
+      "defaultValue": "Career path to define",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.description",
+      "label": "Description",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.interests",
+      "label": "Benefits",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.constraints",
+      "label": "Constraints",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_a.status",
+      "label": "Status",
+      "defaultValue": "Under consideration",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.label",
+      "label": "Repère scénario",
+      "defaultValue": "SCENARIO B",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.title",
+      "label": "Title",
+      "defaultValue": "Career path to define",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.description",
+      "label": "Description",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.interests",
+      "label": "Benefits",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.constraints",
+      "label": "Constraints",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_b.status",
+      "label": "Status",
+      "defaultValue": "Under consideration",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.label",
+      "label": "Repère scénario",
+      "defaultValue": "SCENARIO C",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.title",
+      "label": "Title",
+      "defaultValue": "Career path to define",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.description",
+      "label": "Description",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.interests",
+      "label": "Benefits",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.constraints",
+      "label": "Constraints",
+      "defaultValue": "To be completed before publication.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.scenario_c.status",
+      "label": "Status",
+      "defaultValue": "Under consideration",
       "multiline": true,
       "maxLength": 5000
     },
