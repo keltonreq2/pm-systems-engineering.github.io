@@ -1,3 +1,5 @@
+> **Version V8** : projet professionnel et mobilité FR/EN, code CV administrable, photos en R2 privé, présentation CEP et tableau de bord. Appliquer `migrations/0008_career_media_cv.sql` avant de déployer. Lire [ADMINISTRATION.md](ADMINISTRATION.md), [CAM-COMPLIANCE-V8.md](CAM-COMPLIANCE-V8.md) et [DELIVERY-V8.md](DELIVERY-V8.md). Le dépôt et le projet Cloudflare Pages existants sont conservés.
+
 # PM Systems Engineering
 
 Portfolio bilingue de Patrice Masson sur les systèmes électriques, les protections, le contrôle-commande et la formation technique. Le français est servi à la racine et l’anglais sous `/en/`. Le site utilise HTML, CSS et JavaScript natif.

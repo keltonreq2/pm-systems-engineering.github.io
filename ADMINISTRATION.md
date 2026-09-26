@@ -191,3 +191,84 @@ Ces exemples JSON documentent les API pour la maintenance ; l’interface admin 
 - Contrôler le rendu sur un vrai téléphone et dans les navigateurs habituels, notamment Safari.
 
 Pour les tests automatisés, utiliser Node.js 24 (les nouveaux tests utilisent SQLite intégré à Node). `npm run build` ne nécessite aucune dépendance de production supplémentaire.
+
+## Migration V7 → V8 : à exécuter avant de déployer
+
+Conserver le même projet Pages, la base D1 `pm-systems-admin`, le binding `DB`, le bucket privé `CV_BUCKET`, et les secrets `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `SESSION_SECRET`. Aucun nouveau secret, bucket, mot de passe administrateur ni service externe. Dans le dépôt V8, avec Wrangler connecté au compte Cloudflare :
+
+```sh
+npx wrangler d1 execute pm-systems-admin --remote --file=migrations/0008_career_media_cv.sql
+```
+
+Pour une base Preview distincte, appliquer aussi la migration dans cette base. La migration exacte, idempotente et additive est :
+
+```sql
+-- Additive V7 -> V8 migration. Safe to run repeatedly on the existing D1 database.
+CREATE TABLE IF NOT EXISTS media_overrides (
+  media_key TEXT PRIMARY KEY,
+  r2_key TEXT,
+  mime_type TEXT,
+  size INTEGER,
+  alt_fr TEXT NOT NULL DEFAULT '',
+  alt_en TEXT NOT NULL DEFAULT '',
+  object_position TEXT NOT NULL DEFAULT 'center',
+  updated_at INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS cv_access_attempts (
+  rate_key TEXT PRIMARY KEY,
+  attempts INTEGER NOT NULL,
+  window_started INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS cv_access_attempts_expiry ON cv_access_attempts(window_started);
+CREATE TABLE IF NOT EXISTS publication_flags (
+  language TEXT NOT NULL CHECK (language IN ('fr','en')),
+  section TEXT NOT NULL,
+  visible INTEGER NOT NULL CHECK (visible IN (0,1)),
+  updated_at INTEGER NOT NULL,
+  PRIMARY KEY (language, section)
+);
+INSERT INTO settings (key,value,updated_at) VALUES
+  ('cv_access_enabled','false',unixepoch()),
+  ('cv_access_digest','',unixepoch()),
+  ('cv_access_version','0',unixepoch()),
+  ('cep_available','false',unixepoch()),
+  ('cep_public','false',unixepoch()),
+  ('cep_protected','false',unixepoch())
+ON CONFLICT(key) DO NOTHING;
+```
+
+Aucune table V7 n’est supprimée, et aucune valeur existante n’est écrasée. `schema.sql` inclut également cette migration pour une nouvelle installation. Le portfolio reste dans son état Public/Privé actuel.
+
+## Administration V8
+
+La navigation en haut de `/admin/` conduit au tableau de bord, LinkedIn, CV, accès aux documents, messages, textes, photos et projet/CEP. Les compteurs et la checklist de préparation CAM sont exclusivement administratifs. La checklist signale la présence des CV FR/EN, d’un lien LinkedIn, du PDF CEP, des champs de cible internationale FR et d’un texte personnalisé de trajectoire FR. Ce sont des repères de préparation, pas un contrôle académique du contenu. Le bouton **Exporter ma configuration JSON** fournit les textes, paramètres publics, métadonnées photographiques et choix de publication. Il n’inclut ni code/digest, ni session, ni message, ni fichiers. Il ne réimporte pas les données.
+
+### Code CV et sessions visiteurs
+
+Sous **Accès aux documents**, définir un code d’au moins 10 caractères puis activer la protection. Les deux boutons CV restent visibles. Le code est envoyé uniquement dans le corps d’un POST HTTPS `/api/cv/unlock`, jamais en URL ou localStorage. D1 conserve exclusivement `HMAC-SHA256(SESSION_SECRET, 'cv-access:' + code)` ; le code n’est jamais réaffiché. Le contrôle compare les digests en temps constant. La session visiteur signée utilise `__Host-pm_cv`, `Secure`, `HttpOnly`, `SameSite=Strict`, `Path=/`, et expire au bout de deux heures. Le serveur vérifie la session directement sur `/api/cv` et `/api/cv/en`. Une modification du code, une activation/désactivation ou **Révoquer les accès existants** change la version stockée dans D1 et invalide immédiatement les cookies antérieurs. Limite : cinq essais par fenêtre de quinze minutes et par empreinte HMAC de l’adresse IP ; aucune IP brute n’est enregistrée. En cas d’absence de la migration ou d’indisponibilité de D1, l’accès aux PDF échoue fermé. Le code court librement choisi par l’administrateur doit être suffisamment difficile à deviner ; un code de 10 caractères ou plus est requis.
+
+### Photos
+
+Sept emplacements de photographie figurent sous **Médias / Photos**. Chaque carte offre aperçu, image par défaut, téléversement/remplacement, restauration, alt FR/EN et cadrage. L’emplacement `protection_training.main` n’est pas ajouté car cette section n’a actuellement aucun `<img>` photographique. Logo, favicon et visuel Open Graph restent fixes. Les fichiers personnalisés JPEG/PNG/WebP sont limités à 5 Mio, et le MIME et la signature sont contrôlés. Le bucket `CV_BUCKET` privé conserve les fichiers sous `media/<emplacement>/<version>` ; la table `media_overrides` stocke la clé et les métadonnées. La route `/api/media?key=...` ne sert que les sept emplacements autorisés, passe par le mode Public/Privé du middleware et revient à l’image statique si le fichier R2 est manquant. L’édition prend effet au prochain chargement, sans rebuild ni redéploiement.
+
+### Projet professionnel et présentation CEP
+
+Les textes FR/EN du Projet professionnel, des quatre étapes, de la cible internationale et des scénarios A/B/C s’éditent dans **Modifier les textes → Projet professionnel / CEP**, chacun indépendamment. La cible détaillée et chaque scénario sont masqués par défaut et exclus du HTML public tant que leur publication n’est pas activée pour cette langue. Pour publier, remplir et enregistrer tous les champs obligatoires du bloc dans la langue concernée, puis activer son interrupteur sous **Projet professionnel / CEP**. Une simple mention issue d’un ancien document ne constitue pas une information confirmée. La narration générale et la trajectoire par étapes restent affichées.
+
+Téléverser la présentation CEP en PDF de 10 Mio maximum depuis la même rubrique. Elle reste dans le bucket R2 privé sous `cep-presentation.pdf` et n’apparaît publiquement qu’après l’activation **Afficher le bouton CEP**. On peut l’ouvrir en admin, la remplacer et la supprimer. On peut aussi demander le code CV avant son ouverture publique ; un code doit alors avoir été défini. Aucune URL de bucket public n’est créée. Le contenu ou le nombre réel de diapositives ne sont pas validés automatiquement.
+
+### Routes et ressources V8
+
+| Usage | Route | Accès |
+| --- | --- | --- |
+| Déverrouillage visiteur | `POST /api/cv/unlock` | Public, limitation de tentatives |
+| CV FR / EN | `GET /api/cv`, `GET /api/cv/en` | Public avec session CV si activée |
+| Photo personnalisée / défaut | `GET /api/media?key=…` | Public si le site est public |
+| Présentation CEP | `GET /api/cep` | Public si publiée, code facultatif |
+| Code CV et révocation | `/api/admin/cv-access`, `POST /api/admin/cv-access/revoke` | Session admin |
+| Liste, image, emplacement photo | `/api/admin/media`, `/api/admin/media/image?key=…`, `/api/admin/media/:key` | Session admin |
+| CEP : fichier, aperçu, visibilité | `/api/admin/cep`, `/api/admin/cep/pdf`, `/api/admin/cep/settings` | Session admin |
+| Blocs publiables | `/api/admin/publication` | Session admin |
+| Tableau de bord, export | `/api/admin/dashboard`, `/api/admin/export` | Session admin |
+
+Toutes les mutations admin conservent le contrôle d’origine HTTPS et la session V7. Après migration et déploiement du code, définir le code CV dans l’administration, transférer les documents voulus, renseigner puis vérifier les textes, publier uniquement les blocs confirmés, et contrôler les deux langues. Aucun changement de secret Cloudflare n’est requis. La mise en ligne n’est pas effectuée par cette livraison.
