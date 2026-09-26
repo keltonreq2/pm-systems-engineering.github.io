@@ -9,7 +9,8 @@
   <script src="/admin/assets/admin.js" defer></script>
 </head>
 <body class="admin-body">
-  <main class="admin-shell">
+  <a class="admin-skip" href="#admin-main">Aller à l’administration</a>
+  <main class="admin-shell" id="admin-main">
     <header class="admin-header">
       <div><p class="admin-eyebrow">PM Systems Engineering</p><h1>Administration du portfolio</h1></div>
       <button id="logout-button" class="admin-button admin-button-quiet" type="button">Déconnexion</button>
@@ -56,7 +57,26 @@
       <label class="admin-switch" for="site-public"><input id="site-public" name="sitePublic" type="checkbox"><span>Portfolio public</span></label>
       <button class="admin-button" type="submit">Enregistrer la visibilité</button>
     </form>
+    <section class="admin-card" aria-labelledby="messages-heading">
+      <div class="admin-section-heading"><div><p class="admin-eyebrow">04 · Messages</p><h2 id="messages-heading">Boîte de réception</h2></div><span id="unread-count" class="admin-state">—</span></div>
+      <p class="admin-help">Les messages sont conservés ici. Ouvre ton logiciel de messagerie pour répondre.</p>
+      <button type="button" id="refresh-messages" class="admin-button admin-button-quiet">Actualiser les messages</button>
+      <p id="messages-status" class="admin-status" role="status" aria-live="polite"></p>
+      <div id="message-list"></div>
+      <nav class="admin-inline-actions" aria-label="Pages de messages"><button id="previous-messages" class="admin-button admin-button-quiet" type="button" disabled>Précédent</button><span id="messages-page"></span><button id="next-messages" class="admin-button admin-button-quiet" type="button" disabled>Suivant</button></nav>
+    </section>
+    <section class="admin-card" aria-labelledby="content-heading">
+      <div><p class="admin-eyebrow">05 · Contenus du portfolio</p><h2 id="content-heading">Modifier les textes</h2></div>
+      <p class="admin-help">Choisis une langue et ouvre une rubrique. Chaque texte s’enregistre séparément. Les changements sont visibles dès le prochain chargement du portfolio. Les deux langues sont indépendantes.</p>
+      <label for="content-language">Langue du contenu</label>
+      <select id="content-language"><option value="fr">FRANÇAIS</option><option value="en">ENGLISH</option></select>
+      <a id="content-preview" class="admin-button admin-button-quiet" href="/" target="_blank" rel="noopener noreferrer">Voir le portfolio</a>
+      <p class="admin-help">La prévisualisation ouvre la version enregistrée. En mode privé, le site reste masqué.</p>
+      <p id="content-status" class="admin-status" role="status" aria-live="polite"></p>
+      <div id="content-editor"></div>
+    </section>
     <footer class="admin-footer"><a href="/">Voir le portfolio</a><span>Session limitée à une heure · déconnexion automatique à expiration</span></footer>
   </main>
+<script src="/admin/assets/content-messages.js" defer></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+import { applyContent } from "./lib/content.js";
 import { getSession } from "./lib/auth.js";
 import { adminSessionRedirect, secureHeaders } from "./lib/security.js";
 
@@ -77,5 +78,6 @@ export async function onRequest(context) {
       if (typeof row?.value === "string" && LINKEDIN_PROFILE.test(row.value)) linkedinUrl = row.value;
     } catch { /* The structured profile omits LinkedIn when the setting cannot be read. */ }
   }
-  return withCanonicalOrigin(await next(), siteOrigin(request, env), path, linkedinUrl);
+  const response = await withCanonicalOrigin(await next(), siteOrigin(request, env), path, linkedinUrl);
+  return canonicalHtmlPaths.has(path) ? applyContent(response, env.DB, path.startsWith("/en") ? "en" : "fr") : response;
 }

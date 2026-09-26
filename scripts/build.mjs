@@ -1,3 +1,4 @@
+import "./content-catalog.mjs";
 import { cp, mkdir, rm } from "node:fs/promises";
 
 await rm("dist", { recursive: true, force: true });

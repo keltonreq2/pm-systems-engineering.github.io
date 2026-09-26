@@ -41,3 +41,29 @@ input[type=file] { padding: 9px 0; color: var(--muted); font-size: 13px; }
 .admin-footer a { font-weight: 700; }
 @media (max-width: 560px) { .admin-shell { padding-top: 30px; } .admin-back { margin-bottom: 40px; } .admin-header, .admin-footer { align-items: flex-start; flex-direction: column; } .admin-header { margin-bottom: 24px; } }
 @media (max-width: 720px) { .admin-cv-grid { grid-template-columns: 1fr; } }
+
+/* V7 content editor and inbox */
+.admin-skip { position: fixed; top: 8px; left: 8px; transform: translateY(-180%); z-index: 10; padding: 12px; color: white; background: var(--navy); }
+.admin-skip:focus { transform: none; }
+.admin-card, .admin-section-heading > div, .content-field { min-width: 0; }
+textarea, select { width: 100%; min-width: 0; padding: 12px; border: 1px solid #b9c6cc; background: #fff; color: var(--ink); font: inherit; }
+textarea { resize: vertical; }
+textarea:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #efb84f; outline-offset: 3px; }
+.content-section, .message-card { border: 1px solid var(--line); margin-top: 12px; padding: 18px; min-width: 0; overflow-wrap: anywhere; }
+summary { cursor: pointer; color: var(--navy); font-weight: 700; }
+.section-preview { display: inline-block; font-size: 14px; margin-top: 14px; }
+.content-field { display: grid; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.message-card.is-unread { border-left: 4px solid var(--cyan); }
+.message-text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 16px; }
+.message-email { overflow-wrap: anywhere; }
+.message-card > .admin-help { margin-top: 8px; }
+.admin-button { max-width: 100%; overflow-wrap: anywhere; }
+@media (max-width: 680px) {
+  .admin-header, .admin-section-heading { flex-wrap: wrap; }
+  .content-section, .message-card { padding: 13px; }
+  .admin-inline-actions { align-items: flex-start; }
+  .admin-inline-actions .admin-button { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+
+[hidden] { display: none !important; }
