@@ -52,3 +52,12 @@ Les images de contenu conservent leur WebP source et proposent des variantes `sr
 ## Historique des versions
 
 `migration-audit.md` documente l’origine des contenus et [`CONTENT-MIGRATION-V6.md`](CONTENT-MIGRATION-V6.md) détaille la reprise éditoriale. L’ancien lien GitHub Pages n’est pas la source canonique de cette version; la mise à jour vise l’application Cloudflare existante. Les artefacts v6 n’effectuent ni push Git ni déploiement.
+
+
+## Version V7
+
+V7 poursuit la V6 avec des protections/formation sur fond blanc, des mentors dans une section grise autonome, les formations dans l’ordre Bac → BTS → ENSEEIHT et quatre axes de personnalité. Les photographies professionnelles identifiables ont été retirées des assets publiés ; l’inspection utilise une vue existante d’installation.
+
+L’administration ajoute une boîte de réception et un éditeur FR/EN de 187 champs par langue. Les textes sont enregistrés dans D1 et appliqués côté serveur ; le HTML constitue le contenu par défaut. Le contact est stocké en D1, sans service d’e-mail externe. Voir `ADMINISTRATION.md` pour la migration V6 → V7, les limites et les commandes exactes. Voir `DELIVERY-V7.md` pour le bilan de livraison et de validation.
+
+La migration additive se trouve dans `migrations/0007_content_messages.sql`. Aucune modification des secrets d’authentification ou des bindings D1/R2 existants n’est nécessaire.
