@@ -1,0 +1,2625 @@
+// Generated from the fallback HTML by scripts/content-catalog.mjs.
+export const contentCatalog = {
+  "fr": [
+    {
+      "key": "hero.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Électrotechnique · Protections · Systèmes de puissance",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.title",
+      "label": "Titre",
+      "defaultValue": "Je relie l’expérience du terrain à l’ingénierie électrique.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "hero.intro",
+      "label": "Introduction",
+      "defaultValue": "Professionnel des systèmes électriques et des protections, je poursuis mes études d’ingénieur en 2e année à l’ENSEEIHT, en parallèle de mon activité à EDF.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.signature",
+      "label": "Signature / statut",
+      "defaultValue": "Patrice Masson · Élève ingénieur en 2e année\nÉnergie, Électronique & Automatique · ENSEEIHT",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.caption.location",
+      "label": "Lieu de la photo",
+      "defaultValue": "Palaminy",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.caption.description",
+      "label": "Légende de la photo",
+      "defaultValue": "Modernisation de contrôle-commande",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "01 / Profil",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.title",
+      "label": "Titre",
+      "defaultValue": "Une pratique construite au contact des installations.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.paragraph",
+      "label": "Texte",
+      "defaultValue": "Je m’appelle Patrice Masson. Depuis plus de quinze ans, mon parcours se construit dans le secteur de l’énergie, entre exploitation hydroélectrique, systèmes électriques, protections et contrôle-commande.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Après le terrain et l’expertise technique, j’exerce aujourd’hui dans la formation des professionnels chez EDF. Je complète cette expérience par des études d’ingénieur en énergie, électronique et automatique à l’ENSEEIHT.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.paragraph_3",
+      "label": "Texte 3",
+      "defaultValue": "Ce fil conducteur — comprendre les systèmes, les rendre fiables et transmettre leur fonctionnement — guide mon travail et mes études.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.signal",
+      "label": "Repère",
+      "defaultValue": "15+",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "années dans le secteur de l’énergie",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.signal_3",
+      "label": "Repère 3",
+      "defaultValue": "HTA/HTB",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.signal_4",
+      "label": "Repère 4",
+      "defaultValue": "protections et systèmes électriques",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.signal_5",
+      "label": "Repère 5",
+      "defaultValue": "2e année",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.signal_6",
+      "label": "Repère 6",
+      "defaultValue": "Élève ingénieur · Énergie, Électronique et Automatique · ENSEEIHT (3EA)",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "02 / Expertise",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.title",
+      "label": "Titre",
+      "defaultValue": "Des systèmes, du diagnostic à la transmission.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.paragraph",
+      "label": "Texte",
+      "defaultValue": "Trois domaines au croisement de l’exploitation, des protections et de la formation technique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.title",
+      "label": "Titre",
+      "defaultValue": "Systèmes électriques",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.systems.paragraph",
+      "label": "Texte",
+      "defaultValue": "Comprendre les installations et leurs contraintes d’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item",
+      "label": "Élément de liste",
+      "defaultValue": "Réseaux HTA et HTB",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Centrales hydroélectriques et postes",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Diagnostic électrique et analyse de défauts",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Sécurité et disponibilité des installations",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.title",
+      "label": "Titre",
+      "defaultValue": "Protections & contrôle-commande",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.protection.paragraph",
+      "label": "Texte",
+      "defaultValue": "Tester, régler et faire évoluer des fonctions critiques.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item",
+      "label": "Élément de liste",
+      "defaultValue": "Relais numériques et SEPAM",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Réglage et essais de protections",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Logiques de déclenchement et schémas",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Modernisation du contrôle-commande",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.title",
+      "label": "Titre",
+      "defaultValue": "Transmission & formation technique",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.teaching.paragraph",
+      "label": "Texte",
+      "defaultValue": "Rendre les systèmes complexes compréhensibles et praticables.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item",
+      "label": "Élément de liste",
+      "defaultValue": "Formation des techniciens",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Pédagogie appliquée aux protections",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Simulations et mises en situation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Coordination de projets techniques",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "03 / Projets sélectionnés",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.title",
+      "label": "Titre",
+      "defaultValue": "Des réalisations au plus près de l’exploitation.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.paragraph",
+      "label": "Texte",
+      "defaultValue": "Modernisation hydroélectrique, continuité de service et mise en service de systèmes de protection.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.caption",
+      "label": "Légende",
+      "defaultValue": "01 Palaminy · 2011–2012",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.paragraph",
+      "label": "Texte",
+      "defaultValue": "Études · Automatisme · Mise en service",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.title",
+      "label": "Titre",
+      "defaultValue": "Moderniser le contrôle-commande d’un dégrilleur",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Intégré à l’équipe d’exploitation, j’ai conduit le projet de bout en bout : définition du besoin, études, schémas, programmation, réalisation de l’armoire et essais de réception.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.label",
+      "label": "Libellé",
+      "defaultValue": "Outils",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.fact",
+      "label": "Fait / résultat",
+      "defaultValue": "SEE Electrical · Unity Pro",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.label_2",
+      "label": "Libellé 2",
+      "defaultValue": "Résultat",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.fact_2",
+      "label": "Fait / résultat 2",
+      "defaultValue": "Un système évolutif, toujours en fonctionnement.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.label_3",
+      "label": "Libellé 3",
+      "defaultValue": "Mon apport",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.fact_3",
+      "label": "Fait / résultat 3",
+      "defaultValue": "Relier études, réalisation sur site et mise en service.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.caption",
+      "label": "Légende",
+      "defaultValue": "02 Fos · 2013–2014",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.paragraph",
+      "label": "Texte",
+      "defaultValue": "Rénovation · Protections · Remise en service",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.title",
+      "label": "Titre",
+      "defaultValue": "Remettre en service une centrale après une crue",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Après l’arrêt de la centrale et les dégâts dus à l’humidité, j’ai travaillé avec un électricien et une entreprise partenaire à la reprise des schémas et à la rénovation du contrôle-commande et des protections.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.label",
+      "label": "Libellé",
+      "defaultValue": "Démarche",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.fact",
+      "label": "Fait / résultat",
+      "defaultValue": "Dépose, recâblage, essais fonctionnels et requalification.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.label_2",
+      "label": "Libellé 2",
+      "defaultValue": "Support technique",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.fact_2",
+      "label": "Fait / résultat 2",
+      "defaultValue": "Schéma grand format dit « drap de lit ».",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.label_3",
+      "label": "Libellé 3",
+      "defaultValue": "Résultat",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.fact_3",
+      "label": "Fait / résultat 3",
+      "defaultValue": "La centrale a retrouvé son fonctionnement.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.caption",
+      "label": "Légende",
+      "defaultValue": "03 Palaminy · 2021",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.paragraph",
+      "label": "Texte",
+      "defaultValue": "PCCN · Protections HTA · Essais",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.title",
+      "label": "Titre",
+      "defaultValue": "Faire évoluer le contrôle-commande sans interrompre le poste",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "J’ai participé à la transition vers un contrôle-commande numérique en maintenant le poste en exploitation, avec pour contrainte l’absence de déclenchement.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.label",
+      "label": "Libellé",
+      "defaultValue": "Outils",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.fact",
+      "label": "Fait / résultat",
+      "defaultValue": "PCCN · Suite Schneider",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.label_2",
+      "label": "Libellé 2",
+      "defaultValue": "Essais",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.fact_2",
+      "label": "Fait / résultat 2",
+      "defaultValue": "Protections HTA, réception et mise en service.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.label_3",
+      "label": "Libellé 3",
+      "defaultValue": "Résultat",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.fact_3",
+      "label": "Fait / résultat 3",
+      "defaultValue": "Le poste est resté en service durant la transition.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "04 / Expérience technique · 2013–2022",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.title",
+      "label": "Titre",
+      "defaultValue": "Inspection, diagnostic et dépannage.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.paragraph",
+      "label": "Texte",
+      "defaultValue": "Une expérience de terrain sur des installations électriques, des centrales hydroélectriques et des postes.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.caption",
+      "label": "Légende",
+      "defaultValue": "Installations hydroélectriques · Environnement technique",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "De 2013 à 2022, les inspections et dépannages m’ont amené à analyser des installations, contrôler des protections, rechercher des défauts et formuler des recommandations techniques. Les interventions concernaient des centrales hydroélectriques et des postes du Sud-Ouest.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.paragraph_3",
+      "label": "Texte 3",
+      "defaultValue": "Cette activité demandait de relier les observations sur place au fonctionnement électrique de l’installation, tout en tenant compte de la sécurité et des contraintes d’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.title_2",
+      "label": "Titre 2",
+      "defaultValue": "Une démarche de diagnostic",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.item",
+      "label": "Élément de liste",
+      "defaultValue": "Constat",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Analyse électrique",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Localisation du défaut",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Essais",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_5",
+      "label": "Élément de liste 5",
+      "defaultValue": "Recommandations et remise en service",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.systems.title",
+      "label": "Titre",
+      "defaultValue": "Protections et systèmes",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.systems.paragraph",
+      "label": "Texte",
+      "defaultValue": "Le contrôle des relais et l’analyse des défauts m’ont donné une lecture concrète des protections, de leurs fonctions et de leur place dans l’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.lessons.title",
+      "label": "Titre",
+      "defaultValue": "Ce que le terrain m’a appris",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.lessons.paragraph",
+      "label": "Texte",
+      "defaultValue": "Observer avant d’agir, comprendre les interactions entre équipements, adapter le diagnostic aux contraintes et transmettre des recommandations claires.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "05 / Activité actuelle · 2022–aujourd’hui",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.title",
+      "label": "Titre",
+      "defaultValue": "Expertise en protections & formation technique.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "training.paragraph",
+      "label": "Texte",
+      "defaultValue": "Mon activité associe une expertise technique des protections électriques à la transmission des connaissances.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Expertise technique",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.title",
+      "label": "Titre",
+      "defaultValue": "Partir du fonctionnement réel des systèmes",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "training.technical.paragraph",
+      "label": "Texte",
+      "defaultValue": "Au sein de l’EDF UFPI à Toulouse, je travaille dans le domaine des protections électriques. Mon expertise s’appuie sur les systèmes HTA/HTB, les relais numériques, les protections SEPAM, les réglages et les essais, ainsi que sur les relations entre protections et contrôle-commande.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.item",
+      "label": "Élément de liste",
+      "defaultValue": "Comprendre les fonctions de protection et leurs logiques.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Relier réglages, essais, schémas et comportement de l’installation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Prendre en compte la sécurité et les exigences d’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Transmission et conception pédagogique",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.title",
+      "label": "Titre",
+      "defaultValue": "Transformer l’expertise en situations d’apprentissage",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "training.teaching.paragraph",
+      "label": "Texte",
+      "defaultValue": "Je contribue à la formation des techniciens par des explications techniques, des exercices pratiques et des mises en situation. La pédagogie s’ancre dans des cas de fonctionnement et aide à construire une compréhension mobilisable sur le terrain.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.item",
+      "label": "Élément de liste",
+      "defaultValue": "Concevoir et faire évoluer des supports et exercices.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Utiliser des simulations et des bancs pédagogiques lorsque le sujet le demande.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Coordonner des contributions techniques et partager les connaissances.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.signal",
+      "label": "Repère",
+      "defaultValue": "Fil conducteur de mon activité actuelle",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Faire dialoguer systèmes de protection, pratiques d’exploitation et formation technique. Les exemples présentés ici restent génériques afin de ne pas publier de données internes ou de réglages confidentiels.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "06 / Parcours",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.title",
+      "label": "Titre",
+      "defaultValue": "Du terrain à la formation, puis aux études d’ingénieur.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.paragraph",
+      "label": "Texte",
+      "defaultValue": "Une progression professionnelle menée au contact des installations et des équipes.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_1.period",
+      "label": "Période",
+      "defaultValue": "2010—2013",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_1.title",
+      "label": "Titre",
+      "defaultValue": "Exploitation hydroélectrique",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_1.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "EDF Hydro",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_1.paragraph",
+      "label": "Texte",
+      "defaultValue": "Interventions de terrain, diagnostics et procédures d’exploitation. J’y construis mes premiers repères en sécurité électrique et en automatisme.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_2.period",
+      "label": "Période",
+      "defaultValue": "2013—2022",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_2.title",
+      "label": "Titre",
+      "defaultValue": "Contrôle électrique et protections",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_2.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "EDF Hydro · Enedis à partir de 2017",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_2.paragraph",
+      "label": "Texte",
+      "defaultValue": "Maintenance, réglages, analyse de défauts et essais de relais sur des centrales hydroélectriques et des postes HTB.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_3.period",
+      "label": "Période",
+      "defaultValue": "2022—aujourd’hui",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_3.title",
+      "label": "Titre",
+      "defaultValue": "Formation technique et animation métier",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_3.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "EDF UFPI · Toulouse",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_3.paragraph",
+      "label": "Texte",
+      "defaultValue": "Formation et expertise dans le domaine des protections, développement de mises en situation et coordination de projets pédagogiques.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_4.period",
+      "label": "Période",
+      "defaultValue": "2025—aujourd’hui",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_4.title",
+      "label": "Titre",
+      "defaultValue": "Études d’ingénieur en parallèle de mon activité",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_4.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "ENSEEIHT · 3EA",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_4.paragraph",
+      "label": "Texte",
+      "defaultValue": "J’approfondis l’électrotechnique, l’électronique et l’automatique en reliant les apports académiques à mon expérience industrielle.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.eyebrow_2",
+      "label": "Repère de section 2",
+      "defaultValue": "Formation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.education.bac.signal",
+      "label": "Repère",
+      "defaultValue": "Bac STI Électrotechnique",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.education.bac.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "Formation initiale",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.education.bts.signal",
+      "label": "Repère",
+      "defaultValue": "BTS Électrotechnique",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.education.bts.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "Pôle Formation UIMM Beauzelle · 2012",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.education.engineering.signal",
+      "label": "Repère",
+      "defaultValue": "École d’ingénieur – ENSEEIHT",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.education.engineering.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "2e année · Énergie, Électronique & Automatique · 3EA\nDiplôme en cours",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.signal",
+      "label": "Repère",
+      "defaultValue": "En ce moment",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Approfondir mes méthodes d’ingénieur et les mobiliser sur des systèmes électriques, des protections et des projets de formation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "07 / Mentors",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.title",
+      "label": "Titre",
+      "defaultValue": "Mes mentors",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "mentors.paragraph",
+      "label": "Texte",
+      "defaultValue": "Trois personnes ont contribué, chacune à leur manière, à ma réflexion et à mon développement professionnel.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_1.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "Responsable de département EDF",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_1.paragraph",
+      "label": "Texte",
+      "defaultValue": "Il a joué un rôle déterminant dans mon parcours en identifiant assez tôt la cohérence entre mon expérience de terrain, mon expertise technique et ma capacité à construire une vision à plus long terme.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_1.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Son regard professionnel a renforcé mon ambition de devenir un ingénieur combinant rigueur, transmission des connaissances et leadership technique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_2.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "Directrice adjointe – RH & accompagnement du développement professionnel, EDF",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_2.paragraph",
+      "label": "Texte",
+      "defaultValue": "Elle m’a accompagné dans plusieurs étapes importantes de mon évolution professionnelle.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_2.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Cet accompagnement m’a permis de mieux structurer mon développement, de prendre confiance dans mes capacités et de construire progressivement la posture nécessaire pour conduire des projets ambitieux en tenant compte de leur dimension humaine.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_3.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "Doctorante, ingénieure et consultante – Capgemini Engineering",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_3.paragraph",
+      "label": "Texte",
+      "defaultValue": "Elle représente pour moi une vision moderne du métier d’ingénieur : structurée, adaptable et tournée vers l’innovation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_3.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Son regard extérieur et exigeant m’a permis de mieux identifier certaines de mes forces : capacité d’adaptation, curiosité et aptitude à contribuer à des projets complexes dans le secteur de l’énergie.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "08 / Projet professionnel",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.title",
+      "label": "Titre",
+      "defaultValue": "Mes objectifs, par étapes.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.paragraph",
+      "label": "Texte",
+      "defaultValue": "Construire la suite de mon parcours en reliant l’expérience acquise aux méthodes de l’ingénierie.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.paragraph",
+      "label": "Texte",
+      "defaultValue": "Aujourd’hui · 2026–2028",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.title",
+      "label": "Titre",
+      "defaultValue": "Consolider ma formation d’ingénieur",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.short_term.item",
+      "label": "Élément de liste",
+      "defaultValue": "Poursuivre le cursus ENSEEIHT en Énergie, Électronique et Automatique (3EA).",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Approfondir l’électrotechnique, les protections, les systèmes électriques et le contrôle-commande.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Formaliser mes acquis de terrain par des méthodes d’analyse et de conception d’ingénieur.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Progresser en anglais et rechercher une expérience internationale cohérente avec mon parcours.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.paragraph",
+      "label": "Texte",
+      "defaultValue": "Moyen terme",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.title",
+      "label": "Titre",
+      "defaultValue": "Élargir mon champ d’action technique",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.medium_term.item",
+      "label": "Élément de liste",
+      "defaultValue": "Prendre part à des responsabilités techniques élargies en systèmes électriques.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Contribuer à des projets complexes en protections et contrôle-commande.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Associer expertise, coordination et transmission des connaissances.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Participer à la modernisation des installations électriques.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.long_term.paragraph",
+      "label": "Texte",
+      "defaultValue": "À plus long terme",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.long_term.title",
+      "label": "Titre",
+      "defaultValue": "Relier terrain, expertise et ingénierie",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.long_term.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Mon ambition est de devenir un ingénieur capable de relier compréhension du terrain, analyse, expertise, conduite de projets et pédagogie, tout en développant une capacité d’influence technique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.long_term.paragraph_3",
+      "label": "Texte 3",
+      "defaultValue": "Cette trajectoire pourrait aussi m’amener, à terme, vers des missions de conseil ou d’expertise. Il s’agit d’une possibilité future, pas de mon activité actuelle.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "09 / Personnalité, ouverture & centres d’intérêt",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.title",
+      "label": "Titre",
+      "defaultValue": "Personnalité & manière de travailler.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.paragraph",
+      "label": "Texte",
+      "defaultValue": "Des repères concrets issus de mon parcours, de mon activité et de mes centres d’intérêt.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.curiosity.title",
+      "label": "Titre",
+      "defaultValue": "Curiosité & apprentissage",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.curiosity.paragraph",
+      "label": "Texte",
+      "defaultValue": "Reprendre des études d’ingénieur après des années d’expérience m’apporte de nouvelles méthodes d’analyse. Je relie les notions académiques aux situations rencontrées sur le terrain.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.adaptation.title",
+      "label": "Titre",
+      "defaultValue": "Adaptation & autonomie",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.adaptation.paragraph",
+      "label": "Texte",
+      "defaultValue": "Passer de l’exploitation à l’inspection, puis à l’expertise en protections, m’a appris à observer chaque situation et à adapter ma démarche aux installations et à leurs contraintes d’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.teaching.title",
+      "label": "Titre",
+      "defaultValue": "Transmission & collectif",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.teaching.paragraph",
+      "label": "Texte",
+      "defaultValue": "La formation technique me donne chaque jour l’occasion de rendre les systèmes complexes compréhensibles. Je m’appuie sur des exemples pratiques et sur les échanges entre métiers pour relier les explications aux gestes professionnels.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.rigour.title",
+      "label": "Titre",
+      "defaultValue": "Rigueur & persévérance",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.rigour.paragraph",
+      "label": "Texte",
+      "defaultValue": "Les interventions électriques demandent des vérifications méthodiques et une attention constante à la sécurité. La savate, pratiquée depuis 2007, inscrit aussi la discipline, la régularité et la progression technique dans la durée.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.eyebrow_2",
+      "label": "Repère de section 2",
+      "defaultValue": "Langues & mobilité",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.title_2",
+      "label": "Titre 2",
+      "defaultValue": "Apprendre au contact d’autres environnements.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Le français est ma langue de travail. J’apprends l’anglais et le russe et souhaite continuer à progresser en anglais. J’aimerais aussi ouvrir mon parcours à une expérience internationale lorsque les conditions professionnelles et académiques le permettront.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.signal",
+      "label": "Repère",
+      "defaultValue": "Français",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "Anglais",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.signal_3",
+      "label": "Repère 3",
+      "defaultValue": "Russe",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.savate.title",
+      "label": "Titre",
+      "defaultValue": "Savate",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.savate.paragraph",
+      "label": "Texte",
+      "defaultValue": "Je pratique la savate depuis 2007. Cette pratique au long cours donne une place concrète à la régularité, à la précision du geste et à la progression technique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.travel.title",
+      "label": "Titre",
+      "defaultValue": "Voyages et montagne",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.travel.paragraph",
+      "label": "Texte",
+      "defaultValue": "Marcher et découvrir de nouveaux lieux m’intéresse pour l’observation, la rencontre avec d’autres environnements et l’ouverture culturelle.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "contact.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Échanger",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "contact.title",
+      "label": "Titre",
+      "defaultValue": "Parlons systèmes électriques, protections et formation.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "contact.paragraph",
+      "label": "Texte",
+      "defaultValue": "Échanger autour des systèmes électriques, des protections, de la formation technique ou d’un projet d’ingénierie.",
+      "multiline": true,
+      "maxLength": 5000
+    }
+  ],
+  "en": [
+    {
+      "key": "hero.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Electrical Engineering · Protection Systems · Power",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.title",
+      "label": "Titre",
+      "defaultValue": "I connect field experience with electrical engineering.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "hero.intro",
+      "label": "Introduction",
+      "defaultValue": "I work with electrical systems and protection while pursuing my second year of engineering studies at ENSEEIHT alongside my role at EDF.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.signature",
+      "label": "Signature / statut",
+      "defaultValue": "Patrice Masson · 2nd-year Engineering Student\nEnergy, Electronics & Automation · ENSEEIHT",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.caption.location",
+      "label": "Lieu de la photo",
+      "defaultValue": "Palaminy",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "hero.caption.description",
+      "label": "Légende de la photo",
+      "defaultValue": "Control and automation modernisation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "01 / Profile",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.title",
+      "label": "Titre",
+      "defaultValue": "An engineering practice shaped by operating environments.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.paragraph",
+      "label": "Texte",
+      "defaultValue": "My name is Patrice Masson. For more than fifteen years, I have worked in the energy sector across hydroelectric operations, electrical systems, protection and control systems.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "After field operations and technical expertise, I now work in professional training at EDF. I am building on that experience through engineering studies in energy, electronics and automation at ENSEEIHT.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.paragraph_3",
+      "label": "Texte 3",
+      "defaultValue": "Understanding systems, making them reliable and sharing how they work: this is the thread running through my work and studies.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.signal",
+      "label": "Repère",
+      "defaultValue": "15+",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "years in the energy sector",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.signal_3",
+      "label": "Repère 3",
+      "defaultValue": "HV/MV",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.signal_4",
+      "label": "Repère 4",
+      "defaultValue": "protection and electrical systems",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "profile.signal_5",
+      "label": "Repère 5",
+      "defaultValue": "Year 2",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "profile.signal_6",
+      "label": "Repère 6",
+      "defaultValue": "Engineering student · Energy, Electronics & Automation · ENSEEIHT (3EA)",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "02 / Expertise",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.title",
+      "label": "Titre",
+      "defaultValue": "From system diagnostics to technical training.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.paragraph",
+      "label": "Texte",
+      "defaultValue": "Three areas where operations, protection systems and learning come together.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.title",
+      "label": "Titre",
+      "defaultValue": "Electrical systems",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.systems.paragraph",
+      "label": "Texte",
+      "defaultValue": "Understanding installations and their operating constraints.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item",
+      "label": "Élément de liste",
+      "defaultValue": "Medium- and high-voltage networks",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Hydroelectric plants and substations",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Electrical diagnostics and fault analysis",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.systems.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Installation safety and availability",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.title",
+      "label": "Titre",
+      "defaultValue": "Protection & automation",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.protection.paragraph",
+      "label": "Texte",
+      "defaultValue": "Testing, setting and evolving critical functions.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item",
+      "label": "Élément de liste",
+      "defaultValue": "Digital protection relays and SEPAM",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Protection settings and relay testing",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Trip logic and electrical schematics",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.protection.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Control and automation modernisation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.title",
+      "label": "Titre",
+      "defaultValue": "Technical training & knowledge sharing",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "expertise.teaching.paragraph",
+      "label": "Texte",
+      "defaultValue": "Making complex systems easier to understand and apply.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item",
+      "label": "Élément de liste",
+      "defaultValue": "Technical training for technicians",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Applied protection-system teaching",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Simulations and practical exercises",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "expertise.teaching.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Technical project coordination",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "03 / Selected projects",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.title",
+      "label": "Titre",
+      "defaultValue": "Engineering close to day-to-day operations.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.paragraph",
+      "label": "Texte",
+      "defaultValue": "Hydroelectric modernisation, continuity of service and protection-system commissioning.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.caption",
+      "label": "Légende",
+      "defaultValue": "01 Palaminy · 2011–2012",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.paragraph",
+      "label": "Texte",
+      "defaultValue": "Studies · Automation · Commissioning",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.title",
+      "label": "Titre",
+      "defaultValue": "Modernising a screen’s control and automation system",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Working within the operations team, I led the project from start to finish: requirements, studies, drawings, programming, control-cabinet build and acceptance testing.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.label",
+      "label": "Libellé",
+      "defaultValue": "Tools",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.fact",
+      "label": "Fait / résultat",
+      "defaultValue": "SEE Electrical · Unity Pro",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.label_2",
+      "label": "Libellé 2",
+      "defaultValue": "Outcome",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.fact_2",
+      "label": "Fait / résultat 2",
+      "defaultValue": "An upgradeable system that remains in operation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.label_3",
+      "label": "Libellé 3",
+      "defaultValue": "My contribution",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.palaminy.fact_3",
+      "label": "Fait / résultat 3",
+      "defaultValue": "Connecting design work, on-site delivery and commissioning.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.caption",
+      "label": "Légende",
+      "defaultValue": "02 Fos · 2013–2014",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.paragraph",
+      "label": "Texte",
+      "defaultValue": "Refurbishment · Protection · Return to service",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.title",
+      "label": "Titre",
+      "defaultValue": "Restoring a hydroelectric plant after flooding",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "After flooding had shut down the plant and moisture had damaged its control system, I worked with an electrician and a partner company to update the drawings and refurbish the control and protection systems.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.label",
+      "label": "Libellé",
+      "defaultValue": "Approach",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.fact",
+      "label": "Fait / résultat",
+      "defaultValue": "Removal, rewiring, functional testing and requalification.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.label_2",
+      "label": "Libellé 2",
+      "defaultValue": "Technical document",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.fact_2",
+      "label": "Fait / résultat 2",
+      "defaultValue": "A large-format wiring schematic (known as a “drap de lit” in French).",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.label_3",
+      "label": "Libellé 3",
+      "defaultValue": "Outcome",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.fos.fact_3",
+      "label": "Fait / résultat 3",
+      "defaultValue": "The plant returned to operation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.caption",
+      "label": "Légende",
+      "defaultValue": "03 Palaminy · 2021",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.paragraph",
+      "label": "Texte",
+      "defaultValue": "Digital control system · MV protection · Testing",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.title",
+      "label": "Titre",
+      "defaultValue": "Upgrading digital controls without interrupting the substation",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "I took part in the transition to a digital control system while keeping the substation in service, with no protection trip during the changeover.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.label",
+      "label": "Libellé",
+      "defaultValue": "System",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.fact",
+      "label": "Fait / résultat",
+      "defaultValue": "Schneider digital control system (PCCN).",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.label_2",
+      "label": "Libellé 2",
+      "defaultValue": "Testing",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.fact_2",
+      "label": "Fait / résultat 2",
+      "defaultValue": "Medium-voltage protection, acceptance and commissioning tests.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.label_3",
+      "label": "Libellé 3",
+      "defaultValue": "Outcome",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "projects.substation.fact_3",
+      "label": "Fait / résultat 3",
+      "defaultValue": "The substation remained in service throughout the transition.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "04 / Technical experience · 2013–2022",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.title",
+      "label": "Titre",
+      "defaultValue": "Field inspection & troubleshooting.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.paragraph",
+      "label": "Texte",
+      "defaultValue": "Hands-on work with electrical installations, hydroelectric plants and substations.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.caption",
+      "label": "Légende",
+      "defaultValue": "Hydroelectric installations · Technical environment",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "From 2013 to 2022, inspection and troubleshooting work involved analysing installations, checking protection systems, locating faults and making technical recommendations. The work covered hydroelectric plants and substations in southwest France.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.paragraph_3",
+      "label": "Texte 3",
+      "defaultValue": "Each intervention connected on-site observations with the electrical behaviour of the installation, while accounting for safety and operating constraints.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.title_2",
+      "label": "Titre 2",
+      "defaultValue": "A diagnostic approach",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.item",
+      "label": "Élément de liste",
+      "defaultValue": "Observe",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Analyse the electrical system",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Locate the fault",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Test",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.item_5",
+      "label": "Élément de liste 5",
+      "defaultValue": "Recommend and return to service",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.systems.title",
+      "label": "Titre",
+      "defaultValue": "Protection systems",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.systems.paragraph",
+      "label": "Texte",
+      "defaultValue": "Checking relays and analysing faults built a practical understanding of protection functions and their role in day-to-day operations.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "inspection.lessons.title",
+      "label": "Titre",
+      "defaultValue": "What field work taught me",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "inspection.lessons.paragraph",
+      "label": "Texte",
+      "defaultValue": "Observe before acting, understand how equipment interacts, adapt diagnostics to operating constraints and communicate recommendations clearly.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "05 / Current work · 2022–present",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.title",
+      "label": "Titre",
+      "defaultValue": "Protection expertise & technical training.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "training.paragraph",
+      "label": "Texte",
+      "defaultValue": "My work brings together technical expertise in electrical protection and knowledge sharing.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Technical expertise",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.title",
+      "label": "Titre",
+      "defaultValue": "Start with how the systems work",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "training.technical.paragraph",
+      "label": "Texte",
+      "defaultValue": "At EDF UFPI in Toulouse, I work in the field of electrical protection. My expertise draws on MV/HV systems, digital relays, SEPAM protection, settings and testing, and the relationship between protection and control systems.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.item",
+      "label": "Élément de liste",
+      "defaultValue": "Understand protection functions and their logic.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Connect settings, tests, schematics and installation behaviour.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.technical.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Account for safety and operating requirements.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Knowledge sharing and learning design",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.title",
+      "label": "Titre",
+      "defaultValue": "Turn expertise into practical learning",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "training.teaching.paragraph",
+      "label": "Texte",
+      "defaultValue": "I contribute to technician training through technical explanations, practical exercises and learning scenarios. The teaching is grounded in system behaviour and helps learners build knowledge they can use in the field.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.item",
+      "label": "Élément de liste",
+      "defaultValue": "Design and update learning materials and exercises.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Use simulations and training test benches where useful.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.teaching.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Coordinate technical contributions and share knowledge.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.signal",
+      "label": "Repère",
+      "defaultValue": "A current thread in my work",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "training.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Connecting protection systems, operating practice and technical training. The examples here remain generic and do not disclose internal information or confidential settings.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "06 / Journey",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.title",
+      "label": "Titre",
+      "defaultValue": "From operations to training, then engineering studies.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.paragraph",
+      "label": "Texte",
+      "defaultValue": "A professional path shaped by working alongside installations and technical teams.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_1.period",
+      "label": "Période",
+      "defaultValue": "2010—2013",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_1.title",
+      "label": "Titre",
+      "defaultValue": "Hydroelectric operations",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_1.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "EDF Hydro",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_1.paragraph",
+      "label": "Texte",
+      "defaultValue": "Field work, diagnostics and operating procedures. I built my first foundations in electrical safety and automation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_2.period",
+      "label": "Période",
+      "defaultValue": "2013—2022",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_2.title",
+      "label": "Titre",
+      "defaultValue": "Electrical inspection and protection systems",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_2.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "EDF Hydro · Enedis from 2017",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_2.paragraph",
+      "label": "Texte",
+      "defaultValue": "Maintenance, settings, fault analysis and relay testing at hydroelectric plants and high-voltage substations.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_3.period",
+      "label": "Période",
+      "defaultValue": "2022—present",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_3.title",
+      "label": "Titre",
+      "defaultValue": "Technical training and protection systems",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_3.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "EDF UFPI · Toulouse",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_3.paragraph",
+      "label": "Texte",
+      "defaultValue": "Training and protection-systems expertise, developing practical exercises and coordinating training projects.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_4.period",
+      "label": "Période",
+      "defaultValue": "2025—present",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_4.title",
+      "label": "Titre",
+      "defaultValue": "Engineering studies alongside my professional role",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.step_4.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "ENSEEIHT · 3EA",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.step_4.paragraph",
+      "label": "Texte",
+      "defaultValue": "I am developing my knowledge of electrical engineering, electronics and automation, linking academic work with industrial experience.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.eyebrow_2",
+      "label": "Repère de section 2",
+      "defaultValue": "Education",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.education.bac.signal",
+      "label": "Repère",
+      "defaultValue": "Technical Baccalaureate – Electrical Engineering",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.education.bac.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "Initial technical education",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.education.bts.signal",
+      "label": "Repère",
+      "defaultValue": "Two-year technical degree (BTS) in Electrical Engineering",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.education.bts.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "Pôle Formation UIMM Beauzelle · 2012",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.education.engineering.signal",
+      "label": "Repère",
+      "defaultValue": "Engineering School – ENSEEIHT",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "career.education.engineering.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "2nd year · Energy, Electronics & Automation\nDegree in progress",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.signal",
+      "label": "Repère",
+      "defaultValue": "Current focus",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "career.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Deepening my engineering methods and applying them to electrical systems, protection and technical training.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "07 / Mentors",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.title",
+      "label": "Titre",
+      "defaultValue": "My mentors",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "mentors.paragraph",
+      "label": "Texte",
+      "defaultValue": "Three people have contributed, in different ways, to my thinking and professional development.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_1.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "EDF Department Manager",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_1.paragraph",
+      "label": "Texte",
+      "defaultValue": "He played a decisive role in my development by recognising early on how my field experience, technical expertise and longer-term perspective fit together.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_1.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "His professional insight strengthened my ambition to become an engineer who combines rigour, knowledge sharing and technical leadership.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_2.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "Deputy Director – HR & Professional Development Advisor, EDF",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_2.paragraph",
+      "label": "Texte",
+      "defaultValue": "She supported me through key stages of my internal progression.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_2.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Her guidance helped me structure my development, recognise my strengths and build the professional confidence needed to contribute to ambitious projects with a strong people focus.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_3.role",
+      "label": "Rôle / organisme",
+      "defaultValue": "Doctoral Researcher, Engineer & Consultant – Capgemini Engineering",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_3.paragraph",
+      "label": "Texte",
+      "defaultValue": "She represents, for me, a modern view of engineering: structured, adaptable and open to innovation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "mentors.mentor_3.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "Her external and demanding perspective helped me identify strengths that matter in the energy sector: adaptability, curiosity and the ability to contribute to complex projects.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "08 / Professional direction",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.title",
+      "label": "Titre",
+      "defaultValue": "My goals, step by step.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.paragraph",
+      "label": "Texte",
+      "defaultValue": "Building the next stage of my career by connecting experience with engineering methods.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.paragraph",
+      "label": "Texte",
+      "defaultValue": "Now · 2026–2028",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.title",
+      "label": "Titre",
+      "defaultValue": "Complete my engineering studies",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.short_term.item",
+      "label": "Élément de liste",
+      "defaultValue": "Continue the ENSEEIHT degree in Energy, Electronics and Automation (3EA).",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Deepen my knowledge of electrical engineering, protection, power systems and control and automation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Formalise what I have learned in the field through engineering methods of analysis and design.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.short_term.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Improve my English and seek an international experience that fits my professional and academic path.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.paragraph",
+      "label": "Texte",
+      "defaultValue": "Medium term",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.title",
+      "label": "Titre",
+      "defaultValue": "Broaden my technical contribution",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.medium_term.item",
+      "label": "Élément de liste",
+      "defaultValue": "Take on broader technical responsibilities in electrical systems engineering.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.item_2",
+      "label": "Élément de liste 2",
+      "defaultValue": "Contribute to complex projects in protection and control systems.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.item_3",
+      "label": "Élément de liste 3",
+      "defaultValue": "Bring together technical expertise, coordination and knowledge sharing.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.medium_term.item_4",
+      "label": "Élément de liste 4",
+      "defaultValue": "Support the modernisation of electrical installations.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.long_term.paragraph",
+      "label": "Texte",
+      "defaultValue": "Longer term",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.long_term.title",
+      "label": "Titre",
+      "defaultValue": "Connect field experience, expertise and engineering",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "objectives.long_term.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "My ambition is to become an engineer who can connect field understanding, analysis, technical expertise, project work and teaching, while developing the ability to guide technical decisions.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "objectives.long_term.paragraph_3",
+      "label": "Texte 3",
+      "defaultValue": "Over time, this path could also lead to consulting or expert assignments. That is a future possibility, not my current role.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "09 / Personality, international outlook & interests",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.title",
+      "label": "Titre",
+      "defaultValue": "Personality & how I work.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.paragraph",
+      "label": "Texte",
+      "defaultValue": "Concrete points of reference from my career, current work and interests.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.curiosity.title",
+      "label": "Titre",
+      "defaultValue": "Curiosity & learning",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.curiosity.paragraph",
+      "label": "Texte",
+      "defaultValue": "Returning to engineering school after years of professional experience gives me new ways to analyse systems. I connect academic concepts with situations encountered in the field.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.adaptation.title",
+      "label": "Titre",
+      "defaultValue": "Adaptability & autonomy",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.adaptation.paragraph",
+      "label": "Texte",
+      "defaultValue": "Moving from operations to inspection, then to protection expertise, has taught me to observe each situation and adapt my approach to the installation and its operating constraints.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.teaching.title",
+      "label": "Titre",
+      "defaultValue": "Teaching & teamwork",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.teaching.paragraph",
+      "label": "Texte",
+      "defaultValue": "Technical training is a daily opportunity to make complex systems understandable. I draw on practical examples and discussions with colleagues to connect explanations with professional practice.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.rigour.title",
+      "label": "Titre",
+      "defaultValue": "Rigour & perseverance",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.rigour.paragraph",
+      "label": "Texte",
+      "defaultValue": "Electrical work demands careful checks and attention to safety. Practising savate since 2007 also gives me a lasting framework for discipline, regular effort and technical progress.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.eyebrow_2",
+      "label": "Repère de section 2",
+      "defaultValue": "Languages & mobility",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.title_2",
+      "label": "Titre 2",
+      "defaultValue": "Learning in new environments.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.paragraph_2",
+      "label": "Texte 2",
+      "defaultValue": "French is my working language. I am learning English and Russian and want to keep improving my English. I would also like to add international experience to my career when professional and academic arrangements allow.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.signal",
+      "label": "Repère",
+      "defaultValue": "French",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.signal_2",
+      "label": "Repère 2",
+      "defaultValue": "English",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.signal_3",
+      "label": "Repère 3",
+      "defaultValue": "Russian",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.savate.title",
+      "label": "Titre",
+      "defaultValue": "Savate",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.savate.paragraph",
+      "label": "Texte",
+      "defaultValue": "I have practised savate since 2007. Staying with it over time gives me a practical appreciation of consistency, precision and technical progression.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.travel.title",
+      "label": "Titre",
+      "defaultValue": "Travel & mountains",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "personality.travel.paragraph",
+      "label": "Texte",
+      "defaultValue": "Walking and discovering new places appeal to me for the observation, encounters with unfamiliar environments and cultural openness they bring.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "contact.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "Get in touch",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "contact.title",
+      "label": "Titre",
+      "defaultValue": "Let’s talk about electrical systems, protection and training.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "contact.paragraph",
+      "label": "Texte",
+      "defaultValue": "Start a conversation about electrical systems, protection, technical training or an engineering project.",
+      "multiline": true,
+      "maxLength": 5000
+    }
+  ]
+};
