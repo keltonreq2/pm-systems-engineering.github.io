@@ -65,7 +65,7 @@
   const sections = {
     hero:['Accueil / Hero','home'], profile:['Profil','profile'], expertise:['Expertise','expertise'],projects:['Projets','projects'],
     inspection:['Inspection, diagnostic et dépannage','field-inspection'], training:['Protections & formation technique','protection-training'],
-    career:['Parcours & formations','career'], mentors:['Mentors','mentors'],objectives:['Objectifs','objectives'],personality:['Personnalité & ouverture','about'],contact:['Contact','contact']
+    career:['Parcours & formations','career'], mentors:['Mentors','mentors'],objectives:['Objectifs','objectives'],project:['Projet professionnel / CEP','objectives'],personality:['Personnalité & ouverture','about'],contact:['Contact','contact']
   };
   const groups={systems:'Systèmes',protection:'Protections',teaching:'Transmission',palaminy:'Palaminy · dégrilleur',fos:'Fos',substation:'Poste électrique',lessons:'Enseignements',technical:'Expertise technique',step_1:'2010–2013',step_2:'2013–2022',step_3:'2022–aujourd’hui',step_4:'Études ENSEEIHT',bac:'Bac',bts:'BTS',engineering:'École d’ingénieur',mentor_1:'Mentor 1',mentor_2:'Mentor 2',mentor_3:'Mentor 3',short_term:'Aujourd’hui',medium_term:'Moyen terme',long_term:'Long terme',curiosity:'Curiosité',adaptation:'Adaptation',rigour:'Rigueur',savate:'Savate',travel:'Voyages et montagne'};
   let language='fr';

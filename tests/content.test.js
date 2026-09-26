@@ -1,3 +1,5 @@
+// Node does not provide Cloudflare's HTMLRewriter; identity stub for middleware header tests.
+globalThis.HTMLRewriter ??= class { on() { return this; } transform(response) { return response; } };
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";

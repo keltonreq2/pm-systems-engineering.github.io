@@ -15,6 +15,8 @@
       <div><p class="admin-eyebrow">PM Systems Engineering</p><h1>Administration du portfolio</h1></div>
       <button id="logout-button" class="admin-button admin-button-quiet" type="button">Déconnexion</button>
     </header>
+    <nav class="admin-nav" aria-label="Sections administration"><a href="#admin-dashboard">Tableau de bord</a><a href="#settings-form">LinkedIn</a><a href="#cv-heading">CV</a><a href="#cv-access-panel">Accès documents</a><a href="#messages-heading">Messages</a><a href="#content-heading">Textes</a><a href="#media-panel">Photos</a><a href="#project-panel">Projet / CEP</a></nav>
+    <section id="admin-dashboard" class="admin-card" aria-labelledby="dashboard-heading"><div class="admin-section-heading"><div><p class="admin-eyebrow">Vue d’ensemble</p><h2 id="dashboard-heading">Tableau de bord</h2></div><button id="refresh-dashboard" class="admin-button admin-button-quiet" type="button">Actualiser</button></div><div id="dashboard-summary" class="dashboard-grid"></div><h3>Préparation CEP</h3><ul id="cep-checklist" class="admin-checklist"></ul><a href="/api/admin/export" class="admin-button admin-button-quiet">Exporter ma configuration JSON</a><p class="admin-help">Export sans secrets ni fichiers PDF ou images. L’import n’est pas proposé.</p></section>
     <p id="page-status" class="admin-status" role="status" aria-live="polite"></p>
     <form id="settings-form" class="admin-card">
       <div class="admin-section-heading"><div><p class="admin-eyebrow">01 · Réseau</p><h2>Profil LinkedIn</h2></div><span class="admin-state" id="linkedin-state">—</span></div>
@@ -51,6 +53,7 @@
       </div>
     </section>
 
+    <section id="cv-access-panel" class="admin-card"><div><p class="admin-eyebrow">03 · Accès aux documents</p><h2>Protection des CV</h2></div><p id="cv-access-state" class="admin-status" role="status" aria-live="polite"></p><form id="cv-code-form" class="admin-upload"><label for="admin-cv-code">Définir ou remplacer le code (10 caractères minimum)</label><input type="password" autocomplete="new-password" minlength="10" maxlength="128" id="admin-cv-code" required><button type="submit" class="admin-button">Enregistrer le nouveau code</button></form><label class="admin-switch"><input type="checkbox" id="cv-access-enabled"><span>Activer la protection des deux CV</span></label><button id="save-cv-access" type="button" class="admin-button">Enregistrer la protection</button><button id="revoke-cv-access" type="button" class="admin-button admin-button-quiet">Révoquer les accès existants</button><p class="admin-help">Le code enregistré n’est jamais affiché. Les accès visiteurs expirent au bout de deux heures ; un changement de code les révoque immédiatement.</p></section>
     <form id="visibility-form" class="admin-card">
       <div class="admin-section-heading"><div><p class="admin-eyebrow">03 · Accès</p><h2>Visibilité du site</h2></div><span class="admin-state" id="visibility-state">—</span></div>
       <p class="admin-help">En mode privé, les pages et fichiers du portfolio renvoient une page vide de contenu. La connexion à cette administration reste disponible.</p>
@@ -75,8 +78,11 @@
       <p id="content-status" class="admin-status" role="status" aria-live="polite"></p>
       <div id="content-editor"></div>
     </section>
+    <section id="media-panel" class="admin-card"><div><p class="admin-eyebrow">06 · Médias / Photos</p><h2>Photos du portfolio</h2></div><p class="admin-help">Sept emplacements photographiques FR/EN. Chaque photo a son image par défaut. JPEG, PNG ou WebP, 5 Mio maximum.</p><p id="media-status" class="admin-status" role="status" aria-live="polite"></p><div id="media-list"></div></section>
+    <section id="project-panel" class="admin-card"><div><p class="admin-eyebrow">07 · Projet professionnel / CEP</p><h2>Publication et document CEP</h2></div><p class="admin-help">Complète les textes dans « Projet professionnel » en français et en anglais. Les détails internationaux et scénarios restent privés jusqu’à l’activation séparée de chaque langue.</p><div id="publication-list"></div><h3>Présentation CEP</h3><p id="cep-status" class="admin-status" role="status" aria-live="polite"></p><form id="cep-form" class="admin-upload"><label for="cep-file">PDF CEP (10 Mio maximum)</label><input type="file" id="cep-file" accept="application/pdf,.pdf" required><button type="submit" class="admin-button">Téléverser ou remplacer</button></form><div class="admin-inline-actions"><a id="cep-preview" href="/api/admin/cep/pdf" target="_blank" rel="noopener noreferrer" class="admin-button admin-button-quiet" hidden>Ouvrir le PDF</a><button type="button" id="cep-delete" class="admin-button admin-button-danger" hidden>Supprimer</button></div><label class="admin-switch"><input type="checkbox" id="cep-public"><span>Afficher le bouton CEP sur le portfolio</span></label><label class="admin-switch"><input type="checkbox" id="cep-protected"><span>Protéger également la présentation avec le code CV</span></label><button id="cep-save" type="button" class="admin-button">Enregistrer la publication CEP</button></section>
     <footer class="admin-footer"><a href="/">Voir le portfolio</a><span>Session limitée à une heure · déconnexion automatique à expiration</span></footer>
   </main>
 <script src="/admin/assets/content-messages.js" defer></script>
+<script src="/admin/assets/v8.js" defer></script>
 </body>
 </html>

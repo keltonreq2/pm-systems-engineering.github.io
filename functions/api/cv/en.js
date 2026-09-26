@@ -1,8 +1,10 @@
+import { deniedCv, requireCvAccess } from "../../lib/cv-access.js";
 import { readSetting } from "../../lib/security.js";
 
 const CV_KEY = "cv-pm-systems-engineering-en.pdf";
 
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ request, env }) {
+  try { if (!await requireCvAccess(request, env)) return deniedCv(); } catch { return deniedCv(); }
   try {
     if (await readSetting(env.DB, "cv_en_available") !== "true") {
       return new Response("English CV unavailable", { status: 404, headers: { "Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow" } });

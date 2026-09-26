@@ -1,4 +1,5 @@
 import { applyContent } from "./lib/content.js";
+import { applyPresentation } from "./lib/presentation.js";
 import { getSession } from "./lib/auth.js";
 import { adminSessionRedirect, secureHeaders } from "./lib/security.js";
 
@@ -79,5 +80,7 @@ export async function onRequest(context) {
     } catch { /* The structured profile omits LinkedIn when the setting cannot be read. */ }
   }
   const response = await withCanonicalOrigin(await next(), siteOrigin(request, env), path, linkedinUrl);
-  return canonicalHtmlPaths.has(path) ? applyContent(response, env.DB, path.startsWith("/en") ? "en" : "fr") : response;
+  if (!canonicalHtmlPaths.has(path)) return response;
+  const language=path.startsWith('/en')?'en':'fr';
+  return applyPresentation(await applyContent(response,env.DB,language),env,language);
 }

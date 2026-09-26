@@ -33,6 +33,7 @@ document.querySelectorAll("[data-language-switch]").forEach((link) => {
 });
 
 const actionStatus = document.querySelector("#action-status");
+let cvProtected=false,cepProtected=false,cvUnlocked=false,pendingDocument=null;
 const professionalActions = [...document.querySelectorAll("[data-professional-action]")];
 const actionsFor = (action) => professionalActions.filter((item) => item.dataset.professionalAction === action);
 const pageLanguage = document.documentElement.lang === "en" ? "en" : "fr";
@@ -67,12 +68,38 @@ professionalActions.forEach((link) => {
   });
 });
 
+const cvDialog=document.querySelector('#cv-access-dialog');
+const cvForm=document.querySelector('#cv-access-form');
+const codeInput=document.querySelector('#cv-access-code');
+let originatingLink=null;
+document.addEventListener('click',event=>{
+  const link=event.target.closest('a[data-professional-action],a[data-cep-link]');
+  if(!link?.dataset.configured||cvUnlocked)return;
+  const action=link.dataset.professionalAction;
+  if(((action==='cv-fr'||action==='cv-en')&&cvProtected)||(link.hasAttribute('data-cep-link')&&cepProtected)){
+    event.preventDefault();pendingDocument=link.href;originatingLink=link;cvDialog?.showModal();codeInput?.focus();
+  }
+});
+cvDialog?.addEventListener('close',()=>{codeInput.value='';document.querySelector('#cv-access-error').textContent='';originatingLink?.focus();});
+document.querySelector('#cv-access-cancel')?.addEventListener('click',()=>cvDialog.close());
+cvForm?.addEventListener('submit',async event=>{
+  event.preventDefault();const submit=cvForm.querySelector('[type=submit]');submit.disabled=true;
+  const error=document.querySelector('#cv-access-error');error.textContent='';
+  try{
+    const response=await fetch('/api/cv/unlock',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:codeInput.value}),cache:'no-store'});
+    if(!response.ok){const data=await response.json();throw new Error(data.error||'Access unavailable');}
+    cvUnlocked=true;const target=pendingDocument;cvDialog.close();if(target)window.location.assign(target);
+  }catch(cause){error.textContent=cause.message;codeInput.focus();}finally{submit.disabled=false;}
+});
+
 fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "no-store" })
   .then((response) => {
     if (!response.ok) throw new Error("Public configuration unavailable");
     return response.json();
   })
   .then((config) => {
+    cvProtected=Boolean(config.cvProtected);
+    cepProtected=Boolean(config.cepProtected);
     if (config.linkedinUrl) {
       for (const link of actionsFor("linkedin")) {
         link.href = config.linkedinUrl;
@@ -93,6 +120,9 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
         link.href = "/api/cv/en";
         link.dataset.configured = "true";
       }
+    }
+    if(config.cepAvailable&&config.cepPublic){
+      for(const link of document.querySelectorAll('[data-cep-link]'))link.dataset.configured='true';
     }
   })
   .catch(() => professionalActions.forEach((link) => { delete link.dataset.configured; }));

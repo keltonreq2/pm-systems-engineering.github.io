@@ -45,7 +45,7 @@ test('content catalogue covers both languages and the HTML fallback',()=>{
     assert.deepEqual(contentCatalog[language].map(f=>f.key),keys);
     assert.ok(keys.length>180);
     assert.ok(contentCatalog[language].every(f=>f.defaultValue.trim() && f.defaultValue.length<=f.maxLength));
-    for(const section of ['hero','profile','expertise','projects','inspection','training','career','mentors','objectives','personality','contact'])assert.ok(keys.some(k=>k.startsWith(section+'.')));
+    for(const section of ['hero','profile','expertise','projects','inspection','training','career','mentors','project','personality','contact'])assert.ok(keys.some(k=>k.startsWith(section+'.')));
   }
 });
 test('admin reads defaults and language-specific FR/EN overrides, then restores one',async()=>{
