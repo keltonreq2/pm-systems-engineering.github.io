@@ -363,3 +363,9 @@ Les statistiques de fréquentation et la page CEP séparée ont été reportées
 Le huitième emplacement photo `contact.rotor` correspond à la photo placée sous LinkedIn, CV FR et CV EN dans Contact. Depuis **Photos du portfolio**, il est possible de remplacer son image, de changer le texte alternatif FR et EN ou de restaurer l'image d'origine. Depuis **Textes du portfolio**, la légende `contact.rotor_caption` se modifie séparément pour chaque langue. La visionneuse reprend automatiquement l'image affichée et la légende visible. Les trois photos de projets composent une galerie ; toutes les autres photos s'ouvrent seules.
 
 Le logo du filigrane provient du fichier `assets/images/logo-watermark.png` ; sa transparence visuelle et sa position sont réglées dans `css/styles.css`. Aucun paramètre D1 ou secret supplémentaire n'est nécessaire pour la V10.
+
+## Hero et logo V11
+
+Le logo graphique issu de `assets/images/logo-watermark.png` se trouve désormais uniquement dans l'en-tête sur les grands écrans ; aucun filigrane ne s'affiche dans les sections. Le logo Open Graph garde son fichier et son contenu antérieurs.
+
+Les deux nouveaux textes du Hero sont disponibles dans **Textes du portfolio** : `hero.title` est la clé existante du titre, et `hero.tagline` ajoute le fil conducteur FR/EN. La description `hero.intro` reste un champ distinct. Une personnalisation antérieure de `hero.title` stockée dans D1 reste prioritaire sur la nouvelle valeur par défaut ; il suffit de la restaurer depuis l'administration ou de saisir le nouveau titre souhaité. Aucun changement du schéma D1, de R2 ou des routes n'est nécessaire.

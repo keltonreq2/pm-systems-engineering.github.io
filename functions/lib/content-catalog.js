@@ -11,9 +11,16 @@ export const contentCatalog = {
     {
       "key": "hero.title",
       "label": "Titre",
-      "defaultValue": "Je relie l’expérience du terrain à l’ingénierie électrique.",
+      "defaultValue": "Ingénierie électrique, systèmes de puissance & protections",
       "multiline": false,
       "maxLength": 500
+    },
+    {
+      "key": "hero.tagline",
+      "label": "Fil conducteur",
+      "defaultValue": "Du terrain à l’ingénierie : comprendre, fiabiliser et transmettre.",
+      "multiline": true,
+      "maxLength": 5000
     },
     {
       "key": "hero.intro",
@@ -2000,10 +2007,17 @@ export const contentCatalog = {
     },
     {
       "key": "hero.title",
-      "label": "Titre",
-      "defaultValue": "I connect field experience with electrical engineering.",
+      "label": "Title",
+      "defaultValue": "Electrical Engineering, Power Systems & Protection",
       "multiline": false,
       "maxLength": 500
+    },
+    {
+      "key": "hero.tagline",
+      "label": "Professional theme",
+      "defaultValue": "From field experience to engineering: understanding systems, improving reliability and sharing knowledge.",
+      "multiline": true,
+      "maxLength": 5000
     },
     {
       "key": "hero.intro",

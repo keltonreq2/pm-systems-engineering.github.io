@@ -37,19 +37,6 @@ h1, h2, h3 { color: inherit; font-weight: 600; letter-spacing: -.035em; line-hei
 h1 { max-width: 830px; margin-bottom: 25px; font-size: clamp(3rem, 6.2vw, 6.1rem); }
 h2 { max-width: 790px; margin-bottom: 0; font-size: clamp(2.25rem, 4.4vw, 4.2rem); }
 h3 { margin-bottom: 14px; font-size: clamp(1.35rem, 2.1vw, 1.8rem); }
-.hero-lede, .prose p, .section-heading > p, .expertise-item p,
-.project-copy > p:not(.project-kicker), .project-facts dd, .other-work-grid p,
-.career-timeline li > div > p:not(.career-org), .current-focus p,
-.language-note > p:not(.eyebrow), .interests p, .experience-copy p,
-.experience-takeaways p, .training-panel > p:not(.eyebrow), .recent-focus p,
-.mentor-card p:not(.mentor-role), .mentors-heading > p,
-.objective-card p:not(.objective-horizon), .objective-card li,
-.personality-grid p, .contact-inner > div > p:not(.eyebrow) {
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
 .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 23px; color: #c1d0da; font: 600 11px/1.4 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
 .eyebrow-blue { color: var(--accent-dark); }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(56,180,203,.15); }
@@ -610,21 +597,6 @@ h1, h2, h3, h4, summary { hyphens: none; overflow-wrap: normal; word-break: norm
   .career-project-step p, .mobility-lead p, .mobility-detail p, .language-note p, .skill-card p, .case-study dd { text-align: left; hyphens: none; }
 }
 
-/* V10: stationary brand mark; white areas blend into the page. */
-body::after {
-  position: fixed;
-  z-index: 19;
-  inset: 0;
-  background: url('../assets/images/logo-watermark.png') 52% 62% / min(70vw, 820px) auto no-repeat;
-  opacity: .045;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  content: '';
-}
-@media (max-width: 680px) {
-  body::after { background-position: 50% 77%; background-size: 72vw auto; opacity: .035; }
-}
-
 .image-zoom { display: block; width: 100%; margin: 0; padding: 0; border: 0; color: inherit; background: transparent; cursor: zoom-in; text-align: inherit; overflow: hidden; }
 .image-zoom img { transition: filter .25s ease, transform .25s ease; }
 .hero-visual .image-zoom { position: relative; z-index: 1; }
@@ -655,4 +627,52 @@ body.lightbox-open { overflow: hidden; }
   .image-lightbox button { width: 38px; height: 38px; font-size: 28px; }
   .image-lightbox img { max-height: calc(100dvh - 132px); }
   .image-lightbox figcaption { font-size: 11px; }
+}
+
+/* V11: the graphic signs the header without covering the reading area. */
+.header-inner { gap: clamp(10px, 1.4vw, 22px); }
+.header-signature { flex: 0 0 auto; width: clamp(92px, 9vw, 130px); height: auto; max-height: 44px; object-fit: contain; mix-blend-mode: multiply; }
+@media (min-width: 981px) and (max-width: 1180px) {
+  .header-inner { gap: 10px; }
+  .header-signature { width: 92px; }
+  .primary-nav { gap: 10px; }
+  .quick-action { padding-inline: 8px; }
+}
+@media (max-width: 980px) { .header-signature { display: none; } }
+
+/* The new domain title and its professional theme have distinct reading roles. */
+@media (min-width: 901px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.24fr) minmax(280px, .76fr); gap: clamp(36px, 5vw, 70px); }
+}
+.hero-copy h1 { max-width: 790px; margin-bottom: 18px; font-size: clamp(2.7rem, 4.15vw, 4.6rem); text-wrap: balance; }
+.hero-tagline { max-width: 55ch; margin: 0 0 18px; color: #eef7f9; font-size: clamp(18px, 1.85vw, 23px); font-weight: 600; line-height: 1.43; text-align: left; text-wrap: pretty; }
+@media (max-width: 680px) {
+  .hero-copy h1 { font-size: clamp(2.3rem, 8.5vw, 3.75rem); }
+  .hero-tagline { font-size: clamp(18px, 4.7vw, 21px); }
+}
+
+/* A shared measure aligns long passages; concise cards and labels stay left. */
+.contact-inner { gap: var(--editorial-gap); }
+.prose p, .project-copy > p:not(.project-kicker), .experience-copy > p,
+.mobility-lead > p:not(.eyebrow), .language-note > p:not(.eyebrow) { max-width: var(--reading-measure); }
+@media (min-width: 901px) {
+  .hero-lede, .prose p, .project-copy > p:not(.project-kicker),
+  .experience-copy > p, .training-panel > p:not(.eyebrow),
+  .career-timeline li > div > p:not(.career-org), .current-focus p,
+  .recent-focus p, .personality-grid p,
+  .mobility-lead > p:not(.eyebrow), .mobility-narrative p,
+  .language-note > p:not(.eyebrow), .case-study dd {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+}
+@media (max-width: 900px) {
+  .hero-lede, .prose p, .project-copy > p:not(.project-kicker),
+  .experience-copy > p, .training-panel > p:not(.eyebrow),
+  .career-timeline li > div > p:not(.career-org), .current-focus p,
+  .recent-focus p, .personality-grid p,
+  .mobility-lead > p:not(.eyebrow), .mobility-narrative p,
+  .language-note > p:not(.eyebrow), .case-study dd { text-align: left; hyphens: none; }
 }

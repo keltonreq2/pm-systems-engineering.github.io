@@ -10,7 +10,11 @@ for(const [i,html] of pages.entries()){
  assert.equal((html.match(/class="language-card"/gu)||[]).length,3);
  assert.equal((html.match(/class="skill-card"/gu)||[]).length,5);
  assert.equal((html.match(/class="case-study"/gu)||[]).length,3);
+ const brand=html.indexOf('class="brand"');const logo=html.indexOf('class="header-signature"');const nav=html.indexOf('class="primary-nav"');
+ assert.ok(brand>=0&&brand<logo&&logo<nav,`${lang}: logo outside header order`);
+ assert.ok(html.includes('id="image-lightbox"')&&html.includes('data-media-key="contact.rotor"'),`${lang}: V10 photos missing`);
 }
+assert.ok(!css.includes('body::after')&&css.includes('@media (max-width: 980px) { .header-signature { display: none; }'),'V11 logo should be limited to header');
 for(const selector of ['.mobility-chapter { display: grid; grid-template-columns:', '.international-layout { display: grid; grid-template-columns:', '.five-year-list {', '.language-card {', '.skill-card {', '.case-study {','@media (max-width: 900px)', '@media (max-width: 680px)'])assert.ok(css.includes(selector),`Missing CSS ${selector}`);
 const widths=[320,390,680,900,1080,1440,1920];
 const table=widths.map(width=>{
@@ -18,10 +22,11 @@ const table=widths.map(width=>{
  const shell=Math.min(1160,width-2*gutter);
  const mobility=width<=900?'1 colonne':'2 colonnes';
  const timeline=width<=680?'verticale':width<=900?'2 colonnes':'4 jalons horizontaux';
+ const headerLogo=width<=980?'masqué':`${width<=1180?92:Math.min(130,Math.max(92,width*.09)).toFixed(0)} px`;
  assert.ok(shell>0&&shell<=width,`${width}: invalid page shell`);
  if(width<=680)assert.equal(mobility,'1 colonne');
- return {width,shell:Math.round(shell),mobility,timeline};
+ return {width,shell:Math.round(shell),headerLogo,mobility,timeline};
 });
-console.log('Audit statique V9 — largeurs CSS, structure FR/EN et ancres :');
+console.log('Audit statique V11 — largeurs CSS, logo, structure FR/EN et ancres :');
 console.table(table);
 console.log('Contrôle visuel dans un navigateur réel non inclus dans cet audit statique.');

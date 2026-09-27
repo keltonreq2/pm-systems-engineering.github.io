@@ -22,9 +22,6 @@ test('V10 exposes the rotor below professional links, an editable photo and a vi
   assert.ok(existsSync(new URL('../assets/images/logo-watermark.png',import.meta.url)));
   assert.equal(mediaCatalog['contact.rotor'].src,'assets/images/contact-rotor.jpg');
   for(const language of ['fr','en']) assert.ok(contentCatalog[language].some(entry=>entry.key==='contact.rotor_caption'));
-  const css=readFileSync(new URL('../css/styles.css',import.meta.url),'utf8');
-  assert.match(css,/logo-watermark\.png/u);
-  assert.match(css,/pointer-events: none/u);
 });
 
 test('V10 lightbox opens full image, navigates the project gallery and closes on outside click', () => {
