@@ -1,3 +1,5 @@
+> **Version V9** : mise en page éditoriale FR/EN, matrice de compétences et preuves, liens recruteur temporaires, historique et import contrôlé. Appliquer `migrations/0009_editorial_access_history.sql` après la V8, avant déploiement. Voir [ADMINISTRATION.md](ADMINISTRATION.md), [V9-EDITORIAL-AUDIT.md](V9-EDITORIAL-AUDIT.md) et [DELIVERY-V9.md](DELIVERY-V9.md). Aucun push automatique.
+
 > **Version V8** : projet professionnel et mobilité FR/EN, code CV administrable, photos en R2 privé, présentation CEP et tableau de bord. Appliquer `migrations/0008_career_media_cv.sql` avant de déployer. Lire [ADMINISTRATION.md](ADMINISTRATION.md), [CAM-COMPLIANCE-V8.md](CAM-COMPLIANCE-V8.md) et [DELIVERY-V8.md](DELIVERY-V8.md). Le dépôt et le projet Cloudflare Pages existants sont conservés.
 
 # PM Systems Engineering

@@ -272,3 +272,88 @@ Téléverser la présentation CEP en PDF de 10 Mio maximum depuis la même rubri
 | Tableau de bord, export | `/api/admin/dashboard`, `/api/admin/export` | Session admin |
 
 Toutes les mutations admin conservent le contrôle d’origine HTTPS et la session V7. Après migration et déploiement du code, définir le code CV dans l’administration, transférer les documents voulus, renseigner puis vérifier les textes, publier uniquement les blocs confirmés, et contrôler les deux langues. Aucun changement de secret Cloudflare n’est requis. La mise en ligne n’est pas effectuée par cette livraison.
+
+# Addendum V9 — présentation éditoriale et administration
+
+La V9 part du commit V8 `1521fd4` et garde le même projet Cloudflare Pages, la base `DB`, le bucket privé `CV_BUCKET`, les CV FR/EN, l’éditeur, les médias, le CEP, les messages, le mode Public/Privé et l’authentification `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `SESSION_SECRET`.
+
+## Migration V8 → V9
+
+**Exécuter avant de déployer le code V9** sur la base D1 existante :
+
+```sh
+npx wrangler d1 execute pm-systems-admin --remote --file=migrations/0009_editorial_access_history.sql
+```
+
+Si la migration V8 n’a pas encore été appliquée à cette base, exécuter d’abord `migrations/0008_career_media_cv.sql`. Exécuter également les migrations dans une éventuelle base Preview distincte, avant de tester. La requête SQL exacte V9 est :
+
+```sql
+-- V8 -> V9. Additive and repeatable: no existing rows are removed.
+CREATE TABLE IF NOT EXISTS skills_overrides (
+  language TEXT NOT NULL CHECK(language IN ('fr','en')),
+  skill_key TEXT NOT NULL,
+  proofs_json TEXT NOT NULL,
+  visible INTEGER NOT NULL CHECK(visible IN (0,1)),
+  updated_at INTEGER NOT NULL,
+  PRIMARY KEY(language,skill_key)
+);
+CREATE TABLE IF NOT EXISTS access_grants (
+  token_hash TEXT PRIMARY KEY,
+  created_at INTEGER NOT NULL,
+  expires_at INTEGER NOT NULL,
+  allow_fr INTEGER NOT NULL CHECK(allow_fr IN (0,1)),
+  allow_en INTEGER NOT NULL CHECK(allow_en IN (0,1)),
+  allow_cep INTEGER NOT NULL CHECK(allow_cep IN (0,1)),
+  revoked_at INTEGER
+);
+CREATE INDEX IF NOT EXISTS access_grants_expiry ON access_grants(expires_at);
+CREATE TABLE IF NOT EXISTS admin_audit (
+  id TEXT PRIMARY KEY,
+  at INTEGER NOT NULL,
+  type TEXT NOT NULL,
+  item_key TEXT NOT NULL,
+  language TEXT,
+  action TEXT NOT NULL,
+  previous_value TEXT,
+  new_value TEXT
+);
+CREATE INDEX IF NOT EXISTS admin_audit_recent ON admin_audit(at DESC,id DESC);
+INSERT INTO settings(key,value,updated_at) VALUES ('site_last_updated',CAST(unixepoch() AS TEXT),unixepoch())
+ON CONFLICT(key) DO NOTHING;
+```
+
+Les trois tables sont additives et la ligne de réglage préexistante n’est pas écrasée. Aucune table V8 ni aucun fichier R2 n’est supprimé. `schema.sql` inclut aussi cette migration pour une installation complète. Aucun nouveau secret ni service payant n’est requis.
+
+## Matrice de compétences
+
+Les cinq intitulés, sous-titres et descriptions FR/EN sont éditables dans **Modifier les textes → Compétences & preuves**. Dans **Matrice de compétences**, choisir la langue, afficher ou masquer une compétence et choisir ses preuves dans une liste de six ancres existantes. Les URL arbitraires sont refusées. Une compétence masquée n’est pas rendue dans le HTML de cette langue. Les études de cas de Palaminy, Fos et du poste électrique sont repliables ; leurs textes structurés ont aussi des clés dans l’éditeur.
+
+## Liens recruteur temporaires
+
+Dans **Accès externes**, sélectionner 24 heures, 7 jours ou 30 jours, puis CV FR, CV EN et/ou CEP. Les documents sélectionnés doivent être présents dans R2. L’URL générée est affichée **une fois** pour être copiée ; l’administration ne permet ensuite que la liste des portées, dates et révocations. Ne la transmettre qu’à la personne souhaitée. D1 ne garde que SHA-256 du jeton aléatoire de 256 bits. Après ouverture de `/access/<jeton>`, un cookie `__Host-pm_grant` signé avec `SESSION_SECRET`, `Secure`, `HttpOnly`, `SameSite=Lax` donne accès aux seules portées accordées jusqu’à expiration ou révocation. Le visiteur est redirigé vers `/` et le jeton est retiré de l’adresse. Le lien ne désactive pas le code CV général ; il constitue un accès complémentaire par document. Le mode Privé du site prévaut toujours. Aucun journal individuel d’utilisation ni IP n’est stocké.
+
+Attention : si la protection CV générale est désactivée, un CV déjà public reste ouvert aux autres visiteurs. Le lien temporaire n’établit une exclusivité que pour les documents effectivement protégés ou non publiés, selon leur configuration.
+
+## Historique des changements
+
+**Historique** liste les modifications significatives des textes, photos, publications, réglages, code CV, CEP, matrice, liens et imports. Les anciens et nouveaux textes sont stockés pour permettre de voir ou restaurer une valeur précédente ; l’API refuse la restauration si le texte a changé entre-temps. Les événements techniques ne stockent pas de secret, de jeton, de digest CV, de PDF, d’image ni de message. La consultation de l’historique exige une session admin. Les opérations V8 déjà réalisées avant V9 ne peuvent pas être reconstruites rétrospectivement.
+
+## Export et import JSON
+
+L’export V9 contient uniquement les personnalisations, les métadonnées photo et les liens de preuves. L’import accepte les formats V8 et V9, **fusionne** les valeurs transmises sans effacer les autres, vérifie les langues, les clés et les ancres autorisées et affiche un résumé des changements. Cliquer ensuite sur la confirmation explicite et sur **Appliquer**. Le serveur recalcule une empreinte du contenu analysé et exécute les écritures D1 dans un lot transactionnel. Les photos et PDF ne sont pas recréés par leurs seules métadonnées. L’import ignore les sessions, liens temporaires, mots de passe, digests, messages et fichiers binaires, même si le JSON en contient. Une activation CEP n’est acceptée que si le PDF est déjà présent ; une cible à publier doit posséder les textes requis.
+
+## Routes V9
+
+| Route | Usage | Contrôle |
+| --- | --- | --- |
+| `GET /access/:token` | Échange initial du lien recruteur et redirection | Jeton aléatoire, expiration et révocation ; site Public |
+| `GET /api/access/status` | Portées du cookie visiteur | Signature, expiration et révocation ; site Public |
+| `GET/POST /api/admin/access` ; `DELETE /api/admin/access/:hash` | Créer, lister, révoquer | Session admin et origine pour mutations |
+| `GET/PUT /api/admin/skills` | Liens de preuves et visibilité FR/EN | Session admin et ancres autorisées |
+| `GET /api/admin/history` ; `POST /api/admin/history/restore` | Historique et texte précédent | Session admin, conflit si état modifié |
+| `POST /api/admin/import/preview` ; `POST /api/admin/import/apply` | Import validé et confirmé | Session admin, origine, limite de 1 Mio |
+| `GET /api/admin/export` | Export JSON V9 sans données sensibles | Session admin |
+
+Les routes V8 des CV, médias, CEP, messages et éditions demeurent en place. Les pages FR/EN continuent d’utiliser D1 à la requête ; aucun rebuild n’est nécessaire pour modifier un texte, une photo, une preuve ou une publication après installation. Le pied de page prend la date la plus récente du contenu, des médias, publications et compétences, ou la date de la migration V9 par défaut.
+
+Les statistiques de fréquentation et la page CEP séparée ont été reportées : la première nécessiterait un mécanisme de comptage supplémentaire et la seconde dupliquerait la navigation du contenu existant. Le Projet professionnel actuel et ses documents restent accessibles par les ancres existantes. Aucun push Git ou déploiement n’est inclus dans la livraison V9.
