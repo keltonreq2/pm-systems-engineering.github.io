@@ -268,6 +268,132 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
+      "key": "skills.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "COMPÉTENCES & PREUVES",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.title",
+      "label": "Titre",
+      "defaultValue": "Des compétences liées à des réalisations visibles.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.intro",
+      "label": "Introduction",
+      "defaultValue": "Chaque compétence renvoie à des situations décrites dans ce portfolio : interventions, projets ou transmission technique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.protection.title",
+      "label": "Compétence",
+      "defaultValue": "Protections électriques",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.protection.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Essais · réglages · diagnostic",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.protection.description",
+      "label": "Description",
+      "defaultValue": "Intervention sur des équipements de protection et formation technique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.automation.title",
+      "label": "Compétence",
+      "defaultValue": "Contrôle-commande",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.automation.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Modernisation · mise en service",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.automation.description",
+      "label": "Description",
+      "defaultValue": "Études, réalisation et essais en installations hydroélectriques.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.diagnosis.title",
+      "label": "Compétence",
+      "defaultValue": "Diagnostic",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.diagnosis.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Inspection · analyse · dépannage",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.diagnosis.description",
+      "label": "Description",
+      "defaultValue": "Analyse sur site et prise en compte des contraintes d’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.teaching.title",
+      "label": "Compétence",
+      "defaultValue": "Transmission",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.teaching.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Formation · pédagogie technique",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.teaching.description",
+      "label": "Description",
+      "defaultValue": "Explication des protections et conception d’activités de formation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.systems.title",
+      "label": "Compétence",
+      "defaultValue": "Systèmes électriques",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.systems.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "HTA / HTB · exploitation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.systems.description",
+      "label": "Description",
+      "defaultValue": "Parcours entre exploitation, postes électriques et protections.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "projects.eyebrow",
       "label": "Repère de section",
       "defaultValue": "03 / Projets sélectionnés",
@@ -359,6 +485,48 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
+      "key": "projects.palaminy.case_1",
+      "label": "Contexte",
+      "defaultValue": "Modernisation du dégrilleur d’une centrale hydroélectrique à Palaminy.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_problem",
+      "label": "Problème",
+      "defaultValue": "Faire évoluer le contrôle-commande du dégrilleur.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_2",
+      "label": "Mon rôle",
+      "defaultValue": "Définir le besoin puis réaliser le projet avec l’équipe d’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_3",
+      "label": "Démarche",
+      "defaultValue": "Études, schémas, programmation, armoire et essais de réception.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_validation",
+      "label": "Essais / validation",
+      "defaultValue": "Essais de réception du système réalisé.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_4",
+      "label": "Résultat",
+      "defaultValue": "Un système évolutif, toujours en fonctionnement.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "projects.fos.caption",
       "label": "Légende",
       "defaultValue": "02 Fos · 2013–2014",
@@ -429,6 +597,55 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
+      "key": "projects.fos.case_1",
+      "label": "Contexte",
+      "defaultValue": "Remise en service de la centrale de Fos après une crue.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_problem",
+      "label": "Problème",
+      "defaultValue": "Arrêt de la centrale et dégâts liés à l’humidité après la crue.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_constraint",
+      "label": "Contraintes",
+      "defaultValue": "Reprise de schémas grand format et recâblage des équipements.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_2",
+      "label": "Mon rôle",
+      "defaultValue": "Travailler avec un électricien et une entreprise partenaire.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_3",
+      "label": "Démarche",
+      "defaultValue": "Reprise des schémas, rénovation du contrôle-commande et des protections, recâblage et essais.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_validation",
+      "label": "Essais / validation",
+      "defaultValue": "Essais fonctionnels et requalification.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_4",
+      "label": "Résultat",
+      "defaultValue": "Retour au fonctionnement de la centrale.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "projects.substation.caption",
       "label": "Légende",
       "defaultValue": "03 Palaminy · 2021",
@@ -495,6 +712,55 @@ export const contentCatalog = {
       "key": "projects.substation.fact_3",
       "label": "Fait / résultat 3",
       "defaultValue": "Le poste est resté en service durant la transition.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_1",
+      "label": "Contexte",
+      "defaultValue": "Transition d’un poste HTB/HTA vers un contrôle-commande numérique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_problem",
+      "label": "Problème",
+      "defaultValue": "Passage du poste à un contrôle-commande numérique.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_constraint",
+      "label": "Contraintes",
+      "defaultValue": "Éviter tout déclenchement pendant que le poste reste en exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_2",
+      "label": "Mon rôle",
+      "defaultValue": "Participer aux essais des protections HTA et à la mise en service.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_3",
+      "label": "Démarche",
+      "defaultValue": "Préparer la transition et vérifier les fonctions sans interrompre l’exploitation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_validation",
+      "label": "Essais / validation",
+      "defaultValue": "Essais des protections HTA, réception et mise en service.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_4",
+      "label": "Résultat",
+      "defaultValue": "Maintien du poste en service durant la transition.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1108,6 +1374,13 @@ export const contentCatalog = {
       "maxLength": 500
     },
     {
+      "key": "project.timeline.step_1.title",
+      "label": "Titre de l’étape",
+      "defaultValue": "Expérience technique",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "project.timeline.step_1.text",
       "label": "Étape",
       "defaultValue": "Formation technique, expertise en protections et études d’ingénieur",
@@ -1120,6 +1393,13 @@ export const contentCatalog = {
       "defaultValue": "2027",
       "multiline": false,
       "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_2.title",
+      "label": "Titre de l’étape",
+      "defaultValue": "Mobilité envisagée",
+      "multiline": true,
+      "maxLength": 5000
     },
     {
       "key": "project.timeline.step_2.text",
@@ -1136,6 +1416,13 @@ export const contentCatalog = {
       "maxLength": 500
     },
     {
+      "key": "project.timeline.step_3.title",
+      "label": "Titre de l’étape",
+      "defaultValue": "Diplôme visé",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "project.timeline.step_3.text",
       "label": "Étape",
       "defaultValue": "Année visée pour le diplôme d’ingénieur ; diplôme en cours",
@@ -1148,6 +1435,13 @@ export const contentCatalog = {
       "defaultValue": "Après 2028",
       "multiline": false,
       "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_4.title",
+      "label": "Titre de l’étape",
+      "defaultValue": "Développement professionnel",
+      "multiline": true,
+      "maxLength": 5000
     },
     {
       "key": "project.timeline.step_4.text",
@@ -1173,7 +1467,63 @@ export const contentCatalog = {
     {
       "key": "project.international.narrative",
       "label": "Motivation générale",
-      "defaultValue": "Une expérience internationale pourrait m’aider à confronter les pratiques techniques, à travailler dans un autre environnement et à renforcer mon anglais professionnel. Une destination et une organisation précises apparaîtront ici seulement lorsque je choisirai de les publier.",
+      "defaultValue": "Une mobilité internationale s’inscrirait entre mes études d’ingénieur et la suite de mon parcours. Elle me permettrait de confronter mes méthodes de travail à d’autres pratiques techniques et de renforcer mes échanges professionnels en anglais. La cible précise restera non publiée tant qu’elle n’aura pas été confirmée.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.eyebrow",
+      "label": "Repère",
+      "defaultValue": "REPÈRES DE MOBILITÉ",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.title",
+      "label": "Titre",
+      "defaultValue": "Mobilité en préparation",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_1",
+      "label": "Cible",
+      "defaultValue": "À confirmer",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_2",
+      "label": "Période",
+      "defaultValue": "À préciser",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_3",
+      "label": "Objectif",
+      "defaultValue": "Comparer les pratiques techniques et industrielles",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_4",
+      "label": "Langue de travail",
+      "defaultValue": "Anglais professionnel en progression",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_5",
+      "label": "Compétences visées",
+      "defaultValue": "Pratiques des systèmes électriques · échanges techniques",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_6",
+      "label": "État d’avancement",
+      "defaultValue": "En préparation",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1502,42 +1852,84 @@ export const contentCatalog = {
     {
       "key": "personality.eyebrow_2",
       "label": "Repère de section 2",
-      "defaultValue": "Langues & mobilité",
+      "defaultValue": "LANGUES & OUVERTURE INTERNATIONALE",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "personality.title_2",
       "label": "Titre 2",
-      "defaultValue": "Apprendre au contact d’autres environnements.",
+      "defaultValue": "Apprendre aussi au contact d’autres cultures et méthodes de travail.",
       "multiline": false,
       "maxLength": 500
     },
     {
       "key": "personality.paragraph_2",
       "label": "Texte 2",
-      "defaultValue": "Le français est ma langue de travail. J’apprends l’anglais et le russe et souhaite continuer à progresser en anglais. J’aimerais aussi ouvrir mon parcours à une expérience internationale lorsque les conditions professionnelles et académiques le permettront.",
+      "defaultValue": "Le français accompagne mon activité de formation. L’anglais et le russe sont des apprentissages en cours ; ils nourrissent mes échanges, ma curiosité et ma manière d’aborder d’autres environnements.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "personality.signal",
-      "label": "Repère",
+      "label": "Langue",
       "defaultValue": "Français",
       "multiline": true,
       "maxLength": 5000
     },
     {
+      "key": "personality.language_1.description",
+      "label": "Description",
+      "defaultValue": "Langue de travail",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_1.usage",
+      "label": "Usage ou objectif",
+      "defaultValue": "Formation technique et échanges professionnels.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "personality.signal_2",
-      "label": "Repère 2",
+      "label": "Langue",
       "defaultValue": "Anglais",
       "multiline": true,
       "maxLength": 5000
     },
     {
+      "key": "personality.language_2.description",
+      "label": "Description",
+      "defaultValue": "Langue en progression",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_2.usage",
+      "label": "Usage ou objectif",
+      "defaultValue": "Études, échanges professionnels et préparation d’une mobilité.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "personality.signal_3",
-      "label": "Repère 3",
+      "label": "Langue",
       "defaultValue": "Russe",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_3.description",
+      "label": "Description",
+      "defaultValue": "Apprentissage complémentaire",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_3.usage",
+      "label": "Usage ou objectif",
+      "defaultValue": "Découverte linguistique et ouverture culturelle.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1859,6 +2251,132 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
+      "key": "skills.eyebrow",
+      "label": "Repère de section",
+      "defaultValue": "SKILLS & EVIDENCE",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.title",
+      "label": "Titre",
+      "defaultValue": "Skills grounded in work shown here.",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.intro",
+      "label": "Introduction",
+      "defaultValue": "Each skill points to a practical situation described in this portfolio: an intervention, project or training activity.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.protection.title",
+      "label": "Compétence",
+      "defaultValue": "Electrical protection",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.protection.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Testing · settings · diagnosis",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.protection.description",
+      "label": "Description",
+      "defaultValue": "Protection system work and technical training.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.automation.title",
+      "label": "Compétence",
+      "defaultValue": "Control and automation",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.automation.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Modernisation · commissioning",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.automation.description",
+      "label": "Description",
+      "defaultValue": "Design, implementation and testing in hydroelectric facilities.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.diagnosis.title",
+      "label": "Compétence",
+      "defaultValue": "Diagnosis",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.diagnosis.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Inspection · analysis · troubleshooting",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.diagnosis.description",
+      "label": "Description",
+      "defaultValue": "On-site analysis within the constraints of operations.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.teaching.title",
+      "label": "Compétence",
+      "defaultValue": "Knowledge sharing",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.teaching.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "Training · technical teaching",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.teaching.description",
+      "label": "Description",
+      "defaultValue": "Explaining protection systems and designing learning activities.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.systems.title",
+      "label": "Compétence",
+      "defaultValue": "Electrical systems",
+      "multiline": false,
+      "maxLength": 500
+    },
+    {
+      "key": "skills.systems.subtitle",
+      "label": "Sous-titre",
+      "defaultValue": "MV / HV · operations",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "skills.systems.description",
+      "label": "Description",
+      "defaultValue": "Experience across operations, substations and protection systems.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "projects.eyebrow",
       "label": "Repère de section",
       "defaultValue": "03 / Selected projects",
@@ -1950,6 +2468,48 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
+      "key": "projects.palaminy.case_1",
+      "label": "Context",
+      "defaultValue": "Modernisation of the screen at a hydroelectric plant in Palaminy.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_problem",
+      "label": "Problem",
+      "defaultValue": "Upgrade the screen’s control and automation system.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_2",
+      "label": "My role",
+      "defaultValue": "Define the need and deliver the project with the operations team.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_3",
+      "label": "Approach",
+      "defaultValue": "Engineering studies, drawings, programming, cabinet build and acceptance tests.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_validation",
+      "label": "Testing / validation",
+      "defaultValue": "Acceptance tests for the completed system.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.palaminy.case_4",
+      "label": "Outcome",
+      "defaultValue": "A scalable system that remains in operation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "projects.fos.caption",
       "label": "Légende",
       "defaultValue": "02 Fos · 2013–2014",
@@ -2015,6 +2575,55 @@ export const contentCatalog = {
     {
       "key": "projects.fos.fact_3",
       "label": "Fait / résultat 3",
+      "defaultValue": "The plant returned to operation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_1",
+      "label": "Context",
+      "defaultValue": "Return to operation at the Fos plant after flooding.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_problem",
+      "label": "Problem",
+      "defaultValue": "The plant stopped and suffered moisture damage after flooding.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_constraint",
+      "label": "Constraints",
+      "defaultValue": "Review large-format drawings and rewire equipment.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_2",
+      "label": "My role",
+      "defaultValue": "Work with an electrician and a partner company.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_3",
+      "label": "Approach",
+      "defaultValue": "Review drawings, renovate control and protection systems, rewire and test.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_validation",
+      "label": "Testing / validation",
+      "defaultValue": "Functional tests and requalification.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.fos.case_4",
+      "label": "Outcome",
       "defaultValue": "The plant returned to operation.",
       "multiline": true,
       "maxLength": 5000
@@ -2086,6 +2695,55 @@ export const contentCatalog = {
       "key": "projects.substation.fact_3",
       "label": "Fait / résultat 3",
       "defaultValue": "The substation remained in service throughout the transition.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_1",
+      "label": "Context",
+      "defaultValue": "Transition to a digital control system in an MV/HV substation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_problem",
+      "label": "Problem",
+      "defaultValue": "Move the substation to a digital control system.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_constraint",
+      "label": "Constraints",
+      "defaultValue": "Avoid any trip while keeping the substation in operation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_2",
+      "label": "My role",
+      "defaultValue": "Take part in MV protection testing and commissioning.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_3",
+      "label": "Approach",
+      "defaultValue": "Prepare the transition and check functions without interrupting operations.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_validation",
+      "label": "Testing / validation",
+      "defaultValue": "MV protection tests, acceptance and commissioning.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "projects.substation.case_4",
+      "label": "Outcome",
+      "defaultValue": "The substation remained in service during the transition.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -2699,6 +3357,13 @@ export const contentCatalog = {
       "maxLength": 500
     },
     {
+      "key": "project.timeline.step_1.title",
+      "label": "Milestone title",
+      "defaultValue": "Technical experience",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "project.timeline.step_1.text",
       "label": "Étape",
       "defaultValue": "Technical training, protection expertise and engineering studies",
@@ -2711,6 +3376,13 @@ export const contentCatalog = {
       "defaultValue": "2027",
       "multiline": false,
       "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_2.title",
+      "label": "Milestone title",
+      "defaultValue": "Potential mobility",
+      "multiline": true,
+      "maxLength": 5000
     },
     {
       "key": "project.timeline.step_2.text",
@@ -2727,6 +3399,13 @@ export const contentCatalog = {
       "maxLength": 500
     },
     {
+      "key": "project.timeline.step_3.title",
+      "label": "Milestone title",
+      "defaultValue": "Degree target",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "project.timeline.step_3.text",
       "label": "Étape",
       "defaultValue": "Target year for completing the engineering degree; diploma in progress",
@@ -2739,6 +3418,13 @@ export const contentCatalog = {
       "defaultValue": "After 2028",
       "multiline": false,
       "maxLength": 500
+    },
+    {
+      "key": "project.timeline.step_4.title",
+      "label": "Milestone title",
+      "defaultValue": "Professional development",
+      "multiline": true,
+      "maxLength": 5000
     },
     {
       "key": "project.timeline.step_4.text",
@@ -2764,7 +3450,63 @@ export const contentCatalog = {
     {
       "key": "project.international.narrative",
       "label": "Motivation générale",
-      "defaultValue": "An international assignment could help me compare technical practices, work in another environment and strengthen my professional English. A precise destination and organisation will be published here only once I choose to share them.",
+      "defaultValue": "An international assignment would connect my engineering studies with the next stage of my career. It would help me compare technical working methods and strengthen professional exchanges in English. A precise target will remain unpublished until confirmed.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.eyebrow",
+      "label": "Repère",
+      "defaultValue": "MOBILITY AT A GLANCE",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.title",
+      "label": "Titre",
+      "defaultValue": "Mobility plan in progress",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_1",
+      "label": "Target",
+      "defaultValue": "To be confirmed",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_2",
+      "label": "Period",
+      "defaultValue": "To be defined",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_3",
+      "label": "Objective",
+      "defaultValue": "Compare technical and industrial practices",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_4",
+      "label": "Working language",
+      "defaultValue": "Developing professional English",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_5",
+      "label": "Skills sought",
+      "defaultValue": "Electrical systems practice · technical exchanges",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "project.mobility_focus.fact_6",
+      "label": "Progress",
+      "defaultValue": "In preparation",
       "multiline": true,
       "maxLength": 5000
     },
@@ -3093,42 +3835,84 @@ export const contentCatalog = {
     {
       "key": "personality.eyebrow_2",
       "label": "Repère de section 2",
-      "defaultValue": "Languages & mobility",
+      "defaultValue": "LANGUAGES & INTERNATIONAL OUTLOOK",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "personality.title_2",
       "label": "Titre 2",
-      "defaultValue": "Learning in new environments.",
+      "defaultValue": "Learning through other cultures and ways of working.",
       "multiline": false,
       "maxLength": 500
     },
     {
       "key": "personality.paragraph_2",
       "label": "Texte 2",
-      "defaultValue": "French is my working language. I am learning English and Russian and want to keep improving my English. I would also like to add international experience to my career when professional and academic arrangements allow.",
+      "defaultValue": "French is part of my daily training work. I am studying English and Russian; both support professional exchanges, curiosity and openness to different environments.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "personality.signal",
-      "label": "Repère",
+      "label": "Langue",
       "defaultValue": "French",
       "multiline": true,
       "maxLength": 5000
     },
     {
+      "key": "personality.language_1.description",
+      "label": "Description",
+      "defaultValue": "Working language",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_1.usage",
+      "label": "Usage ou objectif",
+      "defaultValue": "Technical training and professional exchanges.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "personality.signal_2",
-      "label": "Repère 2",
+      "label": "Langue",
       "defaultValue": "English",
       "multiline": true,
       "maxLength": 5000
     },
     {
+      "key": "personality.language_2.description",
+      "label": "Description",
+      "defaultValue": "Developing language skills",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_2.usage",
+      "label": "Usage ou objectif",
+      "defaultValue": "Studies, professional exchanges and mobility preparation.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
       "key": "personality.signal_3",
-      "label": "Repère 3",
+      "label": "Langue",
       "defaultValue": "Russian",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_3.description",
+      "label": "Description",
+      "defaultValue": "Additional learning",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "personality.language_3.usage",
+      "label": "Usage ou objectif",
+      "defaultValue": "Language discovery and cultural openness.",
       "multiline": true,
       "maxLength": 5000
     },
