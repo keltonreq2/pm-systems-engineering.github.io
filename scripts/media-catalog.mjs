@@ -13,5 +13,5 @@ for(const [lang,path] of files){
   slot.alt[lang]=attr('alt')||'';
  }
 }
-if(Object.keys(slots).length!==7||Object.values(slots).some(v=>!v.alt.fr||!v.alt.en))throw new Error('Missing V8 photo slot');
+if(Object.keys(slots).length!==8||Object.values(slots).some(v=>!v.alt.fr||!v.alt.en))throw new Error('Missing V10 photo slot');
 await writeFile('functions/lib/media-catalog.js','// Generated from bilingual static image fallbacks.\nexport const mediaCatalog = '+JSON.stringify(slots,null,2)+';\n');

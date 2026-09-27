@@ -609,3 +609,50 @@ h1, h2, h3, h4, summary { hyphens: none; overflow-wrap: normal; word-break: norm
   .five-year-list li:last-child { padding-bottom: 0; }
   .career-project-step p, .mobility-lead p, .mobility-detail p, .language-note p, .skill-card p, .case-study dd { text-align: left; hyphens: none; }
 }
+
+/* V10: stationary brand mark; white areas blend into the page. */
+body::after {
+  position: fixed;
+  z-index: 19;
+  inset: 0;
+  background: url('../assets/images/logo-watermark.png') 52% 62% / min(70vw, 820px) auto no-repeat;
+  opacity: .045;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  content: '';
+}
+@media (max-width: 680px) {
+  body::after { background-position: 50% 77%; background-size: 72vw auto; opacity: .035; }
+}
+
+.image-zoom { display: block; width: 100%; margin: 0; padding: 0; border: 0; color: inherit; background: transparent; cursor: zoom-in; text-align: inherit; overflow: hidden; }
+.image-zoom img { transition: filter .25s ease, transform .25s ease; }
+.hero-visual .image-zoom { position: relative; z-index: 1; }
+.interests .image-zoom { width: 155px; height: 126px; }
+@media (max-width: 900px) { .interests .image-zoom { width: 115px; height: 110px; } }
+@media (hover: hover) {
+  .image-zoom:hover img { filter: saturate(1.02) brightness(1.04); transform: scale(1.018); }
+}
+.contact-rotor { max-width: 560px; margin: clamp(30px, 5vw, 48px) 0 0; }
+.contact-rotor .image-zoom { border: 1px solid rgba(226, 239, 244, .3); }
+.contact-rotor img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; }
+.contact-rotor figcaption { padding-top: 12px; color: #c8d8df; font: 500 12px/1.5 var(--mono); }
+
+body.lightbox-open { overflow: hidden; }
+.image-lightbox { position: fixed; inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: clamp(16px, 4vw, 42px); border: 0; color: white; background: rgba(8, 23, 38, .96); overscroll-behavior: contain; }
+.image-lightbox::backdrop { background: rgba(8, 23, 38, .82); }
+.image-lightbox .lightbox-shell { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; gap: 12px; align-items: center; width: 100%; height: 100%; }
+.image-lightbox figure { display: grid; justify-items: center; align-content: center; min-width: 0; max-height: 100%; margin: 0; }
+.image-lightbox img { width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 170px); object-fit: contain; }
+.image-lightbox figcaption { max-width: 72ch; padding-top: 15px; color: #d7e5ec; font: 500 13px/1.5 var(--mono); text-align: center; }
+.image-lightbox button { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid rgba(255, 255, 255, .45); border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .08); font: 300 35px/1 var(--sans); cursor: pointer; }
+.image-lightbox button:hover { background: rgba(255, 255, 255, .2); }
+.image-lightbox .lightbox-close { position: absolute; z-index: 1; top: 0; right: 0; }
+.image-lightbox button[hidden] { display: none; }
+@media (max-width: 680px) {
+  .image-lightbox { padding: 14px; }
+  .image-lightbox .lightbox-shell { grid-template-columns: 38px minmax(0, 1fr) 38px; gap: 4px; }
+  .image-lightbox button { width: 38px; height: 38px; font-size: 28px; }
+  .image-lightbox img { max-height: calc(100dvh - 132px); }
+  .image-lightbox figcaption { font-size: 11px; }
+}

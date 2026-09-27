@@ -357,3 +357,9 @@ L’export V9 contient uniquement les personnalisations, les métadonnées photo
 Les routes V8 des CV, médias, CEP, messages et éditions demeurent en place. Les pages FR/EN continuent d’utiliser D1 à la requête ; aucun rebuild n’est nécessaire pour modifier un texte, une photo, une preuve ou une publication après installation. Le pied de page prend la date la plus récente du contenu, des médias, publications et compétences, ou la date de la migration V9 par défaut.
 
 Les statistiques de fréquentation et la page CEP séparée ont été reportées : la première nécessiterait un mécanisme de comptage supplémentaire et la seconde dupliquerait la navigation du contenu existant. Le Projet professionnel actuel et ses documents restent accessibles par les ancres existantes. Aucun push Git ou déploiement n’est inclus dans la livraison V9.
+
+## Photos et filigrane V10
+
+Le huitième emplacement photo `contact.rotor` correspond à la photo placée sous LinkedIn, CV FR et CV EN dans Contact. Depuis **Photos du portfolio**, il est possible de remplacer son image, de changer le texte alternatif FR et EN ou de restaurer l'image d'origine. Depuis **Textes du portfolio**, la légende `contact.rotor_caption` se modifie séparément pour chaque langue. La visionneuse reprend automatiquement l'image affichée et la légende visible. Les trois photos de projets composent une galerie ; toutes les autres photos s'ouvrent seules.
+
+Le logo du filigrane provient du fichier `assets/images/logo-watermark.png` ; sa transparence visuelle et sa position sont réglées dans `css/styles.css`. Aucun paramètre D1 ou secret supplémentaire n'est nécessaire pour la V10.

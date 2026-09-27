@@ -49,6 +49,8 @@ test("French and English pages include the V6 content and working section anchor
     }
     for (const image of html.matchAll(/<img\b([^>]+)>/gu)) {
       assert.match(image[1], /\balt="[^"]*"/u, `${page.language} image is missing alt text`);
+      // The lightbox image gets its source and dimensions when opened.
+      if (!/\bsrc="[^"]+"/u.test(image[1])) continue;
       assert.match(image[1], /\bwidth="\d+"/u, `${page.language} image is missing intrinsic width`);
       assert.match(image[1], /\bheight="\d+"/u, `${page.language} image is missing intrinsic height`);
     }

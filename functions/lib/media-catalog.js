@@ -55,5 +55,13 @@ export const mediaCatalog = {
       "fr": "Deux randonneurs face à un paysage de montagne",
       "en": "Two hikers looking out over a mountain landscape"
     }
+  },
+  "contact.rotor": {
+    "key": "contact.rotor",
+    "src": "assets/images/contact-rotor.jpg",
+    "alt": {
+      "fr": "Patrice Masson effectuant des mesures dans l’ouverture d’un rotor",
+      "en": "Patrice Masson taking measurements inside a rotor opening"
+    }
   }
 };

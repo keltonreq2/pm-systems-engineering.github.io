@@ -1981,6 +1981,13 @@ export const contentCatalog = {
       "defaultValue": "Échanger autour des systèmes électriques, des protections, de la formation technique ou d’un projet d’ingénierie.",
       "multiline": true,
       "maxLength": 5000
+    },
+    {
+      "key": "contact.rotor_caption",
+      "label": "Légende de la photo",
+      "defaultValue": "Mesures terrain dans un rotor – expertise et diagnostic",
+      "multiline": true,
+      "maxLength": 5000
     }
   ],
   "en": [
@@ -3962,6 +3969,13 @@ export const contentCatalog = {
       "key": "contact.paragraph",
       "label": "Texte",
       "defaultValue": "Start a conversation about electrical systems, protection, technical training or an engineering project.",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "contact.rotor_caption",
+      "label": "Légende de la photo",
+      "defaultValue": "Field measurements inside a rotor – hands-on expertise and diagnostics",
       "multiline": true,
       "maxLength": 5000
     }
