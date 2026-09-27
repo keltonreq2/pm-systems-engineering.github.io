@@ -631,7 +631,7 @@ body.lightbox-open { overflow: hidden; }
 
 /* V11: the graphic signs the header without covering the reading area. */
 .header-inner { gap: clamp(10px, 1.4vw, 22px); }
-.header-signature { flex: 0 0 auto; width: clamp(92px, 9vw, 130px); height: auto; max-height: 44px; object-fit: contain; mix-blend-mode: multiply; }
+.header-signature { flex: 0 0 auto; width: clamp(92px, 9vw, 130px); height: auto; max-height: 44px; object-fit: contain; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
 @media (min-width: 981px) and (max-width: 1180px) {
   .header-inner { gap: 10px; }
   .header-signature { width: 92px; }
