@@ -92,7 +92,7 @@ test("settings endpoint accepts an empty LinkedIn URL and persists visibility", 
   const DB = { prepare: (sql) => ({ bind: (...values) => ({ run: async () => writes.push({ sql, values }) }) }) };
   const response = await updateSettings({ request, env: { DB } });
   assert.equal(response.status, 200);
-  assert.equal(writes.length, 2);
+  assert.equal(writes.filter(({sql}) => sql.includes('INSERT INTO settings')).length, 2);
   assert.ok(writes.some(({ values }) => values[0] === "site_public" && values[1] === "false"));
 });
 
@@ -106,7 +106,7 @@ test("saving a LinkedIn URL alone cannot silently change the public/private mode
   const DB = { prepare: (sql) => ({ bind: (...values) => ({ run: async () => writes.push({ sql, values }) }) }) };
   const response = await updateSettings({ request, env: { DB } });
   assert.equal(response.status, 200);
-  assert.equal(writes.length, 1);
+  assert.equal(writes.filter(({sql}) => sql.includes('INSERT INTO settings')).length, 1);
   assert.equal(writes[0].values[0], "linkedin_url");
 });
 

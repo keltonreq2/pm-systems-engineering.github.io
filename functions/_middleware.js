@@ -82,5 +82,5 @@ export async function onRequest(context) {
   const response = await withCanonicalOrigin(await next(), siteOrigin(request, env), path, linkedinUrl);
   if (!canonicalHtmlPaths.has(path)) return response;
   const language=path.startsWith('/en')?'en':'fr';
-  return applyPresentation(await applyContent(response,env.DB,language),env,language);
+  return applyPresentation(await applyContent(response,env.DB,language),env,language,request);
 }

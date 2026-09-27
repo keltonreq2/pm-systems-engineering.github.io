@@ -1,4 +1,5 @@
 import { constantTimeEqual, getCookie, hmacHex, readSetting } from './security.js';
+import {validGrant} from './grants.js';
 const COOKIE='__Host-pm_cv';
 const TWO_HOURS=7200;
 export const cvCookie=(token)=>`${COOKIE}=${encodeURIComponent(token)}; Path=/; Max-Age=${TWO_HOURS}; Secure; HttpOnly; SameSite=Strict`;
@@ -21,9 +22,10 @@ export async function createCvToken(env){
   const expiration=Math.floor(Date.now()/1000)+TWO_HOURS;
   return `${version}.${expiration}.${await hmacHex(env.SESSION_SECRET,`cv-session:${version}.${expiration}`)}`;
 }
-export async function requireCvAccess(request,env){
+export async function requireCvAccess(request,env,scope='fr'){
   const enabled=await readSetting(env.DB,'cv_access_enabled');
   if(enabled!=='true')return true;
+  if(await validGrant(request,env,scope))return true;
   if(!await readSetting(env.DB,'cv_access_digest'))return false;
   return hasCvAccess(request,env);
 }

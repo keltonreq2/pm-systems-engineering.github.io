@@ -34,6 +34,7 @@ document.querySelectorAll("[data-language-switch]").forEach((link) => {
 
 const actionStatus = document.querySelector("#action-status");
 let cvProtected=false,cepProtected=false,cvUnlocked=false,pendingDocument=null;
+let grantScopes={fr:false,en:false,cep:false};
 const professionalActions = [...document.querySelectorAll("[data-professional-action]")];
 const actionsFor = (action) => professionalActions.filter((item) => item.dataset.professionalAction === action);
 const pageLanguage = document.documentElement.lang === "en" ? "en" : "fr";
@@ -76,7 +77,8 @@ document.addEventListener('click',event=>{
   const link=event.target.closest('a[data-professional-action],a[data-cep-link]');
   if(!link?.dataset.configured||cvUnlocked)return;
   const action=link.dataset.professionalAction;
-  if(((action==='cv-fr'||action==='cv-en')&&cvProtected)||(link.hasAttribute('data-cep-link')&&cepProtected)){
+  const scope=action==='cv-fr'?'fr':action==='cv-en'?'en':link.hasAttribute('data-cep-link')?'cep':null;
+  if(!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||(link.hasAttribute('data-cep-link')&&cepProtected))){
     event.preventDefault();pendingDocument=link.href;originatingLink=link;cvDialog?.showModal();codeInput?.focus();
   }
 });
@@ -126,3 +128,7 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
     }
   })
   .catch(() => professionalActions.forEach((link) => { delete link.dataset.configured; }));
+fetch('/api/access/status',{cache:'no-store'}).then(response=>response.ok?response.json():null).then(data=>{
+  if(!data)return;grantScopes=data;
+  if(data.cep)for(const link of document.querySelectorAll('[data-cep-link]'))link.dataset.configured='true';
+}).catch(()=>{});

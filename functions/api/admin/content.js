@@ -1,6 +1,7 @@
 import { json } from '../../lib/security.js';
 import { adminGuard, readJson } from '../../lib/request.js';
 import { contentCatalog, contentField, readOverrides, validText } from '../../lib/content.js';
+import {auditAdmin} from '../../lib/audit.js';
 
 export async function onRequestGet({ request, env }) {
   const denied = await adminGuard(request, env);
@@ -26,8 +27,11 @@ async function mutate({ request, env }, restore) {
   if (!field) return json({ error: 'Champ inconnu' }, 400);
   if (!restore && !validText(value, field.maxLength)) return json({ error: `Texte requis, ${field.maxLength} caractères maximum.` }, 400);
   try {
+    const before=await env.DB.prepare('SELECT value FROM content_overrides WHERE language=?1 AND content_key=?2').bind(language,key).first();
+    const previousValue=before?.value??field.defaultValue;
     if (restore) await env.DB.prepare('DELETE FROM content_overrides WHERE language = ?1 AND content_key = ?2').bind(language, key).run();
     else await env.DB.prepare('INSERT INTO content_overrides (language, content_key, value, updated_at) VALUES (?1, ?2, ?3, unixepoch()) ON CONFLICT(language, content_key) DO UPDATE SET value = excluded.value, updated_at = unixepoch()').bind(language, key, value.trim()).run();
+    await auditAdmin(env,{type:'text',key,language,action:restore?'default':'update',previousValue,newValue:restore?field.defaultValue:value.trim()});
     return json({ ok: true, value: restore ? field.defaultValue : value.trim(), overridden: !restore });
   } catch { return json({ error: 'Enregistrement impossible. Réessayez.' }, 503); }
 }

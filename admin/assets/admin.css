@@ -82,3 +82,15 @@ summary { cursor: pointer; color: var(--navy); font-weight: 700; }
 .media-card form {display:grid;gap:10px;margin:12px 0}
 .publication-row {border:1px solid var(--line);padding:14px;margin:10px 0;display:flex;align-items:center;flex-wrap:wrap;gap:12px}
 .publication-row label {display:flex;align-items:center;gap:6px}
+
+/* V9 administrative panels */
+#skills-editor details, #history-list details, .access-entry { border:1px solid var(--line);padding:14px;margin:10px 0;min-width:0;overflow-wrap:anywhere }
+#skills-editor fieldset {display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;border:0;padding:0}
+#skills-editor fieldset legend {width:100%;margin-bottom:8px;font-weight:700}
+#skills-editor fieldset label, #external-access-form label:has(input[type=checkbox]) {display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid var(--line)}
+#skills-editor input[type=checkbox],#external-access-form input[type=checkbox] {width:18px;height:18px}
+#history-list textarea {min-height:90px;resize:vertical;white-space:pre-wrap}
+#access-new {display:grid;gap:9px;padding:15px;border:1px solid var(--accent-dark);background:#eff9fa;min-width:0}
+#access-new input {min-width:0}
+#import-summary {margin:12px 0;padding-left:20px}
+.admin-card h3 {margin:8px 0 0;font-size:20px}

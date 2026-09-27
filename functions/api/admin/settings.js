@@ -1,4 +1,5 @@
 import { json, readSetting, requireSameOrigin, writeSetting } from "../../lib/security.js";
+import {auditAdmin} from '../../lib/audit.js';
 
 const LINKEDIN_PATTERN = /^https:\/\/(www\.)?linkedin\.com\/in\/[A-Za-z0-9_%.-]+\/?(?:\?[A-Za-z0-9_=&%-]*)?$/u;
 
@@ -41,5 +42,7 @@ export async function onRequestPut({ request, env }) {
   const updates = [writeSetting(env.DB, "linkedin_url", linkedinUrl)];
   if (typeof body.sitePublic === "boolean") updates.push(writeSetting(env.DB, "site_public", String(body.sitePublic)));
   await Promise.all(updates);
+  await auditAdmin(env,{type:'settings',key:'linkedin_url',action:'update'});
+  if(typeof body.sitePublic==='boolean')await auditAdmin(env,{type:'settings',key:'site_public',action:body.sitePublic?'public':'private'});
   return json({ ok: true });
 }
