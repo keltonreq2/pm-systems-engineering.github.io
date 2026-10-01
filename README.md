@@ -1,4 +1,8 @@
-> **Version V11** : Hero professionnel FR/EN avec titre et fil conducteur éditables, logo graphique dans le header, filigrane supprimé et paragraphes narratifs justifiés sur écran large. Pas de migration V11. Voir [DELIVERY-V11.md](DELIVERY-V11.md) et [ADMINISTRATION.md](ADMINISTRATION.md). Aucun push automatique.
+> **Version V11.2** : pitch vidéo privé avec le code CV, visionneuse photo agrandie, diagnostic SEO, validation Google/Bing et pages vues agrégées. Appliquer `migrations/0010_portfolio_views.sql` avant le déploiement. Voir [DELIVERY-V11-2.md](DELIVERY-V11-2.md) et [ADMINISTRATION.md](ADMINISTRATION.md). Aucun push automatique.
+
+> **Version V11.1** : logo du header réellement transparent, conservant le dessin V11. Aucune migration.
+
+> **Version V11** : Hero professionnel FR/EN avec titre et fil conducteur éditables, logo graphique dans le header, filigrane supprimé et paragraphes narratifs justifiés sur écran large. Pas de migration V11. Voir [DELIVERY-V11.md](DELIVERY-V11.md) et [ADMINISTRATION.md](ADMINISTRATION.md).
 
 > **Version V10** : logo discret au défilement, visionneuse photo FR/EN et photographie du rotor dans Contact. Pas de migration V10. Lire [DELIVERY-V10.md](DELIVERY-V10.md) et [ADMINISTRATION.md](ADMINISTRATION.md). Le dépôt et le projet Cloudflare Pages existants sont conservés.
 
@@ -17,6 +21,7 @@ Le dépôt est relié à la production Cloudflare Pages. Le middleware contrôle
 ```text
 .
 ├── index.html, en/index.html # Portfolio français et anglais
+├── pitch/, en/pitch/         # Lecteur vidéo protégé, FR et EN
 ├── css/, js/                 # Styles et comportement du site
 ├── functions/                # Middleware et API Pages
 ├── admin/                    # Connexion et tableau d’administration
@@ -42,12 +47,12 @@ Le serveur statique local affiche le contenu, mais n’exécute pas les Pages Fu
 
 - Modifie `index.html` en français et `en/index.html` en anglais; conserve les sections équivalentes et leurs identifiants.
 - Les styles adaptatifs sont dans `css/styles.css`; le menu, la langue et les liens pilotés par configuration sont dans `js/main.js`.
-- Les liens et états des CV sont fournis par `/api/public-config`. Le CV français est servi par `/api/cv`; le CV anglais par `/api/cv/en`.
+- Les liens et états des CV et du pitch sont fournis par `/api/public-config`. Les CV sont servis par `/api/cv` et `/api/cv/en`; la vidéo par `/api/pitch/video` après contrôle serveur du cookie signé du code CV.
 - Ne publie aucun PDF, lien ou renseignement personnel sans validation. Les PDF administrés restent dans R2 et ne sont jamais exposés par une URL de bucket.
 
 ## Administration
 
-L’administration `/admin/` nécessite le déploiement Cloudflare, le binding D1 `DB` et le binding R2 privé `CV_BUCKET`. La configuration déjà utilisée en production est documentée dans [ADMINISTRATION.md](ADMINISTRATION.md). Cette version conserve le mécanisme d’authentification v4 et les bindings existants; ne les recrée pas lors de la mise à jour.
+L’administration `/admin/` nécessite le déploiement Cloudflare, le binding D1 `DB` et le binding R2 privé `CV_BUCKET`. La configuration déjà utilisée en production est documentée dans [ADMINISTRATION.md](ADMINISTRATION.md). Cette version conserve le mécanisme d’authentification v4 et les bindings existants; ne les recrée pas lors de la mise à jour. La V11.2 ajoute une migration D1 additive pour les pages vues.
 
 Les paramètres Cloudflare d’authentification restent dans les variables/secrets de l’environnement de production. Aucune valeur secrète ne doit être ajoutée au dépôt, aux fichiers de livraison ou aux messages. Les informations de CV, profil LinkedIn et visibilité du site se modifient dans l’interface d’administration.
 

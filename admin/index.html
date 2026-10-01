@@ -7,6 +7,7 @@
   <title>Administration | PM Systems Engineering</title>
   <link rel="stylesheet" href="/admin/assets/admin.css">
   <script src="/admin/assets/admin.js" defer></script>
+  <script src="/admin/assets/v11-2.js" defer></script>
 </head>
 <body class="admin-body">
   <a class="admin-skip" href="#admin-main">Aller à l’administration</a>
@@ -15,7 +16,7 @@
       <div><p class="admin-eyebrow">PM Systems Engineering</p><h1>Administration du portfolio</h1></div>
       <button id="logout-button" class="admin-button admin-button-quiet" type="button">Déconnexion</button>
     </header>
-    <nav class="admin-nav" aria-label="Sections administration"><a href="#admin-dashboard">Tableau de bord</a><a href="#settings-form">LinkedIn</a><a href="#cv-heading">CV</a><a href="#cv-access-panel">Accès documents</a><a href="#messages-heading">Messages</a><a href="#content-heading">Textes</a><a href="#media-panel">Photos</a><a href="#project-panel">Projet / CEP</a><a href="#skills-panel">Compétences</a><a href="#external-access-panel">Accès externes</a><a href="#history-panel">Historique</a><a href="#import-panel">Restauration</a></nav>
+    <nav class="admin-nav" aria-label="Sections administration"><a href="#admin-dashboard">Tableau de bord</a><a href="#settings-form">LinkedIn</a><a href="#cv-heading">CV</a><a href="#pitch-panel">Pitch vidéo</a><a href="#cv-access-panel">Accès documents</a><a href="#seo-panel">Référencement</a><a href="#views-panel">Fréquentation</a><a href="#messages-heading">Messages</a><a href="#content-heading">Textes</a><a href="#media-panel">Photos</a><a href="#project-panel">Projet / CEP</a><a href="#skills-panel">Compétences</a><a href="#external-access-panel">Accès externes</a><a href="#history-panel">Historique</a><a href="#import-panel">Restauration</a></nav>
     <section id="admin-dashboard" class="admin-card" aria-labelledby="dashboard-heading"><div class="admin-section-heading"><div><p class="admin-eyebrow">Vue d’ensemble</p><h2 id="dashboard-heading">Tableau de bord</h2></div><button id="refresh-dashboard" class="admin-button admin-button-quiet" type="button">Actualiser</button></div><div id="dashboard-summary" class="dashboard-grid"></div><h3>Préparation CEP</h3><ul id="cep-checklist" class="admin-checklist"></ul><a href="/api/admin/export" class="admin-button admin-button-quiet">Exporter ma configuration JSON</a><p class="admin-help">Export sans secrets ni fichiers PDF ou images. L’import n’est pas proposé.</p></section>
     <p id="page-status" class="admin-status" role="status" aria-live="polite"></p>
     <form id="settings-form" class="admin-card">
@@ -53,6 +54,14 @@
       </div>
     </section>
 
+    <section id="pitch-panel" class="admin-card" aria-labelledby="pitch-heading">
+      <div class="admin-section-heading"><div><p class="admin-eyebrow">Vidéo privée</p><h2 id="pitch-heading">Pitch vidéo</h2></div><span class="admin-state" id="pitch-state">—</span></div>
+      <p class="admin-help">MP4 compatible navigateur (H.264/AAC conseillé), 30 Mio maximum. Le lecteur public exige toujours le code des CV, même si la protection des CV est désactivée. L’introduction FR/EN se modifie dans l’éditeur de textes.</p>
+      <p id="pitch-status" class="admin-status" role="status" aria-live="polite"></p>
+      <form id="pitch-form" class="admin-upload"><label for="pitch-file">Fichier MP4</label><input id="pitch-file" type="file" accept="video/mp4,.mp4" required><button class="admin-button" type="submit">Téléverser ou remplacer</button></form>
+      <div class="admin-inline-actions"><a id="pitch-preview" class="admin-button admin-button-quiet" href="/admin/pitch/" target="_blank" rel="noopener noreferrer" hidden>Prévisualiser</a><button id="pitch-delete" class="admin-button admin-button-danger" type="button" hidden>Supprimer</button></div>
+    </section>
+
     <section id="cv-access-panel" class="admin-card"><div><p class="admin-eyebrow">03 · Accès aux documents</p><h2>Protection des CV</h2></div><p id="cv-access-state" class="admin-status" role="status" aria-live="polite"></p><form id="cv-code-form" class="admin-upload"><label for="admin-cv-code">Définir ou remplacer le code (10 caractères minimum)</label><input type="password" autocomplete="new-password" minlength="10" maxlength="128" id="admin-cv-code" required><button type="submit" class="admin-button">Enregistrer le nouveau code</button></form><label class="admin-switch"><input type="checkbox" id="cv-access-enabled"><span>Activer la protection des deux CV</span></label><button id="save-cv-access" type="button" class="admin-button">Enregistrer la protection</button><button id="revoke-cv-access" type="button" class="admin-button admin-button-quiet">Révoquer les accès existants</button><p class="admin-help">Le code enregistré n’est jamais affiché. Les accès visiteurs expirent au bout de deux heures ; un changement de code les révoque immédiatement.</p></section>
     <form id="visibility-form" class="admin-card">
       <div class="admin-section-heading"><div><p class="admin-eyebrow">03 · Accès</p><h2>Visibilité du site</h2></div><span class="admin-state" id="visibility-state">—</span></div>
@@ -60,6 +69,14 @@
       <label class="admin-switch" for="site-public"><input id="site-public" name="sitePublic" type="checkbox"><span>Portfolio public</span></label>
       <button class="admin-button" type="submit">Enregistrer la visibilité</button>
     </form>
+    <section id="seo-panel" class="admin-card" aria-labelledby="seo-heading">
+      <div class="admin-section-heading"><div><p class="admin-eyebrow">Indexation technique</p><h2 id="seo-heading">Référencement</h2></div></div>
+      <p class="admin-help">Diagnostic technique, sans promesse de position ni confirmation d’indexation dans un moteur.</p>
+      <button id="seo-check" class="admin-button" type="button">Vérifier le référencement</button><p id="seo-status" class="admin-status" role="status" aria-live="polite"></p><ul id="seo-results" class="admin-checklist"></ul>
+      <form id="seo-verification-form" class="admin-upload"><label for="seo-google">Google Search Console – code de vérification</label><input id="seo-google" type="text" autocomplete="off" maxlength="128"><label for="seo-bing">Bing Webmaster Tools – code de vérification</label><input id="seo-bing" type="text" autocomplete="off" maxlength="128"><button class="admin-button" type="submit">Enregistrer les codes</button></form>
+      <p id="seo-code-status" class="admin-help"></p><p class="admin-help">Vider un champ et enregistrer supprime sa balise. <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> · <a href="https://www.bing.com/webmasters" target="_blank" rel="noopener noreferrer">Bing Webmaster Tools</a></p>
+    </section>
+    <section id="views-panel" class="admin-card" aria-labelledby="views-heading"><div class="admin-section-heading"><div><p class="admin-eyebrow">Statistiques agrégées</p><h2 id="views-heading">Fréquentation</h2></div><button id="views-refresh" class="admin-button admin-button-quiet" type="button">Actualiser</button></div><p class="admin-help">Pages vues approximatives, en UTC. Une recharge peut compter une nouvelle vue. Aucun visiteur unique n’est mesuré.</p><p id="views-status" class="admin-status" role="status" aria-live="polite"></p><div id="views-grid" class="dashboard-grid"></div><p id="views-languages" class="admin-help"></p></section>
     <section class="admin-card" aria-labelledby="messages-heading">
       <div class="admin-section-heading"><div><p class="admin-eyebrow">04 · Messages</p><h2 id="messages-heading">Boîte de réception</h2></div><span id="unread-count" class="admin-state">—</span></div>
       <p class="admin-help">Les messages sont conservés ici. Ouvre ton logiciel de messagerie pour répondre.</p>

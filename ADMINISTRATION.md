@@ -369,3 +369,49 @@ Le logo du filigrane provient du fichier `assets/images/logo-watermark.png` ; sa
 Le logo graphique issu de `assets/images/logo-watermark.png` se trouve désormais uniquement dans l'en-tête sur les grands écrans ; aucun filigrane ne s'affiche dans les sections. Le logo Open Graph garde son fichier et son contenu antérieurs.
 
 Les deux nouveaux textes du Hero sont disponibles dans **Textes du portfolio** : `hero.title` est la clé existante du titre, et `hero.tagline` ajoute le fil conducteur FR/EN. La description `hero.intro` reste un champ distinct. Une personnalisation antérieure de `hero.title` stockée dans D1 reste prioritaire sur la nouvelle valeur par défaut ; il suffit de la restaurer depuis l'administration ou de saisir le nouveau titre souhaité. Aucun changement du schéma D1, de R2 ou des routes n'est nécessaire.
+
+# Addendum V11.2 — pitch, référencement et fréquentation
+
+## Migration avant publication
+
+Appliquer la migration additive à la base D1 existante, après les migrations V7, V8 et V9, **avant de déployer le code V11.2**. Dans une éventuelle base de prévisualisation distincte, l'appliquer également avant les essais. Elle est répétable et ne supprime aucune table ni donnée :
+
+```sh
+npx wrangler d1 execute pm-systems-admin --remote --file=migrations/0010_portfolio_views.sql
+```
+
+SQL exact de `migrations/0010_portfolio_views.sql` :
+
+```sql
+-- V11.2: daily aggregate page views only; no visitor identifiers or personal data.
+CREATE TABLE IF NOT EXISTS portfolio_page_views (
+  view_date TEXT NOT NULL,
+  page_path TEXT NOT NULL CHECK(page_path IN ('/','/en/')),
+  views INTEGER NOT NULL DEFAULT 0 CHECK(views >= 0),
+  PRIMARY KEY (view_date, page_path)
+);
+```
+
+Aucune nouvelle variable secrète, table pour le pitch ou ressource R2 n'est nécessaire. Les réglages vidéo et les deux codes de vérification SEO utilisent la table `settings` existante.
+
+## Pitch vidéo privé
+
+Dans **Administration → Protection des CV**, définir d'abord un code de dix caractères minimum. Dans **Administration → Pitch vidéo**, choisir un MP4 de 30 Mio maximum, puis cliquer sur **Téléverser ou remplacer**. Vérifier l'état **Disponible** et ouvrir **Prévisualiser** ; cette prévisualisation exige la session administrateur. Pour remplacer, envoyer un nouveau MP4 au même endroit ; **Supprimer** retire l'objet et désactive le bouton. Le format conteneur est contrôlé à l'envoi ; préparer un fichier H.264/AAC lisible dans les navigateurs avant l'envoi. Le texte introductif `pitch.intro` se modifie pour chaque langue dans **Modifier les textes**.
+
+La clé fixe du bucket privé `CV_BUCKET` est `pitch-video.mp4`. Le bouton FR/EN n'apparaît que si la vidéo et le code CV existent. Le clic demande le même code que les CV, puis la session signée `__Host-pm_cv` est valable deux heures. Si la session est déjà valide, aucune seconde saisie n'est nécessaire. La vidéo reste protégée même si la case « Activer la protection des deux CV » est désactivée. Changer le code ou révoquer les accès existants invalide également l'accès vidéo. La route `/api/pitch/video` vérifie la session côté serveur avant tout accès R2, y compris sur URL directe et pour les requêtes HTTP Range ; elle sert des réponses 206 pour la navigation temporelle. `/pitch/` et `/en/pitch/` exigent aussi cette session et renvoient `X-Robots-Tag: noindex, nofollow`. Aucune URL publique permanente n'est créée pour le bucket.
+
+## Référencement et vérification Google/Bing
+
+Dans **Administration → Référencement**, cliquer sur **Vérifier le référencement**. Le diagnostic lit les actifs réellement livrés par Pages et les réglages D1 : visibilité publique, robots, sitemap, origine canonique, pages FR/EN, `hreflang`, titres, descriptions, Open Graph, image de partage, JSON-LD, absence de `noindex` sur les pages publiques et ancres internes. Les états **OK**, **Attention** et **Erreur** sont techniques ; ils ne prouvent ni l'indexation ni un rang Google. Le domaine canonique attendu est `https://pm-systems-engineering-github-io.pages.dev/`. Le sitemap n'inclut que `/` et `/en/` ; les accès administrateur, CV, pitch et recruteur en sont absents.
+
+Pour vérifier la propriété du site, copier **uniquement la valeur du code** indiquée pour une balise HTML par Google Search Console dans le champ **Google Search Console – code de vérification**, puis cliquer sur **Enregistrer les codes**. Faire de même pour Bing Webmaster Tools. Les pages publiques reçoivent respectivement les balises `google-site-verification` et `msvalidate.01` ; leurs valeurs sont validées, échappées par alphabet restreint et jamais interprétées comme HTML. Retourner dans les consoles Google et Bing pour demander la validation. Pour remplacer, coller un autre code ; pour supprimer, vider le champ puis enregistrer. Le site doit être public et déployé avant la vérification par le moteur. Ne pas coller la balise `<meta>` entière, uniquement sa valeur `content`.
+
+## Pages vues et confidentialité
+
+Le panneau **Fréquentation** montre les pages vues du jour, des sept et trente derniers jours et le total depuis l'activation, avec ventilation FR et EN. Les dates suivent UTC. Le compteur incrémente uniquement les réponses **GET 200 HTML** réellement servies pour `/`, `/index.html`, `/en`, `/en/` et `/en/index.html`. Les variantes FR/EN sont agrégées sous `/` et `/en/`. Il ne compte ni le mode privé, ni les HEAD, ni admin et prévisualisation admin, ni API, CV, pitch, médias, CSS, JS, images, robots et sitemap. Les User-Agent de robots évidents sont écartés avant l'incrément, sans être stockés ; ce filtre ne peut pas identifier tous les robots. Une recharge compte normalement une nouvelle page vue. Il ne s'agit pas de « visiteurs uniques ».
+
+D1 conserve exclusivement `view_date`, `page_path` et `views`. L'incrément est un UPSERT atomique. Aucune IP, aucun email, User-Agent complet, cookie analytique, identifiant de navigateur ou empreinte n'est écrit dans la table. Le compteur n'est pas affiché sur le portfolio public. En cas de migration statistique absente, le portfolio reste servi et le panneau admin signale l'indisponibilité des statistiques.
+
+## Vérification après déploiement manuel
+
+Après migration puis déploiement du même projet Pages : contrôler FR et EN à 320, 390, 680, 900, 1080, 1440 et 1920 px ; vérifier une photo verticale, horizontale, le rotor et un projet dans la visionneuse ; tester Échap, flèches et retour du focus ; essayer le pitch sans code, après déverrouillage CV, sur URL directe et en avançant dans la vidéo ; enfin lancer le diagnostic SEO et consulter les agrégats. Avant déploiement, exécuter `npm test`, `npm run build` et `npm run audit:layout`. Cette livraison ne pousse aucun commit, ne déploie rien et ne modifie aucun secret Cloudflare.

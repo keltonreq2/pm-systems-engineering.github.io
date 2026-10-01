@@ -1995,6 +1995,13 @@ export const contentCatalog = {
       "defaultValue": "Mesures terrain dans un rotor – expertise et diagnostic",
       "multiline": true,
       "maxLength": 5000
+    },
+    {
+      "key": "pitch.intro",
+      "label": "Introduction du pitch",
+      "defaultValue": "Une présentation de mon parcours et de mon projet professionnel.",
+      "multiline": true,
+      "maxLength": 5000
     }
   ],
   "en": [
@@ -3990,6 +3997,13 @@ export const contentCatalog = {
       "key": "contact.rotor_caption",
       "label": "Légende de la photo",
       "defaultValue": "Field measurements inside a rotor – hands-on expertise and diagnostics",
+      "multiline": true,
+      "maxLength": 5000
+    },
+    {
+      "key": "pitch.intro",
+      "label": "Introduction du pitch",
+      "defaultValue": "A short presentation of my experience and professional goals.",
       "multiline": true,
       "maxLength": 5000
     }

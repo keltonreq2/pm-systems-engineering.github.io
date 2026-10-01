@@ -1,6 +1,8 @@
 import { json, readSetting } from "../lib/security.js";
+import {hasCvAccess} from '../lib/cv-access.js';
+import {pitchAvailable} from '../lib/pitch.js';
 
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ request, env }) {
   try {
     const [linkedinUrl, cvFrAvailable, cvEnAvailable, cvProtected, cepAvailable, cepPublic, cepProtected] = await Promise.all([
       readSetting(env.DB, "linkedin_url"),
@@ -12,12 +14,15 @@ export async function onRequestGet({ env }) {
       readSetting(env.DB, "cep_protected")
     ]);
     const frenchAvailable = cvFrAvailable === "true";
+    const pitch=await pitchAvailable(env);
     return json({
       linkedinUrl: linkedinUrl || null,
       cvFrAvailable: frenchAvailable,
       cvEnAvailable: cvEnAvailable === "true",
       cvAvailable: frenchAvailable,
       cvProtected: cvProtected === 'true',
+      pitchAvailable:pitch,
+      cvUnlocked:pitch && await hasCvAccess(request,env),
       cepAvailable: cepAvailable === 'true',
       cepPublic: cepPublic === 'true',
       cepProtected: cepProtected === 'true'

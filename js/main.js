@@ -42,12 +42,14 @@ const actionMessages = {
   fr: {
     linkedin: "Le lien LinkedIn n’est pas encore configuré.",
     "cv-fr": "Le CV français n’est pas encore disponible.",
-    "cv-en": "Le CV anglais n’est pas encore disponible."
+    "cv-en": "Le CV anglais n’est pas encore disponible.",
+    pitch: "Le pitch vidéo n’est pas encore disponible."
   },
   en: {
     linkedin: "The LinkedIn link has not been configured yet.",
     "cv-fr": "The French CV is not available yet.",
-    "cv-en": "The English CV is not available yet."
+    "cv-en": "The English CV is not available yet.",
+    pitch: "The video pitch is not available yet."
   }
 };
 
@@ -78,8 +80,12 @@ document.addEventListener('click',event=>{
   if(!link?.dataset.configured||cvUnlocked)return;
   const action=link.dataset.professionalAction;
   const scope=action==='cv-fr'?'fr':action==='cv-en'?'en':link.hasAttribute('data-cep-link')?'cep':null;
-  if(!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||(link.hasAttribute('data-cep-link')&&cepProtected))){
-    event.preventDefault();pendingDocument=link.href;originatingLink=link;cvDialog?.showModal();codeInput?.focus();
+  if(!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||action==='pitch'||(link.hasAttribute('data-cep-link')&&cepProtected))){
+    event.preventDefault();pendingDocument=link.href;originatingLink=link;
+    document.querySelector('#cv-dialog-title').textContent=action==='pitch'
+      ? (pageLanguage==='en'?'Video pitch access code':'Code d’accès au pitch vidéo')
+      : (pageLanguage==='en'?'Document access code':'Code d’accès au CV');
+    cvDialog?.showModal();codeInput?.focus();
   }
 });
 cvDialog?.addEventListener('close',()=>{codeInput.value='';document.querySelector('#cv-access-error').textContent='';originatingLink?.focus();});
@@ -101,6 +107,7 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
   })
   .then((config) => {
     cvProtected=Boolean(config.cvProtected);
+    cvUnlocked=Boolean(config.cvUnlocked);
     cepProtected=Boolean(config.cepProtected);
     if (config.linkedinUrl) {
       for (const link of actionsFor("linkedin")) {
@@ -122,6 +129,9 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
         link.href = "/api/cv/en";
         link.dataset.configured = "true";
       }
+    }
+    if(config.pitchAvailable){
+      for(const link of actionsFor('pitch')){link.dataset.configured='true';link.hidden=false;}
     }
     if(config.cepAvailable&&config.cepPublic){
       for(const link of document.querySelectorAll('[data-cep-link]'))link.dataset.configured='true';

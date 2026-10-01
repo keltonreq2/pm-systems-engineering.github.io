@@ -4,8 +4,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 const decode = (text) => text.replace(/<br\s*\/?>/gu, '\n').replace(/<[^>]*>/gu, '')
   .replace(/&(amp|lt|gt|quot|apos|#39|#160|nbsp);/gu, (_, entity) => ({amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",'#39':"'",'#160':' ',nbsp:' '})[entity]).trim();
 const catalog = {};
-for (const [language, path] of [['fr', 'index.html'], ['en', 'en/index.html']]) {
-  const source = await readFile(path, 'utf8');
+for (const [language, paths] of [['fr', ['index.html','pitch/index.html']], ['en', ['en/index.html','en/pitch/index.html']]]) {
+  const source = (await Promise.all(paths.map(path=>readFile(path,'utf8')))).join('\n');
   catalog[language] = [];
   const pattern = /<([a-z][a-z0-9]*)\b([^>]*\bdata-content-key="([^"]+)"[^>]*)>([\s\S]*?)<\/\1>/gu;
   for (const match of source.matchAll(pattern)) {

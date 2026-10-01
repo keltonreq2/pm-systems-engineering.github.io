@@ -41,7 +41,8 @@ test('V7 migration is repeatable and preserves V6 settings and sessions',async()
 test('content catalogue covers both languages and the HTML fallback',()=>{
   for(const [language,path] of [['fr','../index.html'],['en','../en/index.html']]){
     const source=readFileSync(new URL(path,import.meta.url),'utf8');
-    const keys=[...source.matchAll(/data-content-key="([^"]+)"/gu)].map(m=>m[1]);
+    const pitch=readFileSync(new URL(language==='fr'?'../pitch/index.html':'../en/pitch/index.html',import.meta.url),'utf8');
+    const keys=[...(source+'\n'+pitch).matchAll(/data-content-key="([^"]+)"/gu)].map(m=>m[1]);
     assert.deepEqual(contentCatalog[language].map(f=>f.key),keys);
     assert.ok(keys.length>180);
     assert.ok(contentCatalog[language].every(f=>f.defaultValue.trim() && f.defaultValue.length<=f.maxLength));
