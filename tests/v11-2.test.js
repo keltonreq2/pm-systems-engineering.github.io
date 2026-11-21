@@ -17,7 +17,7 @@ async function fixture(){
  for(const file of ['0009_editorial_access_history.sql','0010_portfolio_views.sql'])sqlite.exec(readFileSync(new URL(`../migrations/${file}`,import.meta.url),'utf8'));
  sqlite.prepare("UPDATE settings SET value='true' WHERE key='site_public'").run();
  sqlite.prepare('INSERT INTO admin_sessions VALUES (?,?,?)').run(await sha256Hex('test-admin'),Math.floor(Date.now()/1000)+3600,1);
- const DB={prepare(sql){const statement=sqlite.prepare(sql);let params=[];return{bind(...args){params=args;return this;},async first(){return statement.get(...params)||null;},async all(){return{results:statement.all(...params)};},async run(){return statement.run(...params);}}}};
+ const DB={async batch(statements){sqlite.exec('BEGIN');try{const results=[];for(const statement of statements)results.push(await statement.run());sqlite.exec('COMMIT');return results;}catch(error){sqlite.exec('ROLLBACK');throw error;}},prepare(sql){const statement=sqlite.prepare(sql);let params=[];return{bind(...args){params=args;return this;},async first(){return statement.get(...params)||null;},async all(){return{results:statement.all(...params)};},async run(){return statement.run(...params);}}}};
  const files=new Map(),calls=[];
  const CV_BUCKET={async head(key){return files.has(key)?{size:files.get(key).byteLength}:null;},async get(key,options){calls.push(options);const value=files.get(key);if(!value)return null;const range=options?.range;return{body:range?value.slice(range.offset,range.offset+range.length):value};},async put(key,bytes){files.set(key,new Uint8Array(bytes));},async delete(key){files.delete(key);}};
  const ASSETS={async fetch(request){const path=new URL(request.url).pathname;const local=path==='/'?'index.html':path==='/en/'?'en/index.html':path.slice(1);try{return new Response(readFileSync(new URL(`../${local}`,import.meta.url)),{headers:{'Content-Type':local.endsWith('.png')?'image/png':local.endsWith('.xml')?'application/xml':'text/html'}});}catch{return new Response('missing',{status:404});}}};
@@ -50,7 +50,7 @@ test('pitch is hidden until a video and CV code exist; same unlock cookie gates 
  const partial=await pitchVideo({request:cookieRequest('bytes=4-11'),env});assert.equal(partial.status,206);assert.equal(partial.headers.get('Content-Range'),'bytes 4-11/24');assert.equal(partial.headers.get('Content-Length'),'8');assert.deepEqual(new Uint8Array(await partial.arrayBuffer()),videoBytes.slice(4,12));assert.deepEqual(calls.at(-1),{range:{offset:4,length:8}});
  assert.equal((await pitchVideo({request:cookieRequest('bytes=-4'),env})).status,206);
  assert.equal((await pitchVideo({request:cookieRequest('bytes=500-600'),env})).status,416);
- const page=await middleware({request:req('/pitch/',{headers:{Cookie:cookie}}),env,next:async()=>new Response('player',{headers:{'Content-Type':'text/html'}})});assert.equal(page.status,200);assert.equal(page.headers.get('X-Robots-Tag'),'noindex, nofollow');
+ const page=await middleware({request:req('/pitch/',{headers:{Cookie:cookie}}),env,next:async()=>new Response('player',{headers:{'Content-Type':'text/html'}})});assert.equal(page.status,308);assert.equal(page.headers.get('Location'),'/cep/');assert.equal(page.headers.get('X-Robots-Tag'),'noindex, nofollow');
  assert.equal((await (await publicConfig({request:cookieRequest(),env})).json()).cvUnlocked,true);
 });
 test('admin upload verifies MP4, previews through admin session and removes file',async()=>{
@@ -91,5 +91,5 @@ test('lightbox uses viewport overlay and an independent uncropped centered image
  assert.match(css,/\.image-lightbox\[open\]\s*\{[^}]*place-items: center;/u);
  assert.match(css,/\.image-lightbox img\s*\{[^}]*width: 100%;[^}]*height: 100%;[^}]*object-fit: contain;[^}]*margin: 0 auto;[^}]*aspect-ratio: auto;/u);
  assert.match(css,/@media \(max-width: 390px\) \{[\s\S]*?\.header-inner \{ flex-wrap: wrap;/u);
- for(const page of ['../index.html','../en/index.html'])assert.match(readFileSync(new URL(page,import.meta.url),'utf8'),/data-professional-action="pitch" hidden/u);
+ for(const page of ['../index.html','../en/index.html'])assert.match(readFileSync(new URL(page,import.meta.url),'utf8'),/data-professional-action="cep"/u);
 });

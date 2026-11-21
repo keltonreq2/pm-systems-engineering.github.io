@@ -1,3 +1,5 @@
+> **CEP CAM 2026** : page CEP protégée FR/EN, PDF/PPTX administrable et mobilité 2026–2031 actualisée. Les textes D1 sont installés automatiquement une seule fois à la première ouverture publique. Voir [CAM-CEP-REVIEW-2026.md](CAM-CEP-REVIEW-2026.md).
+
 > **Version V11.2** : pitch vidéo privé avec le code CV, visionneuse photo agrandie, diagnostic SEO, validation Google/Bing et pages vues agrégées. Appliquer `migrations/0010_portfolio_views.sql` avant le déploiement. Voir [DELIVERY-V11-2.md](DELIVERY-V11-2.md) et [ADMINISTRATION.md](ADMINISTRATION.md). Aucun push automatique.
 
 > **Version V11.1** : logo du header réellement transparent, conservant le dessin V11. Aucune migration.

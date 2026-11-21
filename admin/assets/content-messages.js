@@ -63,7 +63,7 @@
   $('#next-messages').addEventListener('click',()=>{if(!busy){page++;loadMessages();}});
 
   const sections = {
-    hero:['Accueil / Hero','home'], profile:['Profil','profile'], expertise:['Expertise','expertise'],projects:['Projets','projects'],
+    cep:['Introduction de l’espace CEP',''],hero:['Accueil / Hero','home'], profile:['Profil','profile'], expertise:['Expertise','expertise'],projects:['Projets','projects'],
     inspection:['Inspection, diagnostic et dépannage','field-inspection'], training:['Protections & formation technique','protection-training'],
     career:['Parcours & formations','career'], mentors:['Mentors','mentors'],objectives:['Objectifs','objectives'],project:['Projet professionnel / CEP','objectives'],skills:['Compétences & preuves','skills'],personality:['Personnalité & ouverture','about'],contact:['Contact','contact']
   };
@@ -86,7 +86,7 @@
       for(const [prefix,[title,anchor]] of Object.entries(sections)){
         const fields=data.fields.filter(field=>field.key.startsWith(prefix+'.'));
         const section=node('details',undefined,'content-section');section.append(node('summary',title));
-        const preview=node('a','Prévisualiser cette section','section-preview');preview.href=base+'#'+anchor;preview.target='_blank';preview.rel='noopener noreferrer';section.append(preview);
+        const preview=node('a','Prévisualiser cette section','section-preview');preview.href=prefix==='cep'?base+'cep/':base+'#'+anchor;preview.target='_blank';preview.rel='noopener noreferrer';section.append(preview);
         for(const field of fields){
           const form=node('form',undefined,'content-field');
           const parts=field.key.split('.');const group=parts.length>2 ? (groups[parts.at(-2)] || '') : '';

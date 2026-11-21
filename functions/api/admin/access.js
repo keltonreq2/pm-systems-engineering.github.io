@@ -1,3 +1,4 @@
+import {cepDocument} from '../../lib/cep.js';
 import {json,readSetting} from '../../lib/security.js';
 import {adminGuard,readJson} from '../../lib/request.js';
 import {grantToken,hashGrantToken} from '../../lib/grants.js';
@@ -14,7 +15,7 @@ export async function onRequestPost({request,env}){
  if(!Object.hasOwn(periods,body.hours)||typeof body.fr!=='boolean'||typeof body.en!=='boolean'||typeof body.cep!=='boolean'||!body.fr&&!body.en&&!body.cep)return json({error:'Sélectionnez une durée et au moins un document'},400);
  if(!env.SESSION_SECRET)return json({error:'Secret de session absent'},503);
  try{
-  for(const [selected,key,object] of [[body.fr,'cv_available','cv-pm-systems-engineering.pdf'],[body.en,'cv_en_available','cv-pm-systems-engineering-en.pdf'],[body.cep,'cep_available','cep-presentation.pdf']])if(selected&&(await readSetting(env.DB,key)!=='true'||!await env.CV_BUCKET?.head(object)))return json({error:'Un des documents sélectionnés est absent'},400);
+  for(const [selected,key,object] of [[body.fr,'cv_available','cv-pm-systems-engineering.pdf'],[body.en,'cv_en_available','cv-pm-systems-engineering-en.pdf'],[body.cep,'cep_available','cep-presentation.pdf']])if(selected&&(await readSetting(env.DB,key)!=='true'||!(selected&&key==='cep_available'?await cepDocument(env):await env.CV_BUCKET?.head(object))))return json({error:'Un des documents sélectionnés est absent'},400);
   const token=grantToken(),hash=await hashGrantToken(token),expires=Math.floor(Date.now()/1000)+periods[body.hours];
   await env.DB.prepare('INSERT INTO access_grants(token_hash,created_at,expires_at,allow_fr,allow_en,allow_cep,revoked_at) VALUES(?1,unixepoch(),?2,?3,?4,?5,NULL)').bind(hash,expires,body.fr?1:0,body.en?1:0,body.cep?1:0).run();
   await auditAdmin(env,{type:'access',key:hash,action:'create'});

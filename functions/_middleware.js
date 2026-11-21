@@ -1,8 +1,9 @@
+import {ensureCamMigration,CAM_REVISION} from './lib/cam-migration.js';
 import { applyContent } from "./lib/content.js";
 import { applyPresentation } from "./lib/presentation.js";
 import { getSession } from "./lib/auth.js";
 import { adminSessionRedirect, secureHeaders } from "./lib/security.js";
-import {pitchAuthorized,pitchDenied} from './lib/pitch.js';
+import {cepAuthorized,cepDenied} from './lib/cep.js';
 import {countedPage,recordPageView} from './lib/page-views.js';
 
 const privatePage = (language) => new Response(`<!doctype html><html lang="${language}"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${language === "en" ? "Private site" : "Site privé"}</title><body><main><h1>${language === "en" ? "This site is currently private" : "Ce site est actuellement privé"}</h1><p>${language === "en" ? "Please come back later." : "Merci de revenir plus tard."}</p></main></body></html>`, {
@@ -59,7 +60,9 @@ const adminLoginAssets = (path) => path === "/admin/login" || path.startsWith("/
 export async function onRequest(context) {
   const { request, env, next } = context;
   const url = new URL(request.url);
-  const path = url.pathname;
+  let path;
+  try { path=decodeURIComponent(url.pathname); }
+  catch { return new Response('Invalid path',{status:400,headers:secureHeaders}); }
   if (path === "/admin") return withSecureHeaders(Response.redirect(new URL("/admin/", request.url), 308), true);
   if (path === "/admin/login") return withSecureHeaders(Response.redirect(new URL("/admin/login/", request.url), 308), true);
 
@@ -72,6 +75,7 @@ export async function onRequest(context) {
       if (path.startsWith("/api/admin/")) return new Response("Unauthorized", { status: 401, headers: secureHeaders });
       return withSecureHeaders(adminSessionRedirect(request), true);
     }
+    if(/^\/admin\/pitch(?:\/|$)/u.test(path))return withSecureHeaders(new Response(null,{status:308,headers:{Location:'/admin/#project-panel'}}),true);
     return withSecureHeaders(await next(), true);
   }
 
@@ -82,9 +86,16 @@ export async function onRequest(context) {
     sitePublic = row?.value === "true";
   } catch { /* Fail closed if the database is unavailable or uninitialized. */ }
   if (!sitePublic) return privatePage(path.startsWith("/en/") ? "en" : "fr");
-  if(pitchHtmlPaths.has(path)){
-    try{if(!await pitchAuthorized(request,env))return pitchDenied();}catch{return pitchDenied();}
+  if(canonicalHtmlPaths.has(path)) {
+    try { await ensureCamMigration(env); }
+    catch { return new Response('Site update in progress. Please try again.',{status:503,headers:{...secureHeaders,'Retry-After':'30'}}); }
+  }
+  const cepPage = /^\/(?:en\/)?cep(?:\/|\.|$)/u.test(path);
+  if(cepPage || pitchHtmlPaths.has(path)) {
+    try { if(!await cepAuthorized(request,env))return cepDenied(); } catch { return cepDenied(); }
+    if(pitchHtmlPaths.has(path))return withSecureHeaders(new Response(null,{status:308,headers:{Location:path.startsWith('/en/')?'/en/cep/':'/cep/','Cache-Control':'private, no-store'}}),true);
     const response=withSecureHeaders(await next(),true);
+    response.headers.set('Cache-Control','private, no-store');
     return applyContent(response,env.DB,path.startsWith('/en/')?'en':'fr');
   }
   let linkedinUrl = null;
@@ -103,6 +114,7 @@ export async function onRequest(context) {
   const response = await withCanonicalOrigin(await next(), siteOrigin(request, env), path, linkedinUrl, verifications);
   if (!canonicalHtmlPaths.has(path)) return response;
   const language=path.startsWith('/en')?'en':'fr';
+  response.headers.set('X-Portfolio-Content-Revision',CAM_REVISION);
   const rendered=await applyPresentation(await applyContent(response,env.DB,language),env,language,request);
   const page=countedPage(request,rendered);
   if(page)try{await recordPageView(env.DB,page);}catch{/* A missing stats migration never blocks the portfolio. */}

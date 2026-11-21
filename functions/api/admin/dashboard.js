@@ -1,3 +1,4 @@
+import {cepDocument} from '../../lib/cep.js';
 import {json,readSetting} from '../../lib/security.js';
 import {adminGuard} from '../../lib/request.js';
 export async function onRequestGet({request,env}){
@@ -5,7 +6,7 @@ export async function onRequestGet({request,env}){
  try{
   const [site,linkedin,cvProtection,cvFr,cvEn,cep,unread,content,media,keys,years]=await Promise.all([
    readSetting(env.DB,'site_public'),readSetting(env.DB,'linkedin_url'),readSetting(env.DB,'cv_access_enabled'),
-   env.CV_BUCKET?.head('cv-pm-systems-engineering.pdf'),env.CV_BUCKET?.head('cv-pm-systems-engineering-en.pdf'),env.CV_BUCKET?.head('cep-presentation.pdf'),
+   env.CV_BUCKET?.head('cv-pm-systems-engineering.pdf'),env.CV_BUCKET?.head('cv-pm-systems-engineering-en.pdf'),cepDocument(env),
    env.DB.prepare('SELECT count(*) AS n FROM contact_messages WHERE read_at IS NULL').first(),
    env.DB.prepare('SELECT count(*) AS n FROM content_overrides').first(),
    env.DB.prepare('SELECT count(*) AS n FROM media_overrides WHERE r2_key IS NOT NULL').first(),

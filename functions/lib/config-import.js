@@ -1,3 +1,4 @@
+import {cepDocument} from './cep.js';
 import {contentField,validText} from './content.js';
 import {mediaCatalog} from './media-catalog.js';
 import {positions} from './media.js';
@@ -24,8 +25,9 @@ export async function normalizeImport(raw,env){
  const publicSettings={};const settings=raw.settings||{};
  if(typeof settings.linkedin_url==='string'){if(settings.linkedin_url&&(!linkedin.test(settings.linkedin_url)||settings.linkedin_url.length>300))throw new Error('LinkedIn invalide.');publicSettings.linkedin_url=settings.linkedin_url;}
  for(const key of ['site_public','cep_public','cep_protected'])if(settings[key]!==undefined){if(!['true','false'].includes(settings[key]))throw new Error('Paramètre public invalide.');publicSettings[key]=settings[key];}
- if(publicSettings.cep_public==='true'){if(await readSetting(env.DB,'cep_available')!=='true'||!await env.CV_BUCKET?.head('cep-presentation.pdf'))throw new Error('Le PDF CEP doit déjà être présent avant sa publication.');}
+ if(publicSettings.cep_public==='true'){if(await readSetting(env.DB,'cep_available')!=='true'||!await cepDocument(env))throw new Error('Le document CEP doit déjà être présent avant sa publication.');}
  if(publicSettings.cep_protected==='true'&&!await readSetting(env.DB,'cv_access_digest'))throw new Error('Définissez un code CV avant de protéger le CEP.');
+ if(publicSettings.cep_protected!==undefined)publicSettings.cep_protected='true';
  // Publication requires every field to be present in the imported file or the current database.
  if(flags.some(row=>row.visible===1)){
   const {results}=await env.DB.prepare('SELECT language,content_key,value FROM content_overrides').all();

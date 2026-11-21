@@ -17,7 +17,7 @@ async function fixture(){
   const sqlite=new DatabaseSync(':memory:');sqlite.exec(schema);
   sqlite.prepare("UPDATE settings SET value = 'true' WHERE key = 'site_public'").run();
   sqlite.prepare('INSERT INTO admin_sessions VALUES (?, ?, ?)').run(await sha256Hex('unit-session'),Math.floor(Date.now()/1000)+3600,1);
-  const DB={prepare(sql){const statement=sqlite.prepare(sql);let args=[];return {
+  const DB={async batch(statements){sqlite.exec('BEGIN');try{const results=[];for(const statement of statements)results.push(await statement.run());sqlite.exec('COMMIT');return results;}catch(error){sqlite.exec('ROLLBACK');throw error;}},prepare(sql){const statement=sqlite.prepare(sql);let args=[];return {
     bind(...values){args=values;return this;},
     async first(){return statement.get(...args)||null;},
     async all(){return {results:statement.all(...args)};},
@@ -41,7 +41,7 @@ test('V7 migration is repeatable and preserves V6 settings and sessions',async()
 test('content catalogue covers both languages and the HTML fallback',()=>{
   for(const [language,path] of [['fr','../index.html'],['en','../en/index.html']]){
     const source=readFileSync(new URL(path,import.meta.url),'utf8');
-    const pitch=readFileSync(new URL(language==='fr'?'../pitch/index.html':'../en/pitch/index.html',import.meta.url),'utf8');
+    const pitch=readFileSync(new URL(language==='fr'?'../cep/index.html':'../en/cep/index.html',import.meta.url),'utf8');
     const keys=[...(source+'\n'+pitch).matchAll(/data-content-key="([^"]+)"/gu)].map(m=>m[1]);
     assert.deepEqual(contentCatalog[language].map(f=>f.key),keys);
     assert.ok(keys.length>180);

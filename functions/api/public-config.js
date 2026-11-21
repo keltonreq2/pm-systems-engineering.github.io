@@ -1,5 +1,7 @@
 import { json, readSetting } from "../lib/security.js";
 import {hasCvAccess} from '../lib/cv-access.js';
+import {validGrant} from '../lib/grants.js';
+import {cepAuthorized,cepDocument} from '../lib/cep.js';
 import {pitchAvailable} from '../lib/pitch.js';
 
 export async function onRequestGet({ request, env }) {
@@ -15,6 +17,8 @@ export async function onRequestGet({ request, env }) {
     ]);
     const frenchAvailable = cvFrAvailable === "true";
     const pitch=await pitchAvailable(env);
+    const cepAccess=await cepAuthorized(request,env);
+    const document=cepAccess?await cepDocument(env):null;
     return json({
       linkedinUrl: linkedinUrl || null,
       cvFrAvailable: frenchAvailable,
@@ -22,10 +26,12 @@ export async function onRequestGet({ request, env }) {
       cvAvailable: frenchAvailable,
       cvProtected: cvProtected === 'true',
       pitchAvailable:pitch,
-      cvUnlocked:pitch && await hasCvAccess(request,env),
-      cepAvailable: cepAvailable === 'true',
-      cepPublic: cepPublic === 'true',
-      cepProtected: cepProtected === 'true'
+      cvUnlocked:await hasCvAccess(request,env),
+      cepAvailable: cepAvailable === 'true' && Boolean(document),
+      cepPublic: cepPublic === 'true' || await validGrant(request,env,'cep'),
+      cepProtected: true,
+      cepFormat:document?.format||null,
+      cepAccessConfigured:Boolean(await readSetting(env.DB,'cv_access_digest'))
     });
   } catch {
     return json({ error: "Configuration unavailable" }, 503);

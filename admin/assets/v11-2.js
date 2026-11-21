@@ -6,13 +6,6 @@ async function api(path,options={}){
  if(response.status===401){location.assign('/admin/login/');throw new Error('Session expirée.');}
  const result=await response.json();if(!response.ok)throw new Error(result.error||'Service indisponible.');return result;
 }
-async function pitch(){try{
- const data=await api('/api/admin/pitch');$('#pitch-state').textContent=data.available?'Disponible':'Absent';
- $('#pitch-preview').hidden=!data.available;$('#pitch-delete').hidden=!data.available;
- status('#pitch-status',data.available?`Vidéo privée enregistrée · ${(data.size/1024/1024).toFixed(2)} Mio${data.codeConfigured?'':' · Définir le code CV pour ouvrir le bouton public.'}`:'Aucun pitch enregistré.');
-}catch(error){status('#pitch-status',error.message,true);}}
-$('#pitch-form').addEventListener('submit',async event=>{event.preventDefault();const file=$('#pitch-file').files[0];if(!file)return;const form=new FormData();form.append('pitch',file,file.name);try{await api('/api/admin/pitch',{method:'PUT',body:form});$('#pitch-file').value='';await pitch();}catch(error){status('#pitch-status',error.message,true);}});
-$('#pitch-delete').addEventListener('click',async()=>{if(!confirm('Supprimer le pitch vidéo privé ?'))return;try{await api('/api/admin/pitch',{method:'DELETE'});await pitch();}catch(error){status('#pitch-status',error.message,true);}});
 async function seo(){try{
  const data=await api('/api/admin/seo');
  $('#seo-google').value=data.googleCode;$('#seo-bing').value=data.bingCode;
@@ -29,5 +22,5 @@ async function views(){try{
  status('#views-status','Statistiques agrégées disponibles.');
 }catch(error){status('#views-status',error.message,true);}}
 $('#views-refresh').addEventListener('click',views);
-pitch();seo();views();
+seo();views();
 })();

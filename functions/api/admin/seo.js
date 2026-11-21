@@ -18,7 +18,7 @@ export async function onRequestGet({request,env}){
   const read=async path=>{try{return (await asset(env,path,request.url))?.replaceAll('__SITE_ORIGIN__',origin)||null;}catch{return null;}};
   const [fr,en,robots,sitemap]=await Promise.all(['/','/en/','/robots.txt','/sitemap.xml'].map(read));
   checks.push(check('robots.txt',Boolean(robots?.includes(`${origin}/sitemap.xml`)),'Fichier présent et sitemap au domaine de production.'));
-  checks.push(check('sitemap.xml',Boolean(sitemap?.includes(`${origin}/en/`)&&sitemap.includes(`${origin}/`)&&!/\/(admin|api|pitch|access)\b/u.test(sitemap)),'Routes FR et EN seulement, sans accès protégés.'));
+  checks.push(check('sitemap.xml',Boolean(sitemap?.includes(`${origin}/en/`)&&sitemap.includes(`${origin}/`)&&!/\/(admin|api|pitch|cep|access)\b/u.test(sitemap)),'Routes FR et EN seulement, sans accès protégés.'));
   for(const [lang,html,path] of [['FR',fr,'/'],['EN',en,'/en/']]){
     checks.push(check(`Page ${lang} indexable`,Boolean(html&&!/<meta\s+name="robots"\s+content="[^"]*noindex/iu.test(html)),`Page ${lang} présente sans noindex.`));
     checks.push(check(`Canonique ${lang}`,Boolean(html?.includes(`<link rel="canonical" href="${origin}${path}">`)),`Adresse canonique ${origin}${path}.`));

@@ -1320,14 +1320,14 @@ export const contentCatalog = {
     {
       "key": "project.chapter_1.text",
       "label": "Description",
-      "defaultValue": "Je travaille dans la formation technique en protections électriques tout en poursuivant ma 2e année d’études d’ingénieur à l’ENSEEIHT. Je relie les situations d’exploitation aux méthodes d’analyse et de conception.",
+      "defaultValue": "En 2026, je suis formateur à EDF UFPI Toulouse, spécialisé dans les protections électriques et le contrôle-commande hydroélectrique. Je poursuis en parallèle ma formation d’ingénieur 3EA à l’ENSEEIHT.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.chapter_2.period",
       "label": "Période",
-      "defaultValue": "Vers 2028",
+      "defaultValue": "2028 · diplôme visé",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1341,14 +1341,14 @@ export const contentCatalog = {
     {
       "key": "project.chapter_2.text",
       "label": "Description",
-      "defaultValue": "Mon diplôme est en cours. Mon objectif est de consolider mes compétences en électrotechnique, protections et contrôle-commande, puis de les mobiliser sur des projets techniques concrets.",
+      "defaultValue": "Je prépare le diplôme d’ingénieur 3EA de l’ENSEEIHT, visé en 2028. Cette formation approfondit mes compétences en génie électrique, en protections et en contrôle-commande.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.chapter_3.period",
       "label": "Période",
-      "defaultValue": "Horizon cinq ans",
+      "defaultValue": "Horizon 2029–2031",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1362,7 +1362,7 @@ export const contentCatalog = {
     {
       "key": "project.chapter_3.text",
       "label": "Description",
-      "defaultValue": "Je souhaite aller vers des responsabilités d’ingénierie, d’expertise et de conduite de projets. Une expérience internationale peut contribuer à ce parcours ; elle ne constitue pas une affectation ou une promotion annoncée.",
+      "defaultValue": "J’envisage une progression vers davantage de responsabilités en ingénierie, en expertise des protections et en conduite de projets. Ce projet se construira selon les compétences acquises et les possibilités professionnelles.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1383,35 +1383,35 @@ export const contentCatalog = {
     {
       "key": "project.timeline.step_1.title",
       "label": "Titre de l’étape",
-      "defaultValue": "Expérience technique",
+      "defaultValue": "Formateur et élève ingénieur",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_1.text",
       "label": "Étape",
-      "defaultValue": "Formation technique, expertise en protections et études d’ingénieur",
+      "defaultValue": "EDF UFPI Toulouse : protections électriques et contrôle-commande hydroélectrique ; formation d’ingénieur 3EA à l’ENSEEIHT en cours.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_2.date",
       "label": "Année",
-      "defaultValue": "2027",
+      "defaultValue": "Août 2027",
       "multiline": false,
       "maxLength": 500
     },
     {
       "key": "project.timeline.step_2.title",
       "label": "Titre de l’étape",
-      "defaultValue": "Mobilité envisagée",
+      "defaultValue": "Mobilité de quatre semaines visée",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_2.text",
       "label": "Étape",
-      "defaultValue": "Expérience internationale envisagée, sous réserve de confirmation",
+      "defaultValue": "Irlande, Norvège et Islande étudiées. Départ sous réserve d’un accueil et des validations nécessaires.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1425,35 +1425,35 @@ export const contentCatalog = {
     {
       "key": "project.timeline.step_3.title",
       "label": "Titre de l’étape",
-      "defaultValue": "Diplôme visé",
+      "defaultValue": "Diplôme d’ingénieur visé",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_3.text",
       "label": "Étape",
-      "defaultValue": "Année visée pour le diplôme d’ingénieur ; diplôme en cours",
+      "defaultValue": "Diplôme 3EA de l’ENSEEIHT visé en 2028, en cours de préparation.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_4.date",
       "label": "Année",
-      "defaultValue": "Après 2028",
+      "defaultValue": "2029–2031",
       "multiline": false,
       "maxLength": 500
     },
     {
       "key": "project.timeline.step_4.title",
       "label": "Titre de l’étape",
-      "defaultValue": "Développement professionnel",
+      "defaultValue": "Progression envisagée",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_4.text",
       "label": "Étape",
-      "defaultValue": "Développement progressif vers l’ingénierie, l’expertise et les projets",
+      "defaultValue": "Projet d’évolution vers davantage de responsabilités en ingénierie, expertise des protections et conduite de projets.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1474,7 +1474,7 @@ export const contentCatalog = {
     {
       "key": "project.international.narrative",
       "label": "Motivation générale",
-      "defaultValue": "Une mobilité internationale s’inscrirait entre mes études d’ingénieur et la suite de mon parcours. Elle me permettrait de confronter mes méthodes de travail à d’autres pratiques techniques et de renforcer mes échanges professionnels en anglais. La cible précise restera non publiée tant qu’elle n’aura pas été confirmée.",
+      "defaultValue": "Cette mobilité doit m’aider à passer de l’expérience de terrain et de la formation technique à une approche plus large du métier d’ingénieur. Pendant quatre semaines visées en août 2027, je souhaite découvrir d’autres pratiques en génie électrique, en hydroélectricité ou dans les systèmes énergétiques, comparer les méthodes de travail et développer mon anglais professionnel. Travailler avec une équipe d’un autre pays renforcerait ma collaboration interculturelle et ma communication technique. Je pourrais ensuite mobiliser ces apprentissages dans mes formations et dans de futurs projets d’ingénierie et de protections. L’accueil et les modalités restent à confirmer.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1495,154 +1495,154 @@ export const contentCatalog = {
     {
       "key": "project.mobility_focus.fact_1",
       "label": "Cible",
-      "defaultValue": "À confirmer",
+      "defaultValue": "Irlande, Norvège et Islande. Candidatures effectuées en Irlande ; pistes norvégiennes et islandaises à explorer.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_2",
       "label": "Période",
-      "defaultValue": "À préciser",
+      "defaultValue": "Quatre semaines en août 2027, sous réserve d’un accueil et des validations nécessaires.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_3",
       "label": "Objectif",
-      "defaultValue": "Comparer les pratiques techniques et industrielles",
+      "defaultValue": "Découvrir d’autres pratiques en génie électrique, hydroélectricité ou systèmes énergétiques ; comparer les méthodes de travail et développer mon anglais professionnel.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_4",
       "label": "Langue de travail",
-      "defaultValue": "Anglais professionnel en progression",
+      "defaultValue": "Développer mon anglais professionnel et ma communication technique.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_5",
       "label": "Compétences visées",
-      "defaultValue": "Pratiques des systèmes électriques · échanges techniques",
+      "defaultValue": "Protections et systèmes électriques · approche d’ingénierie · collaboration interculturelle · communication technique en anglais.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_6",
       "label": "État d’avancement",
-      "defaultValue": "En préparation",
+      "defaultValue": "Candidatures engagées en Irlande ; autres pistes à l’étude. Accueil et modalités à confirmer.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.heading",
       "label": "Titre de la cible",
-      "defaultValue": "Cible de mobilité en préparation",
+      "defaultValue": "Mobilité internationale : pistes à l’étude",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.country",
       "label": "Pays cible",
-      "defaultValue": "À préciser",
+      "defaultValue": "Irlande, Norvège et Islande ; aucun pays d’accueil confirmé.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.organisation",
       "label": "Organisation cible",
-      "defaultValue": "À préciser",
+      "defaultValue": "Structure d’accueil à confirmer. Candidatures engagées en Irlande ; autres pistes à explorer.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.location",
       "label": "Site ou localisation",
-      "defaultValue": "À préciser",
+      "defaultValue": "Lieu d’accueil à confirmer.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.period",
       "label": "Période envisagée",
-      "defaultValue": "À préciser",
+      "defaultValue": "Quatre semaines en août 2027, sous réserve d’un accueil et des validations nécessaires.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.status",
       "label": "État d’avancement",
-      "defaultValue": "À préciser",
+      "defaultValue": "Candidatures engagées en Irlande ; autres pistes à l’étude. Accueil et modalités à confirmer.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.objective",
       "label": "Objectif technique",
-      "defaultValue": "À préciser",
+      "defaultValue": "Découvrir d’autres pratiques en génie électrique, hydroélectricité ou systèmes énergétiques, comparer les méthodes de travail et développer mon anglais professionnel.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.skills",
       "label": "Compétences visées",
-      "defaultValue": "À préciser",
+      "defaultValue": "Protections et systèmes électriques, approche d’ingénierie, collaboration interculturelle et communication technique en anglais.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.languages",
       "label": "Préparation linguistique",
-      "defaultValue": "À préciser",
+      "defaultValue": "Anglais professionnel : progression recherchée pendant la mobilité.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.motivation",
       "label": "Motivation",
-      "defaultValue": "À compléter avant publication.",
+      "defaultValue": "Élargir mon expérience de terrain et de formateur en confrontant mes pratiques à celles d’une équipe internationale.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.technical_goals",
       "label": "Objectifs techniques",
-      "defaultValue": "À compléter avant publication.",
+      "defaultValue": "Observer les pratiques en systèmes électriques, hydroélectricité ou énergie et comparer les méthodes d’analyse et de travail.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.competencies",
       "label": "Compétences recherchées",
-      "defaultValue": "À compléter avant publication.",
+      "defaultValue": "Renforcer ma démarche d’ingénierie, ma collaboration interculturelle et ma communication technique en anglais.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.benefits",
       "label": "Apports pour le projet professionnel",
-      "defaultValue": "À compléter avant publication.",
+      "defaultValue": "Réinvestir ces apprentissages dans mes formations et mes futurs projets en ingénierie et en protections.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.language_plan",
       "label": "Préparation linguistique",
-      "defaultValue": "À compléter avant publication.",
+      "defaultValue": "Développer les échanges professionnels et le vocabulaire technique en anglais au contact d’une équipe d’accueil.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.five_year_link",
       "label": "Lien avec la trajectoire à cinq ans",
-      "defaultValue": "À compléter avant publication.",
+      "defaultValue": "Une étape d’apprentissage en août 2027 avant le diplôme visé en 2028, au service d’une progression envisagée à l’horizon 2029–2031.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.cep.intro",
       "label": "Présentation CEP",
-      "defaultValue": "Une présentation synthétique de mon projet professionnel et de sa dimension internationale.",
+      "defaultValue": "Retrouvez dans l’espace CEP mes CV français et anglais, mon profil LinkedIn et ma présentation CAM de cinq diapositives maximum.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -1997,9 +1997,9 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
-      "key": "pitch.intro",
-      "label": "Introduction du pitch",
-      "defaultValue": "Une présentation de mon parcours et de mon projet professionnel.",
+      "key": "cep.intro",
+      "label": "Introduction CEP",
+      "defaultValue": "Mon projet professionnel, mes CV et ma présentation CAM.",
       "multiline": true,
       "maxLength": 5000
     }
@@ -3324,14 +3324,14 @@ export const contentCatalog = {
     {
       "key": "project.chapter_1.text",
       "label": "Description",
-      "defaultValue": "I work in technical training for electrical protection systems while pursuing my second year of engineering studies at ENSEEIHT. I connect practical operation of electrical systems with deeper analysis and design methods.",
+      "defaultValue": "In 2026, I am a technical trainer at EDF UFPI Toulouse, specialising in electrical protection and hydropower control and automation. I am also studying for the 3EA engineering degree at ENSEEIHT.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.chapter_2.period",
       "label": "Période",
-      "defaultValue": "Towards 2028",
+      "defaultValue": "2028 · target graduation",
       "multiline": true,
       "maxLength": 5000
     },
@@ -3345,14 +3345,14 @@ export const contentCatalog = {
     {
       "key": "project.chapter_2.text",
       "label": "Description",
-      "defaultValue": "My degree is still in progress. My goal is to consolidate skills in electrical engineering, protection and control systems, and to apply them to real technical projects.",
+      "defaultValue": "I am preparing the 3EA engineering degree at ENSEEIHT, with graduation targeted for 2028. The programme develops my skills in electrical engineering, protection, control and automation.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.chapter_3.period",
       "label": "Période",
-      "defaultValue": "Five-year horizon",
+      "defaultValue": "2029–2031 horizon",
       "multiline": true,
       "maxLength": 5000
     },
@@ -3366,7 +3366,7 @@ export const contentCatalog = {
     {
       "key": "project.chapter_3.text",
       "label": "Description",
-      "defaultValue": "I aim to develop responsibilities in engineering, technical expertise and project coordination. International experience is a possible learning stage on this path, not an announced assignment or promotion.",
+      "defaultValue": "I aim to progress towards greater responsibility in engineering, protection expertise and project delivery. This career plan will develop with the skills I acquire and the professional opportunities available.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -3387,35 +3387,35 @@ export const contentCatalog = {
     {
       "key": "project.timeline.step_1.title",
       "label": "Milestone title",
-      "defaultValue": "Technical experience",
+      "defaultValue": "Trainer and engineering student",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_1.text",
       "label": "Étape",
-      "defaultValue": "Technical training, protection expertise and engineering studies",
+      "defaultValue": "EDF UFPI Toulouse: electrical protection and hydropower control and automation; 3EA engineering studies at ENSEEIHT in progress.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_2.date",
       "label": "Année",
-      "defaultValue": "2027",
+      "defaultValue": "August 2027",
       "multiline": false,
       "maxLength": 500
     },
     {
       "key": "project.timeline.step_2.title",
       "label": "Milestone title",
-      "defaultValue": "Potential mobility",
+      "defaultValue": "Target: four weeks abroad",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_2.text",
       "label": "Étape",
-      "defaultValue": "Potential international experience, subject to confirmation",
+      "defaultValue": "Ireland, Norway and Iceland under consideration. Subject to a host placement and the necessary approvals.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -3429,35 +3429,35 @@ export const contentCatalog = {
     {
       "key": "project.timeline.step_3.title",
       "label": "Milestone title",
-      "defaultValue": "Degree target",
+      "defaultValue": "Target engineering degree",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_3.text",
       "label": "Étape",
-      "defaultValue": "Target year for completing the engineering degree; diploma in progress",
+      "defaultValue": "3EA engineering degree at ENSEEIHT targeted for 2028; studies in progress.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_4.date",
       "label": "Année",
-      "defaultValue": "After 2028",
+      "defaultValue": "2029–2031",
       "multiline": false,
       "maxLength": 500
     },
     {
       "key": "project.timeline.step_4.title",
       "label": "Milestone title",
-      "defaultValue": "Professional development",
+      "defaultValue": "Planned career progression",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.timeline.step_4.text",
       "label": "Étape",
-      "defaultValue": "Gradual development towards engineering, expertise and project work",
+      "defaultValue": "Aiming for greater responsibility in engineering, protection expertise and project delivery.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -3478,7 +3478,7 @@ export const contentCatalog = {
     {
       "key": "project.international.narrative",
       "label": "Motivation générale",
-      "defaultValue": "An international assignment would connect my engineering studies with the next stage of my career. It would help me compare technical working methods and strengthen professional exchanges in English. A precise target will remain unpublished until confirmed.",
+      "defaultValue": "This experience would help me build on my field and technical training background and develop a broader engineering perspective. During four weeks targeted for August 2027, I would like to discover other practices in electrical engineering, hydropower or energy systems, compare working methods and develop my professional English. Working with a team in another country would strengthen my intercultural collaboration and technical communication. I could then apply what I learn to my training work and future engineering and protection projects. The host placement and arrangements remain to be confirmed.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -3499,154 +3499,154 @@ export const contentCatalog = {
     {
       "key": "project.mobility_focus.fact_1",
       "label": "Target",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Ireland, Norway and Iceland. Applications submitted in Ireland; Norwegian and Icelandic opportunities still to be explored.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_2",
       "label": "Period",
-      "defaultValue": "To be defined",
+      "defaultValue": "Four weeks in August 2027, subject to a host placement and the necessary approvals.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_3",
       "label": "Objective",
-      "defaultValue": "Compare technical and industrial practices",
+      "defaultValue": "Discover other practices in electrical engineering, hydropower or energy systems; compare working methods and develop my professional English.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_4",
       "label": "Working language",
-      "defaultValue": "Developing professional English",
+      "defaultValue": "Develop my professional English and technical communication.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_5",
       "label": "Skills sought",
-      "defaultValue": "Electrical systems practice · technical exchanges",
+      "defaultValue": "Electrical protection and power systems · engineering approach · intercultural collaboration · technical communication in English.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.mobility_focus.fact_6",
       "label": "Progress",
-      "defaultValue": "In preparation",
+      "defaultValue": "Applications submitted in Ireland; other opportunities under consideration. Host placement and arrangements to be confirmed.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.heading",
       "label": "Titre de la cible",
-      "defaultValue": "Mobility target under preparation",
+      "defaultValue": "International mobility: opportunities under consideration",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.country",
       "label": "Country",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Ireland, Norway and Iceland; no host country confirmed.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.organisation",
       "label": "Target organisation",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Host organisation to be confirmed. Applications submitted in Ireland; other opportunities still to be explored.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.location",
       "label": "Site / location",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Host location to be confirmed.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.period",
       "label": "Intended period",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Four weeks in August 2027, subject to a host placement and the necessary approvals.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.status",
       "label": "Current status",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Applications submitted in Ireland; other opportunities under consideration. Host placement and arrangements to be confirmed.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.objective",
       "label": "Technical objective",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Discover other practices in electrical engineering, hydropower or energy systems, compare working methods and develop my professional English.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.skills",
       "label": "Skills to develop",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Electrical protection and power systems, engineering approach, intercultural collaboration and technical communication in English.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.languages",
       "label": "Language preparation",
-      "defaultValue": "To be confirmed",
+      "defaultValue": "Professional English: further development during the placement.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.motivation",
       "label": "Motivation",
-      "defaultValue": "To be completed before publication.",
+      "defaultValue": "Broaden my experience as a field professional and trainer by comparing practices with an international team.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.technical_goals",
       "label": "Technical goals",
-      "defaultValue": "To be completed before publication.",
+      "defaultValue": "Observe practices in electrical systems, hydropower or energy and compare engineering and working methods.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.competencies",
       "label": "Competencies sought",
-      "defaultValue": "To be completed before publication.",
+      "defaultValue": "Strengthen my engineering approach, intercultural collaboration and technical communication in English.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.benefits",
       "label": "Career relevance",
-      "defaultValue": "To be completed before publication.",
+      "defaultValue": "Apply these learning outcomes to my training work and future engineering and protection projects.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.language_plan",
       "label": "Language preparation plan",
-      "defaultValue": "To be completed before publication.",
+      "defaultValue": "Develop professional conversations and technical vocabulary in English through work with a host team.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.international_detail.five_year_link",
       "label": "Connection to the five-year plan",
-      "defaultValue": "To be completed before publication.",
+      "defaultValue": "A learning step in August 2027 before target graduation in 2028, supporting planned career progression in 2029–2031.",
       "multiline": true,
       "maxLength": 5000
     },
     {
       "key": "project.cep.intro",
       "label": "Présentation CEP",
-      "defaultValue": "A concise presentation of my career project and its international dimension.",
+      "defaultValue": "The CEP area brings together my French and English CVs, my LinkedIn profile and my CAM presentation of five slides maximum.",
       "multiline": true,
       "maxLength": 5000
     },
@@ -4001,9 +4001,9 @@ export const contentCatalog = {
       "maxLength": 5000
     },
     {
-      "key": "pitch.intro",
-      "label": "Introduction du pitch",
-      "defaultValue": "A short presentation of my experience and professional goals.",
+      "key": "cep.intro",
+      "label": "Introduction CEP",
+      "defaultValue": "My career plan, CVs and CAM presentation.",
       "multiline": true,
       "maxLength": 5000
     }

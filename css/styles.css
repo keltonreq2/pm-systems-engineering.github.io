@@ -702,3 +702,16 @@ body.lightbox-open { overflow: hidden; }
   .mobility-lead > p:not(.eyebrow), .mobility-narrative p,
   .language-note > p:not(.eyebrow), .case-study dd { text-align: left; hyphens: none; }
 }
+
+/* CEP uses the existing palette, type and button styles. */
+.cep-page { min-height: 100dvh; background: var(--navy-deep); color: #f0f7f8; }
+.cep-shell { width: min(1000px, calc(100% - 32px)); margin: 0 auto; padding: clamp(24px, 5vw, 72px) 0; }
+.cep-shell h1 { font-size: clamp(2rem, 5vw, 4rem); }
+.cep-shell > p { max-width: 70ch; color: #d3e0e6; }
+.cep-back { display: inline-block; margin-bottom: 36px; color: #bfeaf0; text-underline-offset: 5px; }
+.cep-card { margin-top: 28px; padding: clamp(20px, 4vw, 36px); background: #fff; color: var(--ink); border-radius: 4px; }
+.cep-card h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+.cep-card p { max-width: 70ch; color: var(--muted); }
+.cep-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.cep-actions[hidden], .cep-actions [hidden] { display: none; }
+.cep-actions .button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }

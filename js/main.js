@@ -43,13 +43,13 @@ const actionMessages = {
     linkedin: "Le lien LinkedIn n’est pas encore configuré.",
     "cv-fr": "Le CV français n’est pas encore disponible.",
     "cv-en": "Le CV anglais n’est pas encore disponible.",
-    pitch: "Le pitch vidéo n’est pas encore disponible."
+    cep: "L’accès CEP est indisponible pour le moment."
   },
   en: {
     linkedin: "The LinkedIn link has not been configured yet.",
     "cv-fr": "The French CV is not available yet.",
     "cv-en": "The English CV is not available yet.",
-    pitch: "The video pitch is not available yet."
+    cep: "CEP access is currently unavailable."
   }
 };
 
@@ -79,11 +79,11 @@ document.addEventListener('click',event=>{
   const link=event.target.closest('a[data-professional-action],a[data-cep-link]');
   if(!link?.dataset.configured||cvUnlocked)return;
   const action=link.dataset.professionalAction;
-  const scope=action==='cv-fr'?'fr':action==='cv-en'?'en':link.hasAttribute('data-cep-link')?'cep':null;
-  if(!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||action==='pitch'||(link.hasAttribute('data-cep-link')&&cepProtected))){
+  const scope=action==='cv-fr'?'fr':action==='cv-en'?'en':(action==='cep'||link.hasAttribute('data-cep-link'))?'cep':null;
+  if(!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||action==='cep'||(link.hasAttribute('data-cep-link')&&cepProtected))){
     event.preventDefault();pendingDocument=link.href;originatingLink=link;
-    document.querySelector('#cv-dialog-title').textContent=action==='pitch'
-      ? (pageLanguage==='en'?'Video pitch access code':'Code d’accès au pitch vidéo')
+    document.querySelector('#cv-dialog-title').textContent=action==='cep'
+      ? (pageLanguage==='en'?'CEP access code':'Code d’accès au CEP')
       : (pageLanguage==='en'?'Document access code':'Code d’accès au CV');
     cvDialog?.showModal();codeInput?.focus();
   }
@@ -112,6 +112,7 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
     if (config.linkedinUrl) {
       for (const link of actionsFor("linkedin")) {
         link.href = config.linkedinUrl;
+        link.hidden = false;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
         link.dataset.configured = "true";
@@ -130,9 +131,7 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
         link.dataset.configured = "true";
       }
     }
-    if(config.pitchAvailable){
-      for(const link of actionsFor('pitch')){link.dataset.configured='true';link.hidden=false;}
-    }
+    for(const link of actionsFor('cep'))link.dataset.configured='true';
     if(config.cepAvailable&&config.cepPublic){
       for(const link of document.querySelectorAll('[data-cep-link]'))link.dataset.configured='true';
     }
