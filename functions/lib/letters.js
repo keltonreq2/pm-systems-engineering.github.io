@@ -1,4 +1,5 @@
 import {readSetting} from './security.js';
+import {validGrant} from './grants.js';
 import {hasCvAccess} from './cv-access.js';
 
 export const LETTER_MAX = 10 * 1024 * 1024;
@@ -12,7 +13,7 @@ export const LETTERS = Object.freeze({
 export const letterHeaders = {'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff','X-Robots-Tag':'noindex, nofollow'};
 export const letterSlot = id => typeof id==='string' && Object.hasOwn(LETTERS,id) ? LETTERS[id] : null;
 export async function lettersAuthorized(request,env) {
-  // Reuse the CV cookie and code. A scoped CV/CEP invitation does not grant letters.
+  if (await validGrant(request, env, 'letters')) return true;
   return Boolean(await readSetting(env.DB,'cv_access_digest')) && await hasCvAccess(request,env);
 }
 export async function letterAvailability(env) {

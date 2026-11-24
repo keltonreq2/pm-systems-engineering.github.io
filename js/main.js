@@ -34,6 +34,7 @@ document.querySelectorAll("[data-language-switch]").forEach((link) => {
 
 const actionStatus = document.querySelector("#action-status");
 let cvProtected=false,cepProtected=false,cvUnlocked=false,pendingDocument=null;
+let lettersUnlocked=false;
 let grantScopes={fr:false,en:false,cep:false};
 const professionalActions = [...document.querySelectorAll("[data-professional-action]")];
 const actionsFor = (action) => professionalActions.filter((item) => item.dataset.professionalAction === action);
@@ -80,7 +81,10 @@ document.addEventListener('click',event=>{
   if(!link?.dataset.configured||cvUnlocked)return;
   const action=link.dataset.professionalAction;
   const scope=action==='cv-fr'?'fr':action==='cv-en'?'en':(action==='cep'||link.hasAttribute('data-cep-link'))?'cep':null;
-  if((action?.startsWith('letter-')) || (!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||action==='cep'||(link.hasAttribute('data-cep-link')&&cepProtected)))){
+  const needsCode = action?.startsWith('letter-')
+    ? !lettersUnlocked
+    : !grantScopes[scope] && ((scope === 'fr' || scope === 'en') ? cvProtected : scope === 'cep' && (action === 'cep' || cepProtected));
+  if(needsCode){
     event.preventDefault();pendingDocument=link.href;originatingLink=link;
     document.querySelector('#cv-dialog-title').textContent=action==='cep'
       ? (pageLanguage==='en'?'CEP access code':'Code d’accès au CEP')
@@ -137,14 +141,15 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
       link.hidden=!available;
       if(available)link.dataset.configured='true';
     }
+    lettersUnlocked=Boolean(config.lettersUnlocked);
     const letterUnlock=document.querySelector('#letter-unlock');
-    if(letterUnlock){letterUnlock.hidden=cvUnlocked;letterUnlock.dataset.configured='true';}
+    if(letterUnlock){letterUnlock.hidden=lettersUnlocked;letterUnlock.dataset.configured='true';}
     const letterStatus=document.querySelector('#letter-status');
     if(letterStatus){
       const count=Object.values(config.lettersAvailable||{}).filter(Boolean).length;
       letterStatus.textContent=count===4
         ? (pageLanguage==='en'?'Four cover letters available · PDF.':'Quatre lettres disponibles · PDF.')
-        : !cvUnlocked
+        : !lettersUnlocked
           ? (pageLanguage==='en'?'Use the CV access code to view the cover letters.':'Utilisez le code des CV pour accéder aux lettres.')
           : (pageLanguage==='en'?'Some cover letters have not been made available yet.':'Certaines lettres ne sont pas encore disponibles.');
     }

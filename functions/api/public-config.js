@@ -21,7 +21,8 @@ export async function onRequestGet({ request, env }) {
     const cepAccess=await cepAuthorized(request,env);
     const document=cepAccess?await cepDocument(env):null;
     const cvUnlocked=await hasCvAccess(request,env);
-    const lettersAvailable=cvUnlocked?await letterAvailability(env):{};
+    const lettersUnlocked=cvUnlocked || await validGrant(request,env,'letters');
+    const lettersAvailable=lettersUnlocked?await letterAvailability(env):{};
     return json({
       linkedinUrl: linkedinUrl || null,
       cvFrAvailable: frenchAvailable,
@@ -31,6 +32,7 @@ export async function onRequestGet({ request, env }) {
       pitchAvailable:pitch,
       cvUnlocked,
       lettersAvailable,
+      lettersUnlocked,
       cepAvailable: cepAvailable === 'true' && Boolean(document),
       cepPublic: cepPublic === 'true' || await validGrant(request,env,'cep'),
       cepProtected: true,

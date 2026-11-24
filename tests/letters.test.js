@@ -93,14 +93,23 @@ test('invalid uploads/slots and oversized bodies preserve stored letters; missin
  f.env.CV_BUCKET=null;assert.equal((await f.put('esb-en')).status,503);
  f.env.CV_BUCKET={};await writeSetting(f.env.DB,'cv_access_digest','');assert.equal((await f.put('esb-en')).status,409);
 });
-test('CV/CEP invitation scopes do not silently expand to letters',async()=>{
+test('Only a full recruiter invitation provides access to cover letters',async()=>{
  const f=await fixture();await f.put('esb-en');
  for(const key of ['cv_available','cv_en_available','cep_available'])await writeSetting(f.env.DB,key,'true');
  for(const key of ['cv-pm-systems-engineering.pdf','cv-pm-systems-engineering-en.pdf','cep-presentation.pdf'])f.files.set(key,new Uint8Array(await pdf(key).arrayBuffer()));
- const r=await invitation({request:request('/api/admin/access','POST',{fr:true,en:true,cep:true,hours:24},f.admin),env:f.env});
- assert.equal(r.status,200);const result=await r.json();const token=new URL(result.url).pathname.split('/').pop();
- const exchanged=await exchange({request:request('/access/'+token),env:f.env,params:{token}});
- const cookie=exchanged.headers.get('Set-Cookie').split(';')[0];assert.equal((await getLetter(f.ctx('esb-en','GET',null,cookie))).status,401);
+ for (const [en, expected] of [[true, 200], [false, 401]]) {
+   const response = await invitation({request: request('/api/admin/access','POST',{fr:true,en,cep:true,hours:24},f.admin), env:f.env});
+   assert.equal(response.status, 200);
+   const result = await response.json();
+   const token = new URL(result.url).pathname.split('/').pop();
+   const exchanged = await exchange({request:request('/access/'+token),env:f.env,params:{token}});
+   const cookie = exchanged.headers.get('Set-Cookie').split(';')[0];
+   const metadata = await config({request:request('/api/public-config','GET',null,cookie),env:f.env});
+   const data = await metadata.json();
+   assert.equal(data.lettersUnlocked, en);
+   assert.equal(Boolean(data.lettersAvailable['esb-en']), en);
+   assert.equal((await getLetter(f.ctx('esb-en','GET',null,cookie))).status, expected);
+ }
 });
 test('FR/EN pages point to the four fixed slots, English primary links and French versions; PDFs stay outside static output',()=>{
  for(const language of ['fr','en']){
