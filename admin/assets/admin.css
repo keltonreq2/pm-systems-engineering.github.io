@@ -94,3 +94,5 @@ summary { cursor: pointer; color: var(--navy); font-weight: 700; }
 #access-new input {min-width:0}
 #import-summary {margin:12px 0;padding-left:20px}
 .admin-card h3 {margin:8px 0 0;font-size:20px}
+
+.admin-letter-slot { border-top: 1px solid var(--admin-line, #dbe2e7); margin-top: 24px; padding-top: 12px; }

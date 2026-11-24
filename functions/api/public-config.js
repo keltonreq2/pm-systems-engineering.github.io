@@ -2,6 +2,7 @@ import { json, readSetting } from "../lib/security.js";
 import {hasCvAccess} from '../lib/cv-access.js';
 import {validGrant} from '../lib/grants.js';
 import {cepAuthorized,cepDocument} from '../lib/cep.js';
+import {letterAvailability} from '../lib/letters.js';
 import {pitchAvailable} from '../lib/pitch.js';
 
 export async function onRequestGet({ request, env }) {
@@ -19,6 +20,8 @@ export async function onRequestGet({ request, env }) {
     const pitch=await pitchAvailable(env);
     const cepAccess=await cepAuthorized(request,env);
     const document=cepAccess?await cepDocument(env):null;
+    const cvUnlocked=await hasCvAccess(request,env);
+    const lettersAvailable=cvUnlocked?await letterAvailability(env):{};
     return json({
       linkedinUrl: linkedinUrl || null,
       cvFrAvailable: frenchAvailable,
@@ -26,7 +29,8 @@ export async function onRequestGet({ request, env }) {
       cvAvailable: frenchAvailable,
       cvProtected: cvProtected === 'true',
       pitchAvailable:pitch,
-      cvUnlocked:await hasCvAccess(request,env),
+      cvUnlocked,
+      lettersAvailable,
       cepAvailable: cepAvailable === 'true' && Boolean(document),
       cepPublic: cepPublic === 'true' || await validGrant(request,env,'cep'),
       cepProtected: true,

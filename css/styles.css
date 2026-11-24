@@ -715,3 +715,12 @@ body.lightbox-open { overflow: hidden; }
 .cep-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .cep-actions[hidden], .cep-actions [hidden] { display: none; }
 .cep-actions .button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+
+.cep-letters { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 12px; }
+.cep-letter-group { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
+.cep-letter-group .button { font-size: .875rem; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.cep-letters [hidden] { display: none; }
+@media (max-width: 600px) {
+  .cep-letter-group { align-items: stretch; }
+  .cep-letter-group .button { width: 100%; }
+}

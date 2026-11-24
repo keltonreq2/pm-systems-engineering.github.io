@@ -66,7 +66,7 @@ professionalActions.forEach((link) => {
     const action = link.dataset.professionalAction;
     if (!link.dataset.configured) {
       event.preventDefault();
-      showActionMessage(actionMessages[pageLanguage][action]);
+      showActionMessage(actionMessages[pageLanguage][action] || (pageLanguage==='en'?'This cover letter is unavailable.':'Cette lettre est indisponible.'));
     }
   });
 });
@@ -80,11 +80,11 @@ document.addEventListener('click',event=>{
   if(!link?.dataset.configured||cvUnlocked)return;
   const action=link.dataset.professionalAction;
   const scope=action==='cv-fr'?'fr':action==='cv-en'?'en':(action==='cep'||link.hasAttribute('data-cep-link'))?'cep':null;
-  if(!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||action==='cep'||(link.hasAttribute('data-cep-link')&&cepProtected))){
+  if((action?.startsWith('letter-')) || (!grantScopes[scope]&&(((action==='cv-fr'||action==='cv-en')&&cvProtected)||action==='cep'||(link.hasAttribute('data-cep-link')&&cepProtected)))){
     event.preventDefault();pendingDocument=link.href;originatingLink=link;
     document.querySelector('#cv-dialog-title').textContent=action==='cep'
       ? (pageLanguage==='en'?'CEP access code':'Code d’accès au CEP')
-      : (pageLanguage==='en'?'Document access code':'Code d’accès au CV');
+      : (pageLanguage==='en'?'Document access code':'Code d’accès aux documents');
     cvDialog?.showModal();codeInput?.focus();
   }
 });
@@ -131,12 +131,33 @@ fetch("/api/public-config", { headers: { Accept: "application/json" }, cache: "n
         link.dataset.configured = "true";
       }
     }
+    for(const link of professionalActions.filter(item=>item.dataset.professionalAction.startsWith('letter-') && item.id!=='letter-unlock')){
+      const id=link.dataset.professionalAction.slice(7);
+      const available=Boolean(config.lettersAvailable?.[id]);
+      link.hidden=!available;
+      if(available)link.dataset.configured='true';
+    }
+    const letterUnlock=document.querySelector('#letter-unlock');
+    if(letterUnlock){letterUnlock.hidden=cvUnlocked;letterUnlock.dataset.configured='true';}
+    const letterStatus=document.querySelector('#letter-status');
+    if(letterStatus){
+      const count=Object.values(config.lettersAvailable||{}).filter(Boolean).length;
+      letterStatus.textContent=count===4
+        ? (pageLanguage==='en'?'Four cover letters available · PDF.':'Quatre lettres disponibles · PDF.')
+        : !cvUnlocked
+          ? (pageLanguage==='en'?'Use the CV access code to view the cover letters.':'Utilisez le code des CV pour accéder aux lettres.')
+          : (pageLanguage==='en'?'Some cover letters have not been made available yet.':'Certaines lettres ne sont pas encore disponibles.');
+    }
     for(const link of actionsFor('cep'))link.dataset.configured='true';
     if(config.cepAvailable&&config.cepPublic){
       for(const link of document.querySelectorAll('[data-cep-link]'))link.dataset.configured='true';
     }
   })
-  .catch(() => professionalActions.forEach((link) => { delete link.dataset.configured; }));
+  .catch(() => {
+    professionalActions.forEach((link) => { delete link.dataset.configured; });
+    const status=document.querySelector('#letter-status');
+    if(status)status.textContent=pageLanguage==='en'?'Unable to check cover letters. Please reload the page.':'Impossible de vérifier les lettres. Merci de recharger la page.';
+  });
 fetch('/api/access/status',{cache:'no-store'}).then(response=>response.ok?response.json():null).then(data=>{
   if(!data)return;grantScopes=data;
   if(data.cep)for(const link of document.querySelectorAll('[data-cep-link]'))link.dataset.configured='true';
